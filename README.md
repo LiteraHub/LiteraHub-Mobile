@@ -1,46 +1,137 @@
-# Tugas Proyek Tengah Semester - PBP
+## Tugas Proyek Akhir Semester - PBP E08
 
-#### i. Anggota kelompok: <br>
-1. Jeslyn Theodora - 2206082026 <br>
-2. Puti Raissa - 2206830391 <br> 
-3. Muhammad Rafli Mahesa - 2206828140 <br>
-4. Mohammad Fauzan Aditya - 2206827831 <br>
-5. Rena Martha Ulima - 2206818783 <br>
+**Anggota kelompok:**
 
-#### ii. Cerita aplikasi yang diajukan serta manfaatnya <br>
-LiteraHub adalah sebuah *website* perpustakaan yang dirancang supaya pengguna dapat mencari dan meminjam buku, berdiskusi dengan anggota perpustakaan lain dalam forum, serta melakukan *reservasi* tempat untuk membaca. LiteraHub terdiri dari berbagai fitur, yaitu fitur Product, Forum, Daftar Buku, Pinjam Buku, dan Reservasi LiteraHub. Adapun manfaat LiteraHub, yaitu untuk memudahkan pengguna dalam mencari ketersediaan buku tanpa perlu datang ke perpustakaan secara langsung dan pengguna juga dapat berdiskusi mengenai topik bacaan sesuai dengan minatnya pada forum yang disediakan oleh LiteraHub. Pengguna yang memiliki karya tulis juga dapat mempublikasikan karyanya di LiteraHub. Selain itu, LiteraHub juga membantu pengguna untuk melihat ketersediaan tempat baca dan melakukan reservasi tempat baca di perpustakaan.  <br>
+1. Jeslyn Theodora - 2206082026
 
-#### iii. Daftar modul yang akan diimplementasikan <br>
-1. Modul LembarAsa - Puti Raissa <br>
-Pengguna yang sudah *login* bisa menambahkan karyanya ke dalam *web* LiteraHub. Ketika ingin menambahkan karya, akan ada *pop up* untuk mengisi *form* yang meminta *input* judul buku, penulis, dll. Disamping itu, akan ada tampilan buku-buku yang diambil dari *dataset* dan karya pengguna (jika ditambahkan). 
+2. Puti Raissa - 2206830391
+3. Muhammad Rafli Mahesa - 2206828140
+4. Mohammad Fauzan Aditya - 2206827831
+5. Rena Martha Ulima - 2206818783
 
-2. Modul Forum - Jeslyn Theodora <br>
-Pengguna dapat mengisi obrolan dengan pengguna lainnya untuk saling memberi rekomendasi buku yang bagus ataupun hanya untuk sekadar berdiskusi. *Form* pada modul ini akan meminta *input* teks dan pengguna dapat menambahkan buku serta detailnya saat membuat pesan obrolan. <br>
+**Cerita aplikasi yang diajukan serta manfaatnya**
 
-3. Modul Daftar buku - Mohammad Fauzan Aditya <br>
-Pada modul ini, pengguna dapat mencari buku yang diinginkan sesuai judul, nama penulis, dan genrenya. Gambarannya seperti *search* di Shopee filter. Bagian ini juga menampilkan buku-buku yang tersedia dan akan ada buku yang berasal dari modul LembarAsa (karya yang ditambahkan oleh pengguna juga akan ditampilkan disini). Selain itu, pengguna bisa mengisi/melihat review dari buku yang dicari. <br>
+LiteraHub adalah sebuah aplikasi perpustakaan yang dirancang supaya pengguna dapat mencari dan meminjam buku, berdiskusi dengan anggota perpustakaan lain dalam forum, serta melakukan _reservasi_ tempat untuk membaca. LiteraHub terdiri dari berbagai fitur, yaitu fitur LembarAsa, Forum, Daftar Buku, Pinjam Buku, dan Reservasi LiteraHub. Adapun manfaat LiteraHub, yaitu untuk memudahkan pengguna dalam mencari ketersediaan buku tanpa perlu datang ke perpustakaan secara langsung dan pengguna juga dapat berdiskusi mengenai topik bacaan sesuai dengan minatnya pada forum yang disediakan oleh LiteraHub. Pengguna yang memiliki karya tulis juga dapat mempublikasikan karyanya di LiteraHub. Selain itu, LiteraHub juga membantu pengguna untuk melihat ketersediaan tempat baca dan melakukan reservasi tempat baca di perpustakaan.
 
-4. Modul Peminjaman buku - Muhammad Rafli Mahesa <br>
-Modul untuk pengguna melakukan *checkout*/pinjam buku. Pada modul ini akan ada tampilan *pop up* untuk mengisi nama peminjam, lama meminjam, dll. Jika sudah di *checkout*, keterangan peminjaman di bukunya akan bertambah. Selain itu, detail dari peminjam buku akan disimpan untuk keperluan tampilan daftar, yakni tampilan apa saja buku yang telah/sedang dipinjam oleh pengguna. <br>
+**Daftar modul yang akan diimplementasikan**
 
-5. Modul Reservasi LiteraHub - Rena Martha Ulima <br>
-Pengguna dapat melakukan *reservasi* tempat untuk baca buku secara *offline*. Pengguna akan mengisi *form*, seperti tanggal kunjungan, nomor anggota, judul buku yang dipinjam, dll. Pada bagian sini akan ditampilkan daftar tempat yang tersedia. <br>
+1. **Modul LembarAsa** - Puti Raissa
 
-#### iv. Sumber Dataset Katalog Buku <br>
-	https://www.kaggle.com/datasets/saurabhbagchi/books-dataset 
+Pada aplikasi LiteraHub, terdapat fitur LembarAsa yang memungkinkan pengguna untuk mengunggah karyanya sendiri. Pengguna yang sudah login dapat memasukkan informasi mengenai karyanya seperti judul dan sampul, serta karya itu sendiri. Hasil karya pengguna akan terunggah ke dalam database buku. Pengguna dapat secara bebas menyunting dan menghapus karyanya sendiri. Pada halaman ini juga pengguna dapat melihat karya-karya lain milik pengguna lainnya.
 
-* *Role* atau peran pengguna beserta deskripsinya (karena bisa saja lebih dari satu jenis pengguna yang mengakses aplikasi) <br>
+2. **Modul Forum** - Jeslyn Theodora
 
-	- Pengguna tidak *login* <br>
-	Pengguna yang hanya mengunjungi website LiteraHub tanpa melakukan registrasi akun. Pengguna ini memiliki akses: <br>
-		* Dapat mengakses daftar buku
-		* Dapat melihat rekomendasi buku
+Pengguna dapat mengisi obrolan dengan pengguna lainnya untuk saling memberi rekomendasi buku yang bagus ataupun hanya untuk sekedar berdiskusi. _Form_ pada modul ini akan meminta _input_ teks dan pengguna dapat menambahkan buku serta detailnya saat membuat pesan obrolan.
 
-	- Pengguna *login* <br>
-	Pengguna yang telah melakukan registrasi dan memiliki akun LiteraHub. Pengguna ini memiliki akses: <br>
-		* Dapat mengakses daftar buku
-		* Dapat melihat rekomendasi buku
-		* Dapat berdiskusi di forum
-		* Dapat *reservasi* kunjungan LiteraHub
-		* Dapat menambahkan karyanya ke dalam LiteraHub
-		* Dapat *checkout*/pinjam buku
+3. **Modul Daftar buku** - Mohammad Fauzan Aditya
+
+Pada modul ini, pengguna dapat mencari buku yang diinginkan sesuai judul, nama penulis, dan tahunnya, seperti _search_ pada _e-commerce_. Bagian ini juga menampilkan buku-buku yang tersedia dan akan ada buku yang berasal dari modul LembarAsa (karya yang ditambahkan oleh pengguna juga akan ditampilkan disini). Selain itu, pengguna bisa mengisi/melihat review dari buku yang dicari.
+
+4. **Modul Peminjaman buku** - Muhammad Rafli Mahesa
+
+Modul Peminjaman Buku dalam aplikasi ini ditujukan bagi pengguna yang sudah login untuk proses peminjaman dan pengembalian buku. Modul ini menyajikan daftar buku yang tersedia untuk dipinjam beserta tombol akses ke halaman peminjaman buku. Pada halaman peminjaman, pengguna diminta untuk mengisi nama dan tanggal pengembalian, lalu data input form akan disimpan untuk detail peminjaman.
+Selain tombol akses untuk peminjaman, modul ini juga mempunyai tombol akses untuk pengembalian. Pada halaman pengembalian buku, pengguna dapat melihat detail informasi mengenai buku apa saja yang sedang dipinjam, serta pengguna juga dapat menggunakan tombol untuk mengembalikan buku.
+
+5. **Modul Reservasi LiteraHub** - Rena Martha Ulima
+
+Pengguna dapat melakukan _reservasi_ tempat untuk baca buku secara _offline_. Pengguna akan mengisi _form_, seperti tanggal kunjungan, nomor anggota, judul buku yang dipinjam, dll. Pada bagian sini akan ditampilkan daftar tempat yang tersedia.
+
+<br>
+
+_Role_ atau peran pengguna beserta deskripsinya (karena bisa saja lebih dari satu jenis pengguna yang mengakses aplikasi)
+
+- Pengguna tidak login
+
+  Pengguna yang hanya mengunjungi aplikasi LiteraHub tanpa melakukan registrasi akun. Pengguna ini memiliki akses:
+
+  - Dapat mengakses daftar buku
+  - Dapat melihat rekomendasi buku
+
+- Pengguna login
+
+  Pengguna yang telah melakukan registrasi dan memiliki akun LiteraHub. Pengguna ini memiliki akses:
+
+  - Dapat mengakses daftar buku
+  - Dapat melihat rekomendasi buku
+  - Dapat berdiskusi di forum
+  - Dapat _reservasi_ kunjungan LiteraHub
+  - Dapat menambahkan karyanya ke dalam LiteraHub
+  - Dapat _checkout_/pinjam buku
+  - Dapat mengisi dan menghapus review buku
+
+Alur pengintegrasian dengan web service untuk terhubung dengan aplikasi web yang sudah dibuat saat Proyek Tengah Semester
+
+### Modul LembarAsa:
+
+POST: Input user berupa judul buku, gambar sampul, dan isi buku.
+
+GET: Data dari database berisi keterangan buku yang sudah diunggah.
+
+Hal yang perlu diimplementasikan:
+
+- Halaman utama menampilkan buku milik user
+- Form input judul buku, gambar sampul, dan isi buku karya user.
+- Halaman buku buatan semua user
+- Halaman detail isi buku jika buku ditekan
+
+Data hasil input user akan dikirim ke aplikasi django dalam format json dan kalau berhasil akan mengirimkan sinyal HTTP 200. Data seluruh buku (model buku) karya user akan diambil dari aplikasi django dalam format json untuk kemudian dikirimkan ke mobile apps.
+
+### Modul Forum:
+
+POST: Input user berupa pembuatan thread baru dan isi post yang dibuat user. Jika berhasil dibuat, django akan mengirim sinyal HTTP Response 201.
+
+GET: Data dari database berisi buku (cover dan judul), thread, dan post yang sudah ada. Jika berhasil, django akan mengirim sinyal HTTP Response 200.
+
+Hal yang perlu diimplementasikan:
+
+- Page untuk menunjukan thread.
+- Page untuk menunjukan semua post dalam suatu thread (dengan form membuat postnya).
+- Page/popup untuk membuat thread baru.
+
+Data untuk forum dan buku diambil dari aplikasi yang sudah dibuat sebagai proyek tengah semester. Data akan diambil dalam bentuk JSON dari django ke aplikasi mobile, dan saat form pembuatan thread/post sukses dibuat, data baru akan dikirimkan ke aplikasi django.
+
+### Modul Peminjaman Buku:
+
+POST: Mengirim input formulir dari halaman peminjaman buku.
+
+GET: Meminta data semua buku serta buku yang dipinjam dari website proyek tengah semester dalam bentuk JSON.
+
+
+Hal yang perlu diimplementasikan:
+
+- Page utama untuk menunjukkan fitur yang dapat diakses pada modul ini yaitu peminjaman dan pengembalian.
+- Page peminjaman buku (Terdapat form untuk nama dan tanggal pengembalian).
+- Page pengembalian buku.
+
+Data dari formulir peminjaman buku akan diubah ke bentuk json terlebih dahulu, lalu akan dikirimkan ke database django. Jika berhasil akan dikirimkan sinyal HTTP 200. Terkait data untuk detail buku yang dipinjam akan didapat dengan mengambil dari website proyek tengah semester dalam format json untuk dikirimkan ke mobile apps.
+
+### Modul Reservasi Tempat:
+
+POST: Mengirimkan input user berupa nama, nomor ponsel, buku yang dipinjam, tanggal dan jam mulai, serta tempat yang direservasi.
+
+GET: Meminta data dari database berupa buku dan tempat yang tersedia.
+
+Hal yang perlu diimplementasikan:
+
+- Form yang meminta input nama, nomor ponsel, buku yang dipinjam, tanggal dan jam mulai, serta tempat yang direservasi
+- Page menampilkan buku yang tersedia di LiteraHub
+
+Data buku dan tempat yang tersedia akan diambil dari django dalam format json untuk dikirimkan ke mobile apps. Data dari form yang berisi input user pada mobile apps akan diubah dalam format json dan dikirimkan ke aplikasi django. Jika berhasil, django akan mengirimkan sinyal HTTP 200.
+
+### Modul Daftar Buku:
+
+POST: Mengirim input formulir untuk review buku.
+
+GET: Meminta data semua buku dari website proyek tengah semester dalam bentuk JSON.
+
+Hal yang perlu diimplementasikan:
+
+- Fitur search buku berdasarkan judul, penulis, dan tahun
+- Tampilan mengenai buku-buku yang tersedia di LiteraHub
+- Page add review buku
+- Page menampilkan review buku
+
+Data untuk detail dan review buku akan diambil dari django dalam format json untuk dikirimkan ke mobile apps. Selain itu, data dari form yang ada di mobile apps akan diubah dalam format json untuk dikirimkan ke database django dan apabila berhasil django akan mengirimkan sinyal HTTP 200.
+
+**Menambahkan tautan berita acara ke README.md**
+https://docs.google.com/spreadsheets/d/13aM5jSwt4QPegzKhCVhBAza9aQ1dyKUCtiHKymxtPuE/edit?hl=id#gid=0
