@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/menu.dart';
+import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -65,18 +66,18 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.add_shopping_cart),
             title: const Text('Pinjam Buku'),
             // Bagian redirection ke Pinjam Buku
-            // onTap: () {
-            //   // Routing ke InventoriFormPage,
-            //   Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => InventoriFormPage(),
-            //       ));
-            // },
+            onTap: () {
+              // Routing ke InventoriFormPage,
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PeminjamanBukuPage(),
+                  ));
+            },
           ),
           ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Daftar Buku'),
+            leading: Icon(Icons.add_shopping_cart),
+            title: Text('Daftar Buku'),
             // Bagian redirection ke Daftar Buku
             // onTap: () {
             //   // Routing ke InventoriFormPage,
@@ -88,8 +89,8 @@ class LeftDrawer extends StatelessWidget {
             // },
           ),
           ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Reservasi Tempat'),
+            leading: Icon(Icons.add_shopping_cart),
+            title: Text('Reservasi Tempat'),
             // Bagian redirection ke Reservasi Tempat
             // onTap: () {
             //   // Routing ke InventoriFormPage,
@@ -101,8 +102,8 @@ class LeftDrawer extends StatelessWidget {
             // },
           ),
           ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Forum'),
+            leading: Icon(Icons.add_shopping_cart),
+            title: Text('Forum'),
             // Bagian redirection ke Forum
             // onTap: () {
             //   // Routing ke InventoriFormPage,
@@ -114,8 +115,8 @@ class LeftDrawer extends StatelessWidget {
             // },
           ),
           ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Logout'),
+            leading: Icon(Icons.add_shopping_cart),
+            title: Text('Logout'),
             // Bagian redirection ke Logout
             // onTap: () {
             //   // Routing ke InventoriFormPage,

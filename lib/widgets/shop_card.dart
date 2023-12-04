@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/login.dart';
+import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,7 @@ class ShopCard extends StatelessWidget {
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
           if (item.name == "Logout") {
             final response =
-                await request.logout("https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/logout/");
+                await request.logout("http://127.0.0.1:8000/auth/logout/");
             String message = response["message"];
             if (response['status']) {
               String uname = response["username"];
@@ -46,6 +47,9 @@ class ShopCard extends StatelessWidget {
                 content: Text("$message"),
               ));
             }
+          } else if (item.name == "Pinjam Buku") {
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context) => PeminjamanBukuPage()));
           }
         },
         child: Container(
