@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
 import 'package:literahub/screens/menu.dart';
 import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 
@@ -53,14 +54,13 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.shopping_basket),
             title: const Text('LembarAsa'),
             // Bagian redirection ke LembarAsa
-            // onTap: () {
-            //   // Routing ke InventoriFormPage,
-            //   Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => const ProductPage(),
-            //       ));
-            // },
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LembarAsaMain(),
+                  ));
+            },
           ),
           ListTile(
             leading: const Icon(Icons.add_shopping_cart),
