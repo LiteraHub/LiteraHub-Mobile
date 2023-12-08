@@ -31,8 +31,8 @@ class _LembarAsaFormPageState extends State<LembarAsaFormPage> {
             'Form Tambah Item',
           ),
         ),
-        backgroundColor: Colors.purple.shade900,
         foregroundColor: Colors.white,
+        backgroundColor: const Color(0xFFC9C5BA),
       ),
       drawer: const LeftDrawer(),
       body: Form(
@@ -117,7 +117,7 @@ class _LembarAsaFormPageState extends State<LembarAsaFormPage> {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(Colors.purple.shade900),
+                          MaterialStateProperty.all(Colors.black),
                     ),
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {

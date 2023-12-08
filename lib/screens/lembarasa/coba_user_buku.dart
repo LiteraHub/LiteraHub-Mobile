@@ -7,14 +7,14 @@ import 'package:literahub/widgets/left_drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
-class MyBukuPage extends StatefulWidget {
-  const MyBukuPage({Key? key}) : super(key: key);
+class CobaMyBukuPage extends StatefulWidget {
+  const CobaMyBukuPage({Key? key}) : super(key: key);
 
   @override
-  _MyBukuPageState createState() => _MyBukuPageState();
+  _CobaMyBukuPageState createState() => _CobaMyBukuPageState();
 }
 
-class _MyBukuPageState extends State<MyBukuPage> {
+class _CobaMyBukuPageState extends State<CobaMyBukuPage> {
   Future<List<MyBuku>> fetchMyBuku(CookieRequest request) async {
     final data = await request.postJson(
                                 "http://127.0.0.1:8000/lembar-asa/json-mybuku-user/",
@@ -32,8 +32,9 @@ class _MyBukuPageState extends State<MyBukuPage> {
 
   Future<List<Buku>> fetchBuku(CookieRequest request) async {
     final data = await request.postJson(
-                                "http://127.0.0.1:8000/lembar-asa/get-semua-buku/",
+                                "http://127.0.0.1:8000/lembar-asa/get-buku/",
                                 jsonEncode(<String, String>{}));
+    
 
     // melakukan konversi data json menjadi object Buku
     List<Buku> list_buku = [];
@@ -51,7 +52,7 @@ class _MyBukuPageState extends State<MyBukuPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Semua buku user',
+          'buku user',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -71,11 +72,11 @@ class _MyBukuPageState extends State<MyBukuPage> {
             List<MyBuku> myBukuList = snapshot.data![0];
             List<Buku> bukuList = snapshot.data![1];
 
-            if (bukuList.isEmpty) {
+            if (myBukuList.isEmpty) {
               return const Center(child: Text('Tidak ada data mybuku.'));
             } else {
               return ListView.builder(
-                itemCount: bukuList.length,
+                itemCount: myBukuList.length,
                 itemBuilder: (_, index) => InkWell(
                   onTap: () {
                     // Navigasi ke halaman detail dengan data yang sesuai

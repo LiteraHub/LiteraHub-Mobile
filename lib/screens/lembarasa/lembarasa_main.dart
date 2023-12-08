@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/lembarasa/all_user_book.dart';
+import 'package:literahub/screens/lembarasa/coba_user_buku.dart';
 import 'package:literahub/screens/lembarasa/lembarasa_form.dart';
 import 'package:literahub/widgets/left_drawer.dart';
 
@@ -12,6 +13,9 @@ class LembarAsaMain extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'LiteraHub',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
         backgroundColor: const Color(0xFFC9C5BA),
         foregroundColor: Colors.black,
@@ -58,6 +62,17 @@ class LembarAsaMain extends StatelessWidget {
                         );
                       },
                       child: Text('Show'),
+                    ),
+                    SizedBox(width: 10), // Adding some space between buttons
+                    ElevatedButton(
+                      onPressed: () {
+                        // Add your show button functionality here
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CobaMyBukuPage()),
+                        );
+                      },
+                      child: Text('Show2'),
                     ),
                   ],
                 ),
