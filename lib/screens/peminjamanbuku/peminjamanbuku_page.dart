@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:literahub/screens/peminjamanbuku/return_book.dart';
 import 'package:literahub/widgets/left_drawer.dart';
+import 'package:literahub/screens/peminjamanbuku/form_peminjaman.dart';
 
 class PeminjamanBukuPage extends StatelessWidget {
   PeminjamanBukuPage({Key? key}) : super(key: key);
@@ -15,13 +17,13 @@ class PeminjamanBukuPage extends StatelessWidget {
         foregroundColor: Colors.black,
       ),
       drawer: const LeftDrawer(),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: Text(
                   'Peminjaman Buku',
@@ -31,7 +33,48 @@ class PeminjamanBukuPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
+              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                child: Text(
+                  'Ingin Meminjam Buku? Tekan Tombol dibawah ini!',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const PeminjamanForm()),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                ),
+                child: const Text('Pinjam Buku')
+              ),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ReturnBookPage()),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                ),
+                child: const Text('Kembalikan Buku')
+              ),
+              const Padding(
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: Align(
                   alignment: Alignment.centerLeft,
@@ -45,7 +88,7 @@ class PeminjamanBukuPage extends StatelessWidget {
                 ),
               ),
               // TODO: Tambahkan widget untuk menampilkan buku yang dipinjam di sini
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: Align(
                   alignment: Alignment.centerLeft,

@@ -107,6 +107,9 @@ class _LoginPageState extends State<LoginPage> {
               },
               child: const Text('Login'),
             ),
+            SizedBox(
+              height: 8
+            ),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -115,7 +118,8 @@ class _LoginPageState extends State<LoginPage> {
                         builder: (context) => const RegisterApp()),
                   );
                 },
-                child: const Text('Register'))
+                child: const Text('Register')
+            )
           ],
         ),
       ),
