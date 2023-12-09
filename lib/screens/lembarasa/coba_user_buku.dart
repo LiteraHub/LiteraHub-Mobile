@@ -17,9 +17,7 @@ class CobaMyBukuPage extends StatefulWidget {
 
 class _CobaMyBukuPageState extends State<CobaMyBukuPage> {
   Future<List<MyBuku>> fetchMyBuku(CookieRequest request) async {
-    final data = await request.postJson(
-                                "http://127.0.0.1:8000/lembar-asa/json-mybuku-user/",
-                                jsonEncode(<String, String>{}));
+    var data = await request.get("http://127.0.0.1:8000/lembar-asa/json-mybuku-user/");
 
     // melakukan konversi data json menjadi object MyBuku
     List<MyBuku> list_mybuku = [];
@@ -32,9 +30,7 @@ class _CobaMyBukuPageState extends State<CobaMyBukuPage> {
   }
 
   Future<List<Buku>> fetchBuku(CookieRequest request) async {
-    final data = await request.postJson(
-                                "http://127.0.0.1:8000/lembar-asa/get-buku/",
-                                jsonEncode(<String, String>{}));
+    var data = await request.get("http://127.0.0.1:8000/lembar-asa/get-buku/");
 
     // melakukan konversi data json menjadi object Buku
     List<Buku> list_buku = [];
