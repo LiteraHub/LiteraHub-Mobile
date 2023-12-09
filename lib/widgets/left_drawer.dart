@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/menu.dart';
+import 'package:literahub/screens/reservasi/reservasi_main.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -91,14 +92,14 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.add_shopping_cart),
             title: const Text('Reservasi Tempat'),
             // Bagian redirection ke Reservasi Tempat
-            // onTap: () {
-            //   // Routing ke InventoriFormPage,
-            //   Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => InventoriFormPage(),
-            //       ));
-            // },
+            onTap: () {
+              // Routing ke InventoriFormPage,
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MainPageReservasi(),
+                  ));
+            },
           ),
           ListTile(
             leading: const Icon(Icons.add_shopping_cart),
