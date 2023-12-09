@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:literahub/models/buku.dart';
 import 'dart:convert';
 import 'package:literahub/models/mybuku.dart';
+import 'package:literahub/screens/lembarasa/detail_isi_buku.dart';
 import 'package:literahub/widgets/left_drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +18,7 @@ class MyBukuPage extends StatefulWidget {
 class _MyBukuPageState extends State<MyBukuPage> {
   Future<List<MyBuku>> fetchMyBuku(CookieRequest request) async {
     final data = await request.postJson(
-                                "http://127.0.0.1:8000/lembar-asa/json-mybuku-user/",
+                                "http://127.0.0.1:8000/lembar-asa/json-mybuku/",
                                 jsonEncode(<String, String>{}));
 
     // melakukan konversi data json menjadi object MyBuku
@@ -59,7 +60,7 @@ class _MyBukuPageState extends State<MyBukuPage> {
         foregroundColor: Colors.white,
         backgroundColor: const Color(0xFFC9C5BA),
       ),
-      drawer: const LeftDrawer(),
+      // drawer: const LeftDrawer(),
       body: FutureBuilder(
         future: Future.wait([fetchMyBuku(request), fetchBuku(request)]),
         builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
@@ -76,39 +77,79 @@ class _MyBukuPageState extends State<MyBukuPage> {
             } else {
               return ListView.builder(
                 itemCount: bukuList.length,
-                itemBuilder: (_, index) => InkWell(
+                itemBuilder: (_, index) => GestureDetector(
                   onTap: () {
-                    // Navigasi ke halaman detail dengan data yang sesuai
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => DetailItem(item : snapshot.data![index]),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailBuku(buku: bukuList[index],myBuku: myBukuList[index]),
+                      ),
+                    );                  
                   },
-                  child: Container(
+                  child : Container(
                     margin: const EdgeInsets.symmetric(
                       horizontal: 16, vertical: 12),
                     padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    decoration: BoxDecoration(
+                      color:Colors.white,
+                      borderRadius: BorderRadius.circular(15.0),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black,
+                          blurRadius: 2.0
+                        )
+                      ]
+                    ),
+                    child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          bukuList[index].fields.title,
-                          style: const TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
+                        Padding(
+                          padding: const EdgeInsets.only(right: 16.0),
+                          child : ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black,
+                                    blurRadius: 2.0,
+                                  ),
+                                ],
+                              ),
+                              child: Image.network(
+                                bukuList[index].fields.img, // Replace with the actual image URL
+                                width: 80, // Adjust the width as needed
+                                height: 120, // Adjust the height as needed
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ),
-                        const SizedBox(height: 10),
-                        Text(bukuList[index].fields.author),
-                        const SizedBox(height: 10),
-                        Text("${bukuList[index].fields.year}"),
+                        const SizedBox(width: 5),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: 10),
+                              Text(
+                                bukuList[index].fields.title,
+                                style: const TextStyle(
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(bukuList[index].fields.author),
+                              const SizedBox(height: 10),
+                              Text("${bukuList[index].fields.year}"),
+                            ],
+                          ),
+                        )
                       ],
-                    ),
+                    )
                   ),
-                ),
+                )
               );
             }
           }

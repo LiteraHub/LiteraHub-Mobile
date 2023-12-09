@@ -34,7 +34,7 @@ class _LembarAsaFormPageState extends State<LembarAsaFormPage> {
         foregroundColor: Colors.white,
         backgroundColor: const Color(0xFFC9C5BA),
       ),
-      drawer: const LeftDrawer(),
+      // drawer: const LeftDrawer(),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
