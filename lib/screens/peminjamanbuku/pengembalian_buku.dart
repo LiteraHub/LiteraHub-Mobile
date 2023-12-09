@@ -119,12 +119,15 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                                               topLeft: Radius.circular(8.0),
                                               topRight: Radius.circular(8.0),
                                           ),
-                                          child: Image.network(
+                                          child: AspectRatio(
+                                            aspectRatio: 2/3,
+                                            child: Image.network(
                                             '${snapshot.data![index].fields.gambarBuku}',
                                             width: 200,
                                             height: 250,
                                             fit: BoxFit.fill,
-                                          ),
+                                            ),
+                                          )   
                                         ),
                                         Expanded(
                                           child: Container(

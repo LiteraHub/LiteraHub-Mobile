@@ -1,37 +1,65 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:literahub/models/buku.dart';
 import 'package:literahub/widgets/left_drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:http/http.dart' as http;
-
 
 class BukuTersediaPage extends StatefulWidget {
-  const BukuTersediaPage({super.key});
+  final Buku objekPinjam;
+  const BukuTersediaPage(this.objekPinjam, {Key? key}) : super(key: key);
+
   
   @override
-  _BukuTersediaPageState createState() => _BukuTersediaPageState();
+  _BukuTersediaPageState createState() => _BukuTersediaPageState(objekPinjam);
 }
 
 class _BukuTersediaPageState extends State<BukuTersediaPage>{
+  final Buku objek;
+  _BukuTersediaPageState(this.objek);
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
         title: const Center(
           child: Text(
-            'List Buku Ready Dipinjam',
+            'Detail Buku',
           ),
         ),
         backgroundColor: const Color(0xFFC9C5BA),
         foregroundColor: Colors.black,
       ),
-      drawer: const LeftDrawer(),
-      // TODO: Buat future builder buat ngeloop semua buku yang bisa sedang dipinjam
+      body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          alignment: Alignment.center, // Menengahkan secara horizontal
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(8.0),
+              topRight: Radius.circular(8.0),
+            ),
+            child: Image.network(
+              objek.fields.img,
+              width: 200,
+              height: 250,
+              fit: BoxFit.fill,
+            ),
+          ),
+        ),
+        const SizedBox(height: 10),
+        Text("Title : ${objek.fields.title}", textAlign: TextAlign.center),
+        const SizedBox(height: 10),
+        Text("Isbn : ${objek.fields.isbn}", textAlign: TextAlign.center),
+        const SizedBox(height: 10),
+        Text("Author : ${objek.fields.author}", textAlign: TextAlign.center),
+        const SizedBox(height: 10),
+        Text("Year : ${objek.fields.year}", textAlign: TextAlign.center),
+        const SizedBox(height: 10),
+      ],
+    ),
     );
   }
 }
