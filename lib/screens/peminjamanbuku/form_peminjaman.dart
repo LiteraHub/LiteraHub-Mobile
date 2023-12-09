@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:literahub/models/buku.dart';
-import 'package:literahub/models/peminjaman_buku.dart';
 import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 import 'package:literahub/widgets/left_drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -215,7 +214,23 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                     ),
                   ),
                 ),
-              )
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
+                    foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                  ), 
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Kembali'),
+                  ),
+                  ),
+                )
             ],
           ),
         ),

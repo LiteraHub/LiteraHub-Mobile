@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:literahub/screens/peminjamanbuku/return_book.dart';
+import 'package:literahub/screens/peminjamanbuku/pengembalian_buku.dart';
 import 'package:literahub/widgets/left_drawer.dart';
 import 'package:literahub/screens/peminjamanbuku/form_peminjaman.dart';
 
@@ -91,7 +91,7 @@ class PeminjamanBukuPage extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.center,
                   child: Text(
                     'Buku Tersedia',
                     style: TextStyle(

@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:literahub/widgets/left_drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:http/http.dart' as http;
+
 
 class BukuTersediaPage extends StatefulWidget {
   const BukuTersediaPage({super.key});
