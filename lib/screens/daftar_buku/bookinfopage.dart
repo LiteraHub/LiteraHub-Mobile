@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:literahub/widgets/left_drawer.dart';
 import 'package:literahub/models/buku.dart';
 
-class BookInfoPage extends StatefulWidget {
+class DetailBukuPage extends StatefulWidget {
   final int id;
-  const BookInfoPage(this.id, {Key? key}) : super(key: key);
+  const DetailBukuPage(this.id, {Key? key}) : super(key: key);
 
   @override
-  _BookInfoPageState createState() => _BookInfoPageState(id);
+  _DetailBukuPageState createState() => _DetailBukuPageState(id);
 }
 
-class _BookInfoPageState extends State<BookInfoPage> {
+class _DetailBukuPageState extends State<DetailBukuPage> {
   final int id;
-  _BookInfoPageState(this.id);
+  _DetailBukuPageState(this.id);
   Future<List<Buku>> fetchProduct() async {
     var url = Uri.parse('http://127.0.0.1:8000/daftarbuku/show_json/$id/');
     var response = await http.get(

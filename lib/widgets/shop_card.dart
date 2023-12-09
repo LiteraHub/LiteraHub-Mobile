@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/login.dart';
-import 'package:literahub/screens/daftar_buku/list_daftarbuku.dart';
+import 'package:literahub/screens/daftar_buku/HomeDaftarBuku.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+
+import '../screens/daftar_buku/tes2.dart';
+import '../screens/daftar_buku/widgets/list_daftarbuku.dart';
 
 
 class ShopItem {
@@ -52,7 +55,7 @@ class ShopCard extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ListDaftarBuku(),
+                  builder: (context) => const ListDaftarBuku2(),
                 ));
           }
         },
