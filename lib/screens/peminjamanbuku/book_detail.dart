@@ -23,7 +23,7 @@ class _BookDetailPageState extends State<BookDetailPage>{
 
   Future<List<Buku>> fetchProduct(CookieRequest request) async {
       final response = await request.get(
-        "http://127.0.0.1:8000/peminjamanbuku/get-buku-by-id/$idBuku/",
+        "https://literahub-e08-tk.pbp.cs.ui.ac.id/peminjamanbuku/get-buku-by-id/$idBuku/",
       );
       List<Buku> list_product = [];
       for (var d in response) {
@@ -65,6 +65,10 @@ class _BookDetailPageState extends State<BookDetailPage>{
                 ],
               );
             } else {
+              DateTime currentDate = DateTime.now();
+              DateTime returnDate = objek.fields.tanggalPengembalian;
+              bool isReturnOverdue = currentDate.isAfter(returnDate);
+
               return ListView.builder(
                 itemCount: 1,
                 itemBuilder: (_, index) => Container(
@@ -107,15 +111,20 @@ class _BookDetailPageState extends State<BookDetailPage>{
                         ), 
                         onPressed: () async {
                           final respons = await request.postJson(
-                          "http://127.0.0.1:8000/peminjamanbuku/kembalikan-buku-flutter/$idBuku/",
+                          "https://literahub-e08-tk.pbp.cs.ui.ac.id/peminjamanbuku/kembalikan-buku-flutter/$idBuku/",
                           jsonEncode(<String,int>{
                             'name': snapshot.data![index].pk,
                           }));
                         if (respons['status'] == 'success') {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text("Buku ${snapshot.data![index].fields.title} berhasil dikembalikan"),
-                            )
-                          );
+                          if(isReturnOverdue){
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Pengembalian buku terlambat!"),
+                            ));
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Buku ${snapshot.data![index].fields.title} berhasil dikembalikan"),
+                            ));
+                          }
                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PeminjamanBukuPage()));
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

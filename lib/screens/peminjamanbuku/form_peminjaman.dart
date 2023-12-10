@@ -33,7 +33,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
   }
 
   Future<List<String>> fetchProduct() async {
-    var url = Uri.parse('http://127.0.0.1:8000/peminjamanbuku/get-buku-item/');
+    var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/peminjamanbuku/get-buku-item/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},
@@ -64,11 +64,12 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
       firstDate: DateTime.now(),
       lastDate: DateTime(2025),
     );
-    if (picked != null)
+    if (picked != null) {
       setState(() {
         _kepilih = DateFormat('dd/MM/yyyy').format(picked);
         _selectedDate = DateFormat('yyyy-MM-dd').format(picked);
       });
+    }
   }
 
   @override
@@ -186,7 +187,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                             ));
                         }
                         final respons = await request.postJson(
-                          "http://127.0.0.1:8000/peminjamanbuku/pinjam_buku_flutter/",
+                          "https://literahub-e08-tk.pbp.cs.ui.ac.id/peminjamanbuku/pinjam_buku_flutter/",
                           jsonEncode(<String,String>{
                             'name': _namaPeminjam,
                             'tanggal':_selectedDate,

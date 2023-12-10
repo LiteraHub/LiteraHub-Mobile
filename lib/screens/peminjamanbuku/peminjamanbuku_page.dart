@@ -161,6 +161,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                             mainAxisSpacing: 8,
                           ),
                           shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
                           itemCount: snapshot.data!.length,
                           itemBuilder: (_, index) => Container(
                             child: InkWell(
@@ -205,7 +206,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                                             strutStyle: 
                                             StrutStyle( fontSize: 10.0),
                                             text: TextSpan(
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 color:Colors.black,
                                                 fontSize: 17,
                                               ),

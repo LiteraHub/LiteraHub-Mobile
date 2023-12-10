@@ -1,17 +1,20 @@
 import 'dart:convert';
 
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'package:literahub/models/buku.dart';
 import 'package:literahub/models/peminjaman_buku.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class Filter{
+  // ignore: non_constant_identifier_names
   List<Buku> filtered_book = [];
+  // ignore: non_constant_identifier_names
   List<PeminjamanBuku> filtered_peminjaman = [];
 
   Future<List<Buku>> getFiltered({String? query}) async {
   filtered_book.clear();
-  var url = Uri.parse('http://127.0.0.1:8000/peminjamanbuku/get-buku-item/');
+  var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/peminjamanbuku/get-buku-item/');
   var response = await http.get(
     url,
     headers: {"Content-Type": "application/json"},
@@ -36,7 +39,7 @@ class Filter{
   }
 
   Future<List<PeminjamanBuku>> getFilteredPeminjaman({CookieRequest? request, String? search}) async {
-    final response = await request?.get("http://127.0.0.1:8000/peminjamanbuku/get-pinjem/");
+    final response = await request?.get("https://literahub-e08-tk.pbp.cs.ui.ac.id/peminjamanbuku/get-pinjem/");
     for (var d in response) {
         if (d != null) {
           PeminjamanBuku peminjaman = PeminjamanBuku.fromJson(d);

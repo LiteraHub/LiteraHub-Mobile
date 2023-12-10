@@ -139,6 +139,7 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                             mainAxisSpacing: 8,
                           ),
                           shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
                           itemCount: snapshot.data!.length,
                           itemBuilder: (_, index) => Container(
                             child: InkWell(

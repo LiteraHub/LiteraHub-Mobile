@@ -16,7 +16,6 @@ class _BukuTersediaPageState extends State<BukuTersediaPage>{
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: const Center(
@@ -34,7 +33,7 @@ class _BukuTersediaPageState extends State<BukuTersediaPage>{
         Container(
           alignment: Alignment.center, // Menengahkan secara horizontal
           child: ClipRRect(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(8.0),
               topRight: Radius.circular(8.0),
             ),

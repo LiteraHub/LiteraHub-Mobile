@@ -83,19 +83,16 @@ class _RegisterPage extends State<RegisterPage> {
                   "repassword": repassword,
                 });
                 final response = await request.postJson(
-                    "http://127.0.0.1:8000/auth/register/", data);
+                    "https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/register/", data);
                 bool success = response['status'];
                 if (success) {
                   String message = response['message'];
                   String name = response['username'];
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginApp()),
-                  );
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginApp()));
                   ScaffoldMessenger.of(context)
                     ..hideCurrentSnackBar()
                     ..showSnackBar(SnackBar(
-                        content: Text("$message Selamat datang, $name.")));
+                    content: Text("$message Selamat datang, $name.")));
                 } else {
                   showDialog(
                     context: context,
@@ -116,6 +113,22 @@ class _RegisterPage extends State<RegisterPage> {
               },
               child: const Text('Register'),
             ),
+            Align(
+             alignment: Alignment.bottomCenter,
+             child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Kembali'),
+                ),
+                ),
+             ),
           ],
         ),
       ),
