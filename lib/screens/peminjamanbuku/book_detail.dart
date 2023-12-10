@@ -107,7 +107,7 @@ class _BookDetailPageState extends State<BookDetailPage>{
                         ), 
                         onPressed: () async {
                           final respons = await request.postJson(
-                          "http://127.0.0.1:8000/peminjamanbuku/kembalikan-buku/$idBuku/",
+                          "http://127.0.0.1:8000/peminjamanbuku/kembalikan-buku-flutter/$idBuku/",
                           jsonEncode(<String,int>{
                             'name': snapshot.data![index].pk,
                           }));
