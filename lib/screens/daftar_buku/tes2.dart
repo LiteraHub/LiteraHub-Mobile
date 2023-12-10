@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:literahub/models/buku.dart';
+import 'package:literahub/screens/daftar_buku/api_services/API_services.dart';
 import 'package:literahub/screens/daftar_buku/bookinfopage.dart';
 // import 'package:literahub/widgets/list_card.dart';
 
@@ -13,24 +14,20 @@ class ListDaftarBuku2 extends StatefulWidget {
 }
 
 class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
-  Future<List<Buku>> fetchProduct() async {
-    var url = Uri.parse('http://127.0.0.1:8000/daftarbuku/show_json/');
-    var response = await http.get(
-      url,
-      headers: {"Content-Type": "application/json"},
-    );
+  FetchBook _bookList = FetchBook();
+  var query;
 
-    // melakukan decode response menjadi bentuk json
-    var data = jsonDecode(utf8.decode(response.bodyBytes));
-
-    // melakukan konversi data json menjadi object Product
-    List<Buku> list_buku = [];
-    for (var d in data) {
-      if (d != null) {
-        list_buku.add(Buku.fromJson(d));
+  
+  void updateList(String value){
+    String searchTerm = value.trim().toLowerCase();
+    setState(() {
+      if(query != ""){
+        query = searchTerm;
       }
-    }
-    return list_buku;
+      else{
+        query = null;
+      }
+    });
   }
 
   @override
@@ -68,6 +65,7 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                           height: 50,
                           width: 300,
                           child: TextFormField(
+                            onChanged: (value) => updateList(value),
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "Search title/author/year book here...",
@@ -92,9 +90,8 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                       ),
                     ),
                   ),
-
-                  FutureBuilder(
-                      future: fetchProduct(),
+                  FutureBuilder<List<Buku>>(
+                      future: _bookList.getBookList(query: query),
                       builder: (context, AsyncSnapshot snapshot) {
                         if (snapshot.data == null) {
                           return const Center(
@@ -116,7 +113,7 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                                 gridDelegate:
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
-                                  childAspectRatio: 0.68,
+                                  childAspectRatio: 0.55,
                                   mainAxisSpacing: 25,
                                 ),
                                 // physics: NeverScrollableScrollPhysics(),
@@ -152,42 +149,32 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                                                   // mainAxisAlignment: MainAxisAlignment.start,
                                                   // crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                        topLeft:
-                                                            Radius.circular(
-                                                                8.0),
-                                                        topRight:
-                                                            Radius.circular(
-                                                                8.0),
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.amber,
                                                       ),
-                                                      child: Image.network(
-                                                        '${snapshot.data![index].fields.img}',
-                                                        width: 200,
-                                                        height: 250,
-                                                        fit: BoxFit.fill,
-                                                      ),
+                                                      child: AspectRatio(
+                                                        aspectRatio: 2/3,
+                                                        child: Image.network(
+                                                          '${snapshot.data![index].fields.img}',
+                                                          // width: 500,
+                                                          // height: 300,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      )
                                                     ),
                                                     Container(
-                                                      padding:
-                                                          EdgeInsets.all(20),
-                                                      child: Align(
-                                                        alignment:
-                                                            Alignment.center,
+                                                      padding:EdgeInsets.all(20),
+                                                      child: Align(alignment:Alignment.center,
                                                         child: RichText(
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
+                                                          overflow: TextOverflow.ellipsis,
                                                           maxLines: 2,
                                                           strutStyle:
-                                                              StrutStyle(
-                                                                  fontSize:
-                                                                      10.0),
+                                                              StrutStyle(fontSize:10.0),
                                                           text: TextSpan(
                                                             style: TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 17,
+                                                              color:Colors.black,
+                                                              fontSize: 15,
                                                             ),
                                                             text:
                                                                 '${snapshot.data![index].fields.title}',
@@ -195,19 +182,6 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                                                         ),
                                                       ),
                                                     ),
-                                                    // Container(
-                                                    // padding:
-                                                    //     EdgeInsets.all(10),
-                                                    // alignment:
-                                                    //     Alignment.center,
-                                                    //   child: Text(
-                                                    //     "${snapshot.data![index].fields.title}",
-                                                    //     style: TextStyle(
-                                                    //       fontSize: 15,
-                                                    //       color: Colors.black,
-                                                    //     ),
-                                                    //   ),
-                                                    // ),
                                                   ]))),
                                     ));
                           }

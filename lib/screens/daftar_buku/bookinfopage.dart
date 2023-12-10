@@ -15,7 +15,7 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
   final int id;
   _DetailBukuPageState(this.id);
   Future<List<Buku>> fetchProduct() async {
-    var url = Uri.parse('http://127.0.0.1:8000/daftarbuku/show_json/$id/');
+    var url = Uri.parse('http://127.0.0.1:8000/daftarbuku/show_json_by_id/$id/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},
