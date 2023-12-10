@@ -1,55 +1,57 @@
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:literahub/models/buku.dart';
 import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:literahub/models/buku.dart';
 import 'package:literahub/models/mybuku.dart';
 import 'package:literahub/screens/lembarasa/detail_isi_buku.dart';
-import 'package:literahub/widgets/left_drawer.dart';
+import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
-class MyBukuPage extends StatefulWidget {
-  const MyBukuPage({Key? key}) : super(key: key);
+class UserMyBukuPage extends StatefulWidget {
+  const UserMyBukuPage({Key? key}) : super(key: key);
 
   @override
-  _MyBukuPageState createState() => _MyBukuPageState();
+  _UserMyBukuPageState createState() => _UserMyBukuPageState();
 }
 
-class _MyBukuPageState extends State<MyBukuPage> {
+class _UserMyBukuPageState extends State<UserMyBukuPage> {
   Future<List<MyBuku>> fetchMyBuku(CookieRequest request) async {
-    var data = await request.get("http://127.0.0.1:8000/lembar-asa/json-mybuku/");
+    var data = await request.get("http://127.0.0.1:8000/lembar-asa/json-mybuku-user/");
 
     // melakukan konversi data json menjadi object MyBuku
-    List<MyBuku> list_mybuku = [];
+    List<MyBuku> listMybuku = [];
     for (var d in data) {
       if (d != null) {
-        list_mybuku.add(MyBuku.fromJson(d));
+        listMybuku.add(MyBuku.fromJson(d));
       }
     }
-    return list_mybuku;
+    return listMybuku;
   }
 
   Future<List<Buku>> fetchBuku(CookieRequest request) async {
-    var data = await request.get("http://127.0.0.1:8000/lembar-asa/get-semua-buku/");
+    var data = await request.get("http://127.0.0.1:8000/lembar-asa/get-buku/");
 
     // melakukan konversi data json menjadi object Buku
-    List<Buku> list_buku = [];
+    List<Buku> listBuku = [];
     for (var d in data) {
       if (d != null) {
-        list_buku.add(Buku.fromJson(d));
+        listBuku.add(Buku.fromJson(d));
       }
     }
-    return list_buku;
+    return listBuku;
   }
 
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
+    var mapJsonData = request.jsonData;
+    var username = mapJsonData['username'];
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Semua buku user',
-          style: TextStyle(
+        title: Text(
+          'Karya $username',
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -80,7 +82,7 @@ class _MyBukuPageState extends State<MyBukuPage> {
                       MaterialPageRoute(
                         builder: (context) => DetailBuku(buku: bukuList[index],myBuku: myBukuList[index]),
                       ),
-                    );                  
+                    );
                   },
                   child : Container(
                     margin: const EdgeInsets.symmetric(
@@ -135,13 +137,70 @@ class _MyBukuPageState extends State<MyBukuPage> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const SizedBox(height: 10),
-                              Text(bukuList[index].fields.author),
+                              // const SizedBox(height: 10),
+                              // Text(bukuList[index].fields.author),
                               const SizedBox(height: 10),
                               Text("${bukuList[index].fields.year}"),
                             ],
                           ),
-                        )
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  title: const Text("Hapus Buku"),
+                                  content: const Text("Apakah anda yakin ingin menghapus buku ini?"),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text(
+                                        "Tidak",
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () async {
+                                        // Implement your delete logic here
+                                        // For example, you can call a function to delete the item
+                                        // deleteItem(bukuList[index]);
+                                        var url = "http://127.0.0.1:8000/lembar-asa/delete-flutter/";
+                                        // print(url);
+                                        final response = await request.postJson(
+                                          url, 
+                                          jsonEncode(<String, int>{
+                                            'id':bukuList[index].pk,
+                                          }));
+                                        if (response['status'] == 'success') {
+                                          Navigator.pop(context);
+                                          Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(builder: (context) => LembarAsaMain()),
+                                          );
+                                        }
+                                      },
+                                      child: const Text(
+                                        "Hapus",
+                                        style: TextStyle(
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                        ),
                       ],
                     )
                   ),

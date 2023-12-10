@@ -1,11 +1,8 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:literahub/screens/menu.dart';
-import 'package:literahub/widgets/left_drawer.dart';
 
 class LembarAsaFormPage extends StatefulWidget {
   const LembarAsaFormPage({super.key});
@@ -25,11 +22,9 @@ class _LembarAsaFormPageState extends State<LembarAsaFormPage> {
     final request = context.watch<CookieRequest>();
     
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(
-          child: Text(
-            'Form Tambah Item',
-          ),
+      appBar: AppBar (
+        title: const Text(
+          'Form Tambah Item',
         ),
         foregroundColor: Colors.white,
         backgroundColor: const Color(0xFFC9C5BA),
@@ -41,6 +36,7 @@ class _LembarAsaFormPageState extends State<LembarAsaFormPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height : 10),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
@@ -51,6 +47,7 @@ class _LembarAsaFormPageState extends State<LembarAsaFormPage> {
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                   ),
+                  maxLength: 50,
                   onChanged: (String? value) {
                     setState(() {
                       _title = value!;
@@ -67,6 +64,8 @@ class _LembarAsaFormPageState extends State<LembarAsaFormPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
                   decoration: InputDecoration(
                     hintText: "Tautan Gambar",
                     labelText: "Tautan Gambar",
@@ -81,7 +80,7 @@ class _LembarAsaFormPageState extends State<LembarAsaFormPage> {
                   },
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
-                      return "gambar tidak boleh kosong!";
+                      return "Tautan gambar tidak boleh kosong!";
                     }
                     return null;
                   },
@@ -90,6 +89,9 @@ class _LembarAsaFormPageState extends State<LembarAsaFormPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  keyboardType: TextInputType.multiline,
+                  minLines: 5,
+                  maxLines: null,
                   decoration: InputDecoration(
                     hintText: "Isi Buku",
                     labelText: "Isi Buku",

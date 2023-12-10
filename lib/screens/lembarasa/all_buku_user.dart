@@ -1,56 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:literahub/models/buku.dart';
-import 'dart:convert';
 import 'package:literahub/models/mybuku.dart';
 import 'package:literahub/screens/lembarasa/detail_isi_buku.dart';
-import 'package:literahub/widgets/left_drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
-class CobaMyBukuPage extends StatefulWidget {
-  const CobaMyBukuPage({Key? key}) : super(key: key);
+class MyBukuPage extends StatefulWidget {
+  const MyBukuPage({Key? key}) : super(key: key);
 
   @override
-  _CobaMyBukuPageState createState() => _CobaMyBukuPageState();
+  _MyBukuPageState createState() => _MyBukuPageState();
 }
 
-class _CobaMyBukuPageState extends State<CobaMyBukuPage> {
+class _MyBukuPageState extends State<MyBukuPage> {
   Future<List<MyBuku>> fetchMyBuku(CookieRequest request) async {
-    var data = await request.get("http://127.0.0.1:8000/lembar-asa/json-mybuku-user/");
+    var data = await request.get("http://127.0.0.1:8000/lembar-asa/json-mybuku/");
 
     // melakukan konversi data json menjadi object MyBuku
-    List<MyBuku> list_mybuku = [];
+    List<MyBuku> listMybuku = [];
     for (var d in data) {
       if (d != null) {
-        list_mybuku.add(MyBuku.fromJson(d));
+        listMybuku.add(MyBuku.fromJson(d));
       }
     }
-    return list_mybuku;
+    return listMybuku;
   }
 
   Future<List<Buku>> fetchBuku(CookieRequest request) async {
-    var data = await request.get("http://127.0.0.1:8000/lembar-asa/get-buku/");
+    var data = await request.get("http://127.0.0.1:8000/lembar-asa/get-semua-buku/");
 
     // melakukan konversi data json menjadi object Buku
-    List<Buku> list_buku = [];
+    List<Buku> listBuku = [];
     for (var d in data) {
       if (d != null) {
-        list_buku.add(Buku.fromJson(d));
+        listBuku.add(Buku.fromJson(d));
       }
     }
-    return list_buku;
+    return listBuku;
   }
 
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-    var mapJsonData = request.jsonData;
-    var username = mapJsonData['username'];
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'buku $username',
+        title: const Text(
+          'LembarAsa',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -82,7 +77,7 @@ class _CobaMyBukuPageState extends State<CobaMyBukuPage> {
                       MaterialPageRoute(
                         builder: (context) => DetailBuku(buku: bukuList[index],myBuku: myBukuList[index]),
                       ),
-                    );
+                    );                  
                   },
                   child : Container(
                     margin: const EdgeInsets.symmetric(
@@ -137,8 +132,8 @@ class _CobaMyBukuPageState extends State<CobaMyBukuPage> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              // const SizedBox(height: 10),
-                              // Text(bukuList[index].fields.author),
+                              const SizedBox(height: 10),
+                              Text(bukuList[index].fields.author),
                               const SizedBox(height: 10),
                               Text("${bukuList[index].fields.year}"),
                             ],
@@ -148,7 +143,7 @@ class _CobaMyBukuPageState extends State<CobaMyBukuPage> {
                     )
                   ),
                 )
-              );
+              );   
             }
           }
         },
