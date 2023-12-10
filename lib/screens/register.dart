@@ -40,6 +40,7 @@ class _RegisterPage extends State<RegisterPage> {
     final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
         title: const Text('Register'),

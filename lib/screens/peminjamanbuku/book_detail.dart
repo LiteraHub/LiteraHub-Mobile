@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:literahub/models/buku.dart';
 import 'package:literahub/models/peminjaman_buku.dart';
 import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
@@ -35,8 +36,9 @@ class _BookDetailPageState extends State<BookDetailPage>{
 
   @override
   Widget build(BuildContext context) {
-     final request = context.watch<CookieRequest>();
-    String judul = objek.fields.title;
+    final request = context.watch<CookieRequest>();
+    String dateString = DateFormat('dd/MM/yyyy').format(objek.fields.tanggalPengembalian);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -86,7 +88,11 @@ class _BookDetailPageState extends State<BookDetailPage>{
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Text("Title : $judul"),
+                      Text("Nama peminjam: ${objek.fields.nama}"),
+                      const SizedBox(height: 10),
+                      Text("Tanggal Akhir Pengembalian: $dateString"),
+                      const SizedBox(height: 10),
+                      Text("Title : ${objek.fields.title}"),
                       const SizedBox(height: 10),
                       Text("Isbn : ${snapshot.data![index].fields.isbn}"),
                       const SizedBox(height: 10),

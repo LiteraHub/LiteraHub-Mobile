@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/models/buku.dart';
-import 'package:literahub/widgets/left_drawer.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:provider/provider.dart';
 
 class BukuTersediaPage extends StatefulWidget {
   final Buku objekPinjam;

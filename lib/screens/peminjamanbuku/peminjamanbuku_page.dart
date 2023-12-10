@@ -1,13 +1,10 @@
-import 'dart:convert';
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:literahub/models/buku.dart';
 import 'package:literahub/screens/peminjamanbuku/book_tersedia.dart';
 import 'package:literahub/screens/peminjamanbuku/pengembalian_buku.dart';
+import 'package:literahub/screens/peminjamanbuku/services/filter.dart';
 import 'package:literahub/widgets/left_drawer.dart';
 import 'package:literahub/screens/peminjamanbuku/form_peminjaman.dart';
-import 'package:http/http.dart' as http;
 
 class PeminjamanBukuPage extends StatefulWidget {
   PeminjamanBukuPage({Key? key}) : super(key: key);
@@ -17,26 +14,19 @@ class PeminjamanBukuPage extends StatefulWidget {
 }
 
 class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
+  var search;
+  Filter _filtered = Filter(); 
 
-  Future<List<Buku>> fetchProduct() async {
-    var url = Uri.parse('http://127.0.0.1:8000/peminjamanbuku/get-buku-item/');
-    var response = await http.get(
-      url,
-      headers: {"Content-Type": "application/json"},
-    );
-
-    // melakukan decode response menjadi bentuk json
-    var data = jsonDecode(utf8.decode(response.bodyBytes));
-
-    // melakukan konversi data json menjadi object Product
-    List<Buku> productList = [];
-    for (var d in data) {
-      if (d != null) {
-        Buku buku = Buku.fromJson(d);
-        productList.add(buku);
+  void updateSearch(String value){
+    String searchTerm = value.trim().toLowerCase();
+    setState(() {
+      if(search != ""){
+        search = searchTerm;
       }
-    }
-    return productList;
+      else{
+        search = null;
+      }
+    });
   }
 
   @override
@@ -120,8 +110,33 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                   ),
                 ),
               ),
+              Container(
+                margin: EdgeInsets.only(left: 5),
+                height: 50,
+                width: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0), // Membulatkan sudut
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 2.0,
+                  ),
+                ),
+                child: TextFormField(
+                  onChanged: (value) => updateSearch(value),
+                  decoration: const InputDecoration(
+                    prefixIconConstraints: BoxConstraints(
+                      minWidth: 40, // Atur lebar minimum untuk ikon pencarian
+                      minHeight: 40, // Atur tinggi minimum untuk ikon pencarian
+                    ),
+                    contentPadding: EdgeInsets.fromLTRB(16.0, 9.0, 16.0, 8.0),
+                    prefixIcon: Icon(Icons.search),
+                    border: InputBorder.none,
+                    hintText: "Search judul...",
+                  ),
+                ),
+              ),
               FutureBuilder(
-                  future: fetchProduct(),
+                  future: _filtered.getFiltered(query: search),
                   builder: (context, AsyncSnapshot snapshot) {
                     if (snapshot.data == null) {
                       return const Center(
@@ -140,7 +155,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                         );
                       } else {
                         return GridView.builder(
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             childAspectRatio: 0.5,
                             mainAxisSpacing: 8,
@@ -157,10 +172,8 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                                 );
                               },
                               child: Container(
-                                padding: EdgeInsets.only(
-                                  left: 15, right: 15, top: 10),
-                                  margin: EdgeInsets.symmetric(
-                                  vertical: 8, horizontal: 10),
+                                padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+                                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                                   decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius:
@@ -170,10 +183,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                                   children: [
                                     ClipRRect(
                                       borderRadius:
-                                        BorderRadius.only(
-                                          topLeft: Radius.circular(8.0),
-                                          topRight: Radius.circular(8.0),
-                                      ),
+                                        const BorderRadius.only(topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0)),
                                       child: AspectRatio(
                                         aspectRatio: 2/3,
                                         child: Image.network(
@@ -196,8 +206,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                                             StrutStyle( fontSize: 10.0),
                                             text: TextSpan(
                                               style: TextStyle(
-                                                color:
-                                                    Colors.black,
+                                                color:Colors.black,
                                                 fontSize: 17,
                                               ),
                                               text: '${snapshot.data![index].fields.title}',
