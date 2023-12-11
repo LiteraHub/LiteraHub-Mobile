@@ -135,3 +135,26 @@ Data untuk detail dan review buku akan diambil dari django dalam format json unt
 
 **Menambahkan tautan berita acara ke README.md**
 https://docs.google.com/spreadsheets/d/13aM5jSwt4QPegzKhCVhBAza9aQ1dyKUCtiHKymxtPuE/edit?hl=id#gid=0
+
+### Panduan _Build_
+
+#### __Flutter__ perlu diinstal untuk membangun dan menjalankan proyek:
+- [Download Flutter untuk MacOS](https://docs.flutter.dev/get-started/install/macos) 
+
+- [Download Flutter untuk Windows](https://docs.flutter.dev/get-started/install/windows)
+
+- [Download Flutter untuk Linux](https://docs.flutter.dev/get-started/install/linux)
+
+- [Download Android Studio untuk IDE (Recommended)](https://developer.android.com/studio)
+
+- Pada _console window_ yang memiliki direktori Flutter di _path_-nya, jalankan perintah `flutter doctor` untuk melihat apakah ada dependensi platform yang diperlukan untuk menyelesaikan _setup_
+
+Menggunakan IDE Android Studio direkomendasikan untuk mengembangkan proyek ini. Namun IDE lain seperti Visual Studio Code juga dapat digunakan.
+
+#### Inisialisasi lokal
+
+Untuk mendapatkan kode proyek ini, anda dapat _clone repository_ dengan menjalankan `git clone` pada direktori yang diinginkan. 
+
+#### Menjalankan program secara lokal
+
+Jika ingin menjalankan proyek secara lokal, jalankan perintah `flutter run` pada direktori proyek dan pilih tempat untuk menjalankan aplikasi (misalnya browser Windows, Chrome, dll.). Jika dijalankan di browser, aplikasi dapat diakses melalui localhost.
