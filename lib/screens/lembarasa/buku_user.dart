@@ -119,6 +119,22 @@ class _UserMyBukuPageState extends State<UserMyBukuPage> {
                                 width: 80,
                                 height: 120,
                                 fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return SizedBox (
+                                    width: 80,
+                                    height: 120,
+                                    child : Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10.0),
+                                        color: const Color(0xFFC9C5BA), // Set the desired background color
+                                      ),
+                                      child: const Icon(
+                                        Icons.no_photography_outlined,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ),
@@ -143,7 +159,7 @@ class _UserMyBukuPageState extends State<UserMyBukuPage> {
                           ),
                         ),
                         IconButton(
-                          icon: Icon(Icons.delete),
+                          icon: const Icon(Icons.delete),
                           onPressed: () {
                             showDialog(
                               context: context,

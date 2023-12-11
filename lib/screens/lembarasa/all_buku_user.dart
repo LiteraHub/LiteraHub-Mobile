@@ -103,7 +103,7 @@ class _MyBukuPageState extends State<MyBukuPage> {
                               decoration: const BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black,
+                                    color: Color(0xFFC9C5BA),
                                     blurRadius: 2.0,
                                   ),
                                 ],
@@ -113,6 +113,22 @@ class _MyBukuPageState extends State<MyBukuPage> {
                                 width: 80,
                                 height: 120,
                                 fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return SizedBox (
+                                    width: 80,
+                                    height: 120,
+                                    child : Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10.0),
+                                        color: const Color(0xFFC9C5BA), // Set the desired background color
+                                      ),
+                                      child: const Icon(
+                                        Icons.no_photography_outlined,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ),
