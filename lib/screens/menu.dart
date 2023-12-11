@@ -5,11 +5,11 @@ import 'package:literahub/widgets/shop_card.dart';
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
   final List<ShopItem> items = [
-    ShopItem("LembarAsa", Icons.add_shopping_cart),
-    ShopItem("Pinjam Buku", Icons.checklist),
-    ShopItem("Daftar Buku", Icons.add_shopping_cart),
-    ShopItem("Reservasi Tempat", Icons.add_shopping_cart),
-    ShopItem("Forum", Icons.add_shopping_cart),
+    ShopItem("LembarAsa", Icons.format_list_bulleted),
+    ShopItem("Pinjam Buku", Icons.format_list_bulleted),
+    ShopItem("Daftar Buku", Icons.format_list_bulleted),
+    ShopItem("Reservasi Tempat", Icons.format_list_bulleted),
+    ShopItem("Forum", Icons.format_list_bulleted),
     ShopItem("Logout", Icons.logout),
   ];
 

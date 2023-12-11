@@ -3,6 +3,7 @@ import 'package:literahub/screens/menu.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
+  static const IconData format_list_bulleted = IconData(0xe2b8, fontFamily: 'MaterialIcons', matchTextDirection: true);
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,7 @@ class LeftDrawer extends StatelessWidget {
             // },
           ),
           ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
+            leading: const Icon(Icons.format_list_bulleted),
             title: const Text('Pinjam Buku'),
             // Bagian redirection ke Pinjam Buku
             // onTap: () {
@@ -75,7 +76,7 @@ class LeftDrawer extends StatelessWidget {
             // },
           ),
           ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
+            leading: const Icon(Icons.format_list_bulleted),
             title: const Text('Daftar Buku'),
             // Bagian redirection ke Daftar Buku
             // onTap: () {
@@ -88,7 +89,7 @@ class LeftDrawer extends StatelessWidget {
             // },
           ),
           ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
+            leading: const Icon(Icons.format_list_bulleted),
             title: const Text('Reservasi Tempat'),
             // Bagian redirection ke Reservasi Tempat
             // onTap: () {
@@ -101,7 +102,7 @@ class LeftDrawer extends StatelessWidget {
             // },
           ),
           ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
+            leading: const Icon(Icons.format_list_bulleted),
             title: const Text('Forum'),
             // Bagian redirection ke Forum
             // onTap: () {
@@ -109,12 +110,12 @@ class LeftDrawer extends StatelessWidget {
             //   Navigator.push(
             //       context,
             //       MaterialPageRoute(
-            //         builder: (context) => InventoriFormPage(),
+            //         builder: (context) => ThreadPage(),
             //       ));
             // },
           ),
           ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
+            leading: const Icon(Icons.format_list_bulleted),
             title: const Text('Logout'),
             // Bagian redirection ke Logout
             // onTap: () {
