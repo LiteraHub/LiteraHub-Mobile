@@ -9,6 +9,7 @@ class MyBukuPage extends StatefulWidget {
   const MyBukuPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _MyBukuPageState createState() => _MyBukuPageState();
 }
 
@@ -16,7 +17,6 @@ class _MyBukuPageState extends State<MyBukuPage> {
   Future<List<MyBuku>> fetchMyBuku(CookieRequest request) async {
     var data = await request.get("http://127.0.0.1:8000/lembar-asa/json-mybuku/");
 
-    // melakukan konversi data json menjadi object MyBuku
     List<MyBuku> listMybuku = [];
     for (var d in data) {
       if (d != null) {
@@ -29,7 +29,6 @@ class _MyBukuPageState extends State<MyBukuPage> {
   Future<List<Buku>> fetchBuku(CookieRequest request) async {
     var data = await request.get("http://127.0.0.1:8000/lembar-asa/get-semua-buku/");
 
-    // melakukan konversi data json menjadi object Buku
     List<Buku> listBuku = [];
     for (var d in data) {
       if (d != null) {
@@ -50,10 +49,10 @@ class _MyBukuPageState extends State<MyBukuPage> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        foregroundColor: Colors.white,
+        foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
       ),
-      // drawer: const LeftDrawer(),
+      backgroundColor: const Color.fromARGB(255, 242,238,227),
       body: FutureBuilder(
         future: Future.wait([fetchMyBuku(request), fetchBuku(request)]),
         builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
@@ -66,7 +65,7 @@ class _MyBukuPageState extends State<MyBukuPage> {
             List<Buku> bukuList = snapshot.data![1];
 
             if (bukuList.isEmpty) {
-              return const Center(child: Text('Tidak ada data mybuku.'));
+              return const Center(child: Text('Tidak ada buku.'));
             } else {
               return ListView.builder(
                 itemCount: bukuList.length,
@@ -85,10 +84,10 @@ class _MyBukuPageState extends State<MyBukuPage> {
                     padding: const EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
                       color:Colors.white,
-                      borderRadius: BorderRadius.circular(15.0),
+                      borderRadius: BorderRadius.circular(17.0),
                       boxShadow: const [
                         BoxShadow(
-                          color: Colors.black,
+                          color: Colors.black54,
                           blurRadius: 2.0
                         )
                       ]
@@ -110,9 +109,9 @@ class _MyBukuPageState extends State<MyBukuPage> {
                                 ],
                               ),
                               child: Image.network(
-                                bukuList[index].fields.img, // Replace with the actual image URL
-                                width: 80, // Adjust the width as needed
-                                height: 120, // Adjust the height as needed
+                                bukuList[index].fields.img,
+                                width: 80,
+                                height: 120,
                                 fit: BoxFit.cover,
                               ),
                             ),
