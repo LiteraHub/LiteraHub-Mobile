@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
 import 'package:literahub/screens/login.dart';
 import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -50,6 +51,10 @@ class ShopCard extends StatelessWidget {
           } else if (item.name == "Pinjam Buku") {
               Navigator.push(context,
                 MaterialPageRoute(builder: (context) => PeminjamanBukuPage()));
+          } else if (item.name == "LembarAsa") {
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LembarAsaMain()));
           }
         },
         child: Container(
