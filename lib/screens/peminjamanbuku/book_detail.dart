@@ -44,8 +44,8 @@ class _BookDetailPageState extends State<BookDetailPage>{
         title: const Text(
           'Pengembalian Buku',
         ),
+        foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
-        foregroundColor: Colors.black,
       ),
       body: FutureBuilder(
         future: fetchProduct(request), 
@@ -59,7 +59,7 @@ class _BookDetailPageState extends State<BookDetailPage>{
                   Text(
                     "Tidak ada data produk.",
                     style:
-                        TextStyle(color: Color(0xff59A5D8), fontSize: 20),
+                        TextStyle(color: Color.fromARGB(255, 42, 33, 0), fontSize: 20),
                   ),
                   SizedBox(height: 8),
                 ],
@@ -107,7 +107,7 @@ class _BookDetailPageState extends State<BookDetailPage>{
                       ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
-                          foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                          foregroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 42, 33, 0)),
                         ), 
                         onPressed: () async {
                           final respons = await request.postJson(

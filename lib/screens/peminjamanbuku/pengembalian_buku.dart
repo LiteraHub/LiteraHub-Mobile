@@ -40,7 +40,7 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
             'Halaman Pengembalian',
           ),
           backgroundColor: const Color(0xFFC9C5BA),
-          foregroundColor: Colors.black,
+          foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         ),
         drawer: const LeftDrawer(),
         body: ListView(
@@ -65,7 +65,7 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black
+                        color: Color.fromARGB(255, 42, 33, 0)
                       ),
                     ),
                   ),
@@ -77,7 +77,7 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                     child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
-                      foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                      foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 42, 33, 0)),
                     ), 
                     onPressed: () {
                       Navigator.pop(context);
@@ -88,13 +88,13 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                   ),
                   const SizedBox(height: 10),
                   Container(
-                  margin: EdgeInsets.only(left: 5),
+                  margin: const EdgeInsets.only(left: 5),
                   height: 50,
                   width: 300,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0), // Membulatkan sudut
                     border: Border.all(
-                      color: Colors.black,
+                      color: const Color.fromARGB(255, 42, 33, 0),
                       width: 2.0,
                     ),
                   ),
@@ -126,7 +126,7 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                             Text(
                               "Tidak ada data produk.",
                               style: TextStyle(
-                                  color: Color(0xff59A5D8), fontSize: 20),
+                                  color: Color.fromARGB(255, 42, 33, 0), fontSize: 20),
                             ),
                             SizedBox(height: 8),
                           ],
@@ -187,7 +187,7 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                                             text: TextSpan(
                                               style: TextStyle(
                                                 color:
-                                                    Colors.black,
+                                                    Color.fromARGB(255, 42, 33, 0),
                                                 fontSize: 17,
                                               ),
                                               text: '${snapshot.data![index].fields.title}',

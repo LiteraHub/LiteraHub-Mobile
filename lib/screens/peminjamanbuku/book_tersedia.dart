@@ -23,8 +23,8 @@ class _BukuTersediaPageState extends State<BukuTersediaPage>{
             'Detail Buku',
           ),
         ),
+        foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
-        foregroundColor: Colors.black,
       ),
       body: Column(
       mainAxisAlignment: MainAxisAlignment.center,

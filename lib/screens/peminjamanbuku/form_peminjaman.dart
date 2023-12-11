@@ -82,8 +82,8 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
             'Form Peminjaman Buku',
           ),
         ),
+        foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
-        foregroundColor: Colors.black,
       ),
       drawer: const LeftDrawer(),
       body: Form(
@@ -175,7 +175,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
-                      foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                      foregroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 42, 33, 0)),
                     ), 
                     onPressed: () async {  
                       if(_formKey.currentState!.validate()){
@@ -223,7 +223,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                   child: ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
-                    foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                    foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 42, 33, 0)),
                   ), 
                   onPressed: () {
                     Navigator.pop(context);

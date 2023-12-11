@@ -36,8 +36,8 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
         title: const Text(
           'Peminjaman Buku',
         ),
+        foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
-        foregroundColor: Colors.black,
       ),
       drawer: const LeftDrawer(),
       body: SingleChildScrollView(
@@ -78,7 +78,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
-                  foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                  foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 42, 33, 0)),
                 ),
                 child: const Text('Pinjam Buku')
               ),
@@ -93,7 +93,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
-                  foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                  foregroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 42, 33, 0)),
                 ),
                 child: const Text('Kembalikan Buku')
               ),
@@ -117,7 +117,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0), // Membulatkan sudut
                   border: Border.all(
-                    color: Colors.black,
+                    color: Color.fromARGB(255, 42, 33, 0),
                     width: 2.0,
                   ),
                 ),
@@ -148,7 +148,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                             Text(
                               "Tidak ada data produk.",
                               style: TextStyle(
-                                  color: Color(0xff59A5D8), fontSize: 20),
+                                  color: Color.fromARGB(255, 42, 33, 0), fontSize: 20),
                             ),
                             SizedBox(height: 8),
                           ],
@@ -207,7 +207,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                                             StrutStyle( fontSize: 10.0),
                                             text: TextSpan(
                                               style: const TextStyle(
-                                                color:Colors.black,
+                                                color:Color.fromARGB(255, 42, 33, 0),
                                                 fontSize: 17,
                                               ),
                                               text: '${snapshot.data![index].fields.title}',
