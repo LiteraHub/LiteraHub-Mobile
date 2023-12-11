@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:literahub/screens/reservasi/list_reservasi.dart';
 import 'package:literahub/screens/reservasi/reservasi_form.dart';
 
 class MainPageReservasi extends StatelessWidget {
@@ -9,8 +10,15 @@ class MainPageReservasi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reservasi LiteraHub'),
+        title: const Text('Reservasi LiteraHub',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        foregroundColor: const Color.fromARGB(255, 42, 33, 0),
+        backgroundColor: const Color(0xFFC9C5BA),
       ),
+      backgroundColor: const Color.fromARGB(255, 242,238,227),
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(20.0),
@@ -54,12 +62,12 @@ class MainPageReservasi extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // Navigasi ke halaman form reservasi
-                //   Navigator.pushReplacement(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => ReservasiFormPage(),
-                //   )
-                // );
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HistoriReservasiPage(),
+                  )
+                );
                 },
                 child: Text('Lihat Reservasi'),
                 style: ElevatedButton.styleFrom(

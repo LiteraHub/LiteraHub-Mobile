@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/login.dart';
 import 'package:literahub/screens/reservasi/reservasi_main.dart';
+import 'package:literahub/screens/daftar_buku/list_daftarbuku.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
@@ -52,6 +53,12 @@ class ShopCard extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => MainPageReservasi(),
+                ));
+          } else if (item.name == "Daftar Buku") {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ListDaftarBuku(),
                 ));
           }
         },

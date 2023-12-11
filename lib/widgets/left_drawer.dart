@@ -89,7 +89,7 @@ class LeftDrawer extends StatelessWidget {
             // },
           ),
           ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
+            leading: const Icon(Icons.chair_alt_sharp),
             title: const Text('Reservasi Tempat'),
             // Bagian redirection ke Reservasi Tempat
             onTap: () {

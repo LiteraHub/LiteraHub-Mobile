@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:literahub/widgets/left_drawer.dart';
+import 'package:literahub/models/buku.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-// import 'package:pbp_django_auth/pbp_django_auth.dart';
-// import 'package:provider/provider.dart';
+import 'package:literahub/models/tempat_baca.dart';
+import 'package:literahub/screens/reservasi/reservasi_main.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class ReservasiFormPage extends StatefulWidget {
   const ReservasiFormPage({Key? key}) : super(key: key);
@@ -20,45 +22,59 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
   String _nama = "";
   String _noHp = "";
   String _buku = "";
+  int _bukuID = 0;
   DateTime _tanggal = DateTime.now();
   TimeOfDay _jam = TimeOfDay.now();
   int _durasiBaca = 0;
   String _tempatBaca = "";
 
   List<String> _bukuOptions = [];
-  List<String> _tempatBacaOptions = [];
-  List<int> _durasiOptions = [1, 2, 3, 4, 5];
+  List<int> _tempatBacaOptions = [];
+  final List<int> _durasiOptions = [1, 2, 3, 4, 5];
+  Map<String, int> _judulToPkMap = {};
 
-  Future<void> _fetchTempatBaca() async {
-    final response = await http.get(Uri.parse(
-        'https://literahub-e08-tk.pbp.cs.ui.ac.id/reservasi/get-tempat-baca'));
+  Future<List<TempatBaca>> _fetchTempatBaca() async {
+    var url = Uri.parse(
+        'https://literahub-e08-tk.pbp.cs.ui.ac.id/reservasi/get-tempat-baca');
+        // 'http://127.0.0.1:8000/reservasi/get-tempat-baca');
+    var response = await http.get(
+      url,
+      headers: {"Content-Type": "application/json"},
+    );
+    // melakukan decode response menjadi bentuk json
+    var data = jsonDecode(utf8.decode(response.bodyBytes));
 
-    if (response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body);
-      setState(() {
-        _tempatBacaOptions = jsonResponse
-            .map((item) => item['fields']['id_tempat'].toString())
-            .toList();
-      });
-    } else {
-      throw Exception('Gagal memuat tempat baca');
+    // melakukan konversi data json menjadi object TempatBaca
+    List<TempatBaca> list_tempat = [];
+    for (var d in data) {
+      if (d != null) {
+        list_tempat.add(TempatBaca.fromJson(d));
+      }
     }
+    return list_tempat;
   }
 
-  Future<void> _fetchBuku() async {
-    final response = await http.get(Uri.parse(
-        'https://literahub-e08-tk.pbp.cs.ui.ac.id/reservasi/get-buku-json'));
+  Future<List<Buku>> _fetchBuku() async {
+    var url = Uri.parse(
+        'https://literahub-e08-tk.pbp.cs.ui.ac.id/reservasi/get-buku-json');
+        // 'http://127.0.0.1:8000/reservasi/get-buku-json');
+    var response = await http.get(
+      url,
+      headers: {"Content-Type": "application/json"},
+    );
+    // melakukan decode response menjadi bentuk json
+    var data = jsonDecode(utf8.decode(response.bodyBytes));
 
-    if (response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body);
-      setState(() {
-        _bukuOptions = jsonResponse
-            .map((item) => item['fields']['title'].toString())
-            .toList();
-      });
-    } else {
-      throw Exception('Gagal memuat buku');
+    // melakukan konversi data json menjadi object Buku
+    List<Buku> list_buku = [];
+    for (var d in data) {
+      if (d != null) {
+        Buku buku = Buku.fromJson(d);
+        list_buku.add(buku);
+        _judulToPkMap[buku.fields.title] = buku.pk;
+      }
     }
+    return list_buku;
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -66,7 +82,7 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
       context: context,
       initialDate: _tanggal,
       firstDate: DateTime.now(),
-      lastDate: DateTime(2101),
+      lastDate: DateTime(2025),
     );
     if (picked != null && picked != _tanggal)
       setState(() {
@@ -87,7 +103,7 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
 
   // Fungsi untuk memformat DateTime menjadi string
   String _formatDate(DateTime date) {
-    return DateFormat('dd-MM-yyyy').format(date);
+    return DateFormat('yyyy-MM-dd').format(date);
   }
 
   // Fungsi untuk memformat TimeOfDay menjadi string
@@ -110,25 +126,41 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
   @override
   void initState() {
     super.initState();
-    _fetchTempatBaca();
-    _fetchBuku();
+    _fetchTempatBaca().then((tempatBacaList) {
+      setState(() {
+        _tempatBacaOptions = tempatBacaList
+            .map((tempatBaca) => tempatBaca.fields.idTempat)
+            .toList();
+      });
+    });
+    _fetchBuku().then((bukuList) {
+      setState(() {
+        _bukuOptions = bukuList.map((buku) => buku.fields.title).toList();
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    // final request = context.watch<CookieRequest>();
-    
+    final request = context.watch<CookieRequest>();
+    var mapJsonData = request.jsonData;
+    var username = mapJsonData['username'];
+    // print(username);
+
     return Scaffold(
       appBar: AppBar(
         title: const Center(
           child: Text(
             'Form Reservasi LiteraHub',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        backgroundColor: Colors.indigo,
-        foregroundColor: Colors.white,
+        foregroundColor: const Color.fromARGB(255, 42, 33, 0),
+        backgroundColor: const Color(0xFFC9C5BA),
       ),
-      drawer: const LeftDrawer(),
+      backgroundColor: const Color.fromARGB(255, 242,238,227),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -209,6 +241,7 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
                       onChanged: (String? newValue) {
                         setState(() {
                           _buku = newValue!;
+                          _bukuID = _judulToPkMap[newValue]!;
                         });
                       },
                       decoration: InputDecoration(
@@ -224,17 +257,18 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
                         }
                         return null;
                       },
-                    )),
+                    )
+                  ),
 
                 Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: DropdownButtonFormField(
                       isExpanded: true,
                       value: _tempatBaca.isNotEmpty ? _tempatBaca : null,
-                      items: _tempatBacaOptions.map((String value) {
+                      items: _tempatBacaOptions.map((int value) {
                         return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
+                          value: value.toString(),
+                          child: Text(value.toString()),
                         );
                       }).toList(),
                       onChanged: (String? newValue) {
@@ -304,42 +338,38 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
                         backgroundColor:
                             MaterialStateProperty.all(Colors.indigo),
                       ),
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: const Text('Reservasi berhasil'),
-                                content: SingleChildScrollView(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text('Nama: $_nama'),
-                                      Text('Nomor ponsel: $_noHp'),
-                                      Text('Buku: $_buku'),
-                                      Text('Tanggal: ${_formatDate(_tanggal)}'),
-                                      Text('Jam: ${_formatTime(_jam)}'),
-                                      Text('Durasi: $_durasiBaca'),
-                                      Text('Tempat Baca: $_tempatBaca'),
-                                      // TODO: Munculkan value-value lainnya
-                                    ],
-                                  ),
-                                ),
-                                actions: [
-                                  TextButton(
-                                    child: const Text('OK'),
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                      _resetForm(); // Reset form
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                          _formKey.currentState!.reset();
+                          final response = await request.postJson(
+                              // "http://localhost:8000/reservasi/create-flutter/",
+                              "https://literahub-e08-tk.pbp.cs.ui.ac.id/reservasi/create-flutter/",
+                              jsonEncode(<String, String>{
+                                'nama': _nama,
+                                'no_hp': _noHp,
+                                'buku': _bukuID.toString(),
+                                'tempat_baca': _tempatBaca,
+                                'tanggal': _formatDate(_tanggal),
+                                'jam': _formatTime(_jam),
+                                'durasi_baca': _durasiBaca.toString(),
+                                'user': username, 
+                              }));
+                          if (response['status'] == 'success') {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content: Text("Reservasi berhasil dibuat!"),
+                            ));
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainPageReservasi()),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content: Text(
+                                  "Terdapat kesalahan, silakan coba lagi."),
+                            ));
+                          }
                         }
                       },
                       child: const Text(
