@@ -82,7 +82,7 @@ class _RegisterPage extends State<RegisterPage> {
                   "repassword": repassword,
                 });
                 final response = await request.postJson(
-                    "http://127.0.0.1:8000/auth/register/", data);
+                    "https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/register/", data);
                 bool success = response['status'];
                 if (success) {
                   String message = response['message'];

@@ -19,7 +19,7 @@ class UserMyBukuPage extends StatefulWidget {
 
 class _UserMyBukuPageState extends State<UserMyBukuPage> {
   Future<List<MyBuku>> fetchMyBuku(CookieRequest request) async {
-    var data = await request.get("http://127.0.0.1:8000/lembar-asa/json-mybuku-user/");
+    var data = await request.get("https://literahub-e08-tk.pbp.cs.ui.ac.id/lembar-asa/json-mybuku-user/");
 
     List<MyBuku> listMybuku = [];
     for (var d in data) {
@@ -31,7 +31,7 @@ class _UserMyBukuPageState extends State<UserMyBukuPage> {
   }
 
   Future<List<Buku>> fetchBuku(CookieRequest request) async {
-    var data = await request.get("http://127.0.0.1:8000/lembar-asa/get-buku/");
+    var data = await request.get("https://literahub-e08-tk.pbp.cs.ui.ac.id/lembar-asa/get-buku/");
 
     List<Buku> listBuku = [];
     for (var d in data) {
@@ -119,6 +119,22 @@ class _UserMyBukuPageState extends State<UserMyBukuPage> {
                                 width: 80,
                                 height: 120,
                                 fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return SizedBox (
+                                    width: 80,
+                                    height: 120,
+                                    child : Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10.0),
+                                        color: const Color(0xFFC9C5BA), // Set the desired background color
+                                      ),
+                                      child: const Icon(
+                                        Icons.no_photography_outlined,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ),
@@ -143,7 +159,7 @@ class _UserMyBukuPageState extends State<UserMyBukuPage> {
                           ),
                         ),
                         IconButton(
-                          icon: Icon(Icons.delete),
+                          icon: const Icon(Icons.delete),
                           onPressed: () {
                             showDialog(
                               context: context,
@@ -168,7 +184,7 @@ class _UserMyBukuPageState extends State<UserMyBukuPage> {
                                     ),
                                     TextButton(
                                       onPressed: () async {
-                                        var url = "http://127.0.0.1:8000/lembar-asa/delete-flutter/";
+                                        var url = "https://literahub-e08-tk.pbp.cs.ui.ac.id/lembar-asa/delete-flutter/";
                                         final response = await request.postJson(
                                           url, 
                                           jsonEncode(<String, int>{

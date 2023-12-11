@@ -85,7 +85,6 @@ class LembarAsaMain extends StatelessWidget {
                     backgroundColor: const Color(0xFFC9C5BA),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
-                      
                     ),
                     minimumSize: const Size(225.0, 50.0),
                   ),
