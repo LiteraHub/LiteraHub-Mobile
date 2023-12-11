@@ -7,6 +7,7 @@ import 'package:literahub/widgets/left_drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
 class PeminjamanForm extends StatefulWidget {
@@ -118,7 +119,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: "dd/mm/yyyy",
                     labelText: 'Tanggal Pengembalian',
                     border: OutlineInputBorder(),
@@ -142,7 +143,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                   future: listProduct,
                   builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return CircularProgressIndicator();
+                      return const CircularProgressIndicator();
                     } else if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
                     } else {
@@ -175,7 +176,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
-                      foregroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 42, 33, 0)),
+                      foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 42, 33, 0)),
                     ), 
                     onPressed: () async {  
                       if(_formKey.currentState!.validate()){
@@ -194,14 +195,17 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                             'judul':_judulBuku
                           }));
                         if (respons['status'] == 'success') {
+                          if (!context.mounted) return;
                           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                             content: Text("Item baru berhasil disimpan!"),
                             ));
+                            if (!context.mounted) return;
                             Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => PeminjamanBukuPage()),
+                            MaterialPageRoute(builder: (context) => const PeminjamanBukuPage()),
                             );
                           } else {
+                            if (!context.mounted) return;
                             ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
                               content:

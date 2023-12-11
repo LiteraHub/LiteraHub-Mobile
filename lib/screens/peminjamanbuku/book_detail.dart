@@ -13,7 +13,8 @@ class BookDetailPage extends StatefulWidget {
   const BookDetailPage(this.objekPinjam, {Key? key}) : super(key: key);
 
   @override
-  _BookDetailPageState createState() => _BookDetailPageState(objekPinjam, objekPinjam.fields.buku);
+  // ignore: no_logic_in_create_state
+  State<BookDetailPage> createState() => _BookDetailPageState(objekPinjam, objekPinjam.fields.buku);
 }
 
 class _BookDetailPageState extends State<BookDetailPage>{
@@ -25,13 +26,13 @@ class _BookDetailPageState extends State<BookDetailPage>{
       final response = await request.get(
         "https://literahub-e08-tk.pbp.cs.ui.ac.id/peminjamanbuku/get-buku-by-id/$idBuku/",
       );
-      List<Buku> list_product = [];
+      List<Buku> listProduct = [];
       for (var d in response) {
           if (d != null) {
-              list_product.add(Buku.fromJson(d));
+              listProduct.add(Buku.fromJson(d));
           }
       }
-      return list_product;
+      return listProduct;
   }
 
   @override
@@ -80,7 +81,7 @@ class _BookDetailPageState extends State<BookDetailPage>{
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(8.0),
                           topRight: Radius.circular(8.0),
                         ),
@@ -107,7 +108,7 @@ class _BookDetailPageState extends State<BookDetailPage>{
                       ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
-                          foregroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 42, 33, 0)),
+                          foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 42, 33, 0)),
                         ), 
                         onPressed: () async {
                           final respons = await request.postJson(
@@ -117,16 +118,20 @@ class _BookDetailPageState extends State<BookDetailPage>{
                           }));
                         if (respons['status'] == 'success') {
                           if(isReturnOverdue){
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            if (!context.mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
                               content: Text("Pengembalian buku terlambat!"),
                             ));
                           } else {
+                            if (!context.mounted) return;
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text("Buku ${snapshot.data![index].fields.title} berhasil dikembalikan"),
                             ));
                           }
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PeminjamanBukuPage()));
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const PeminjamanBukuPage()));
                           } else {
+                            if (!context.mounted) return;
                             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                               content: Text("Terdapat kesalahan, silakan coba lagi."),
                             ));

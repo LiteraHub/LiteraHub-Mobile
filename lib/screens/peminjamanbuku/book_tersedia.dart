@@ -7,7 +7,8 @@ class BukuTersediaPage extends StatefulWidget {
 
   
   @override
-  _BukuTersediaPageState createState() => _BukuTersediaPageState(objekPinjam);
+  // ignore: no_logic_in_create_state
+  State<BukuTersediaPage> createState() => _BukuTersediaPageState(objekPinjam);
 }
 
 class _BukuTersediaPageState extends State<BukuTersediaPage>{

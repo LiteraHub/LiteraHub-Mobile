@@ -7,15 +7,15 @@ import 'package:literahub/widgets/left_drawer.dart';
 import 'package:literahub/screens/peminjamanbuku/form_peminjaman.dart';
 
 class PeminjamanBukuPage extends StatefulWidget {
-  PeminjamanBukuPage({Key? key}) : super(key: key);
+  const PeminjamanBukuPage({Key? key}) : super(key: key);
   
   @override
-  _PeminjamanBukuPageState createState() => _PeminjamanBukuPageState();
+  State<PeminjamanBukuPage> createState() => _PeminjamanBukuPageState();
 }
 
 class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
-  var search;
-  Filter _filtered = Filter(); 
+  String? search;
+  final Filter _filtered = Filter(); 
 
   void updateSearch(String value){
     String searchTerm = value.trim().toLowerCase();
@@ -93,7 +93,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
-                  foregroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 42, 33, 0)),
+                  foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 42, 33, 0)),
                 ),
                 child: const Text('Kembalikan Buku')
               ),
@@ -111,13 +111,13 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 5),
+                margin: const EdgeInsets.only(left: 5),
                 height: 50,
                 width: 300,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0), // Membulatkan sudut
                   border: Border.all(
-                    color: Color.fromARGB(255, 42, 33, 0),
+                    color: const Color.fromARGB(255, 42, 33, 0),
                     width: 2.0,
                   ),
                 ),
@@ -161,65 +161,63 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                             mainAxisSpacing: 8,
                           ),
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemCount: snapshot.data!.length,
-                          itemBuilder: (_, index) => Container(
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute( builder: (context) => BukuTersediaPage(snapshot.data![index]),
-                                  )
-                                );
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-                                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-                                  decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                  BorderRadius.circular(20),
-                                ),
-                                child: Column(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius:
-                                        const BorderRadius.only(topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0)),
-                                      child: AspectRatio(
-                                        aspectRatio: 2/3,
-                                        child: Image.network(
-                                        '${snapshot.data![index].fields.img}',
-                                        width: 200,
-                                        height: 250,
-                                        fit: BoxFit.fill,
-                                        ),
-                                      )   
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                      padding: EdgeInsets.all(20),
-                                        child: Align( 
-                                          alignment: Alignment.center,
-                                          child: RichText(
-                                            overflow: TextOverflow .ellipsis,
-                                            maxLines: 2,
-                                            strutStyle: 
-                                            StrutStyle( fontSize: 10.0),
-                                            text: TextSpan(
-                                              style: const TextStyle(
-                                                color:Color.fromARGB(255, 42, 33, 0),
-                                                fontSize: 17,
-                                              ),
-                                              text: '${snapshot.data![index].fields.title}',
+                          itemBuilder: (_, index) => InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute( builder: (context) => BukuTersediaPage(snapshot.data![index]),
+                                )
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+                                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                                decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius:
+                                BorderRadius.circular(20),
+                              ),
+                              child: Column(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius:
+                                      const BorderRadius.only(topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0)),
+                                    child: AspectRatio(
+                                      aspectRatio: 2/3,
+                                      child: Image.network(
+                                      '${snapshot.data![index].fields.img}',
+                                      width: 200,
+                                      height: 250,
+                                      fit: BoxFit.fill,
+                                      ),
+                                    )   
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                    padding: const EdgeInsets.all(20),
+                                      child: Align( 
+                                        alignment: Alignment.center,
+                                        child: RichText(
+                                          overflow: TextOverflow .ellipsis,
+                                          maxLines: 2,
+                                          strutStyle: 
+                                          const StrutStyle( fontSize: 10.0),
+                                          text: TextSpan(
+                                            style: const TextStyle(
+                                              color:Color.fromARGB(255, 42, 33, 0),
+                                              fontSize: 17,
                                             ),
+                                            text: '${snapshot.data![index].fields.title}',
                                           ),
                                         ),
-                                      ), 
-                                    ),
-                                  ]
-                                )
+                                      ),
+                                    ), 
+                                  ),
+                                ]
                               )
-                            ),
+                            )
                           )
                         );
                       }

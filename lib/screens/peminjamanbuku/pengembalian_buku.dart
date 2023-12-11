@@ -10,13 +10,13 @@ class ReturnBookPage extends StatefulWidget {
   const ReturnBookPage({Key? key}) : super(key: key);
 
   @override
-  _ReturnBookPageState createState() => _ReturnBookPageState();
+  State<ReturnBookPage> createState() => _ReturnBookPageState();
 }
 
 class _ReturnBookPageState extends State<ReturnBookPage> {
 
-  var search;
-  Filter _filtered = Filter(); 
+  String? search;
+  final Filter _filtered = Filter(); 
 
   void updateSearch(String value){
     String searchTerm = value.trim().toLowerCase();
@@ -46,8 +46,8 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
         body: ListView(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.only(top: 15),
+              decoration: const BoxDecoration(
                 color: Color(0xFFEDECF2),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(35),
@@ -58,9 +58,9 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                 children: [
                   Container(
                     alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Text(
+                    margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: const Text(
                       "Click gambar buku untuk mengembalikan",
                       style: TextStyle(
                         fontSize: 25,
@@ -139,67 +139,65 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                             mainAxisSpacing: 8,
                           ),
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemCount: snapshot.data!.length,
-                          itemBuilder: (_, index) => Container(
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute( builder: (context) => BookDetailPage(snapshot.data![index])));
-                              },
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                  left: 15, right: 15, top: 10),
-                                  margin: EdgeInsets.symmetric(
-                                  vertical: 8, horizontal: 10),
-                                  decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                  BorderRadius.circular(20),
-                                ),
-                                child: Column(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius:
-                                        BorderRadius.only(
-                                          topLeft: Radius.circular(8.0),
-                                          topRight: Radius.circular(8.0),
-                                      ),
-                                      child: AspectRatio(
-                                        aspectRatio: 2/3,
-                                        child: Image.network(
-                                        '${snapshot.data![index].fields.gambarBuku}',
-                                        width: 200,
-                                        height: 250,
-                                        fit: BoxFit.fill,
-                                        ),
-                                      )   
+                          itemBuilder: (_, index) => InkWell(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute( builder: (context) => BookDetailPage(snapshot.data![index])));
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.only(
+                                left: 15, right: 15, top: 10),
+                                margin: const EdgeInsets.symmetric(
+                                vertical: 8, horizontal: 10),
+                                decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius:
+                                BorderRadius.circular(20),
+                              ),
+                              child: Column(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius:
+                                      const BorderRadius.only(
+                                        topLeft: Radius.circular(8.0),
+                                        topRight: Radius.circular(8.0),
                                     ),
-                                    Expanded(
-                                      child: Container(
-                                      padding: EdgeInsets.all(20),
-                                        child: Align( 
-                                          alignment: Alignment.center,
-                                          child: RichText(
-                                            overflow: TextOverflow .ellipsis,
-                                            maxLines: 2,
-                                            strutStyle: 
-                                            StrutStyle( fontSize: 10.0),
-                                            text: TextSpan(
-                                              style: TextStyle(
-                                                color:
-                                                    Color.fromARGB(255, 42, 33, 0),
-                                                fontSize: 17,
-                                              ),
-                                              text: '${snapshot.data![index].fields.title}',
+                                    child: AspectRatio(
+                                      aspectRatio: 2/3,
+                                      child: Image.network(
+                                      '${snapshot.data![index].fields.gambarBuku}',
+                                      width: 200,
+                                      height: 250,
+                                      fit: BoxFit.fill,
+                                      ),
+                                    )   
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                    padding: const EdgeInsets.all(20),
+                                      child: Align( 
+                                        alignment: Alignment.center,
+                                        child: RichText(
+                                          overflow: TextOverflow .ellipsis,
+                                          maxLines: 2,
+                                          strutStyle: 
+                                          const StrutStyle( fontSize: 10.0),
+                                          text: TextSpan(
+                                            style: const TextStyle(
+                                              color:
+                                                  Color.fromARGB(255, 42, 33, 0),
+                                              fontSize: 17,
                                             ),
+                                            text: '${snapshot.data![index].fields.title}',
                                           ),
                                         ),
-                                      ), 
-                                    ),
-                                  ]
-                                )
+                                      ),
+                                    ), 
+                                  ),
+                                ]
                               )
-                            ),
+                            )
                           )
                         );
                       }
