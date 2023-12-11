@@ -151,7 +151,7 @@ class _LembarAsaFormPageState extends State<LembarAsaFormPage> {
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           final response = await request.postJson(
-                            "http://127.0.0.1:8000/lembar-asa/create-flutter/",
+                            "https://literahub-e08-tk.pbp.cs.ui.ac.id/lembar-asa/create-flutter/",
                             jsonEncode(<String, String>{
                               'title': _title,
                               'img': _img,

@@ -15,7 +15,7 @@ class MyBukuPage extends StatefulWidget {
 
 class _MyBukuPageState extends State<MyBukuPage> {
   Future<List<MyBuku>> fetchMyBuku(CookieRequest request) async {
-    var data = await request.get("http://127.0.0.1:8000/lembar-asa/json-mybuku/");
+    var data = await request.get("https://literahub-e08-tk.pbp.cs.ui.ac.id/lembar-asa/json-mybuku/");
 
     List<MyBuku> listMybuku = [];
     for (var d in data) {
@@ -27,7 +27,7 @@ class _MyBukuPageState extends State<MyBukuPage> {
   }
 
   Future<List<Buku>> fetchBuku(CookieRequest request) async {
-    var data = await request.get("http://127.0.0.1:8000/lembar-asa/get-semua-buku/");
+    var data = await request.get("https://literahub-e08-tk.pbp.cs.ui.ac.id/lembar-asa/get-semua-buku/");
 
     List<Buku> listBuku = [];
     for (var d in data) {
