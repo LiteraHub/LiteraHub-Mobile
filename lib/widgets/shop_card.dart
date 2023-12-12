@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:literahub/main.dart';
+import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
 import 'package:literahub/screens/login.dart';
+import 'package:literahub/screens/reservasi/reservasi_main.dart';
 import 'package:literahub/screens/daftar_buku/list_daftarbuku.dart';
+import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-
+import 'package:literahub/screens/forum/thread_forum.dart';
 
 class ShopItem {
   final String name;
@@ -31,8 +35,8 @@ class ShopCard extends StatelessWidget {
             ..showSnackBar(SnackBar(
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
           if (item.name == "Logout") {
-            final response =
-                await request.logout("https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/logout/");
+            final response = await request.logout(
+                "https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/logout/");
             String message = response["message"];
             if (response['status']) {
               String uname = response["username"];
@@ -41,19 +45,35 @@ class ShopCard extends StatelessWidget {
               ));
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const LoginPage()),
+                MaterialPageRoute(builder: (context) => const MyApp()),
               );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text("$message"),
               ));
             }
-          } else if (item.name == "Daftar Buku"){
+          } else if (item.name == "Forum") {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ThreadPage()));
+          } else if (item.name == "Reservasi Tempat") {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MainPageReservasi(),
+                ));
+          } else if (item.name == "Daftar Buku") {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const ListDaftarBuku(),
                 ));
+          } else if (item.name == "Pinjam Buku") {
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context) => PeminjamanBukuPage()));
+          } else if (item.name == "LembarAsa") {
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LembarAsaMain()));
           }
         },
         child: Container(
