@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
@@ -164,7 +166,7 @@ class _LembarAsaFormPageState extends State<LembarAsaFormPage> {
                             ));
                             Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (context) => LembarAsaMain()),
+                                MaterialPageRoute(builder: (context) => const LembarAsaMain()),
                             );
                           } else {
                             ScaffoldMessenger.of(context)

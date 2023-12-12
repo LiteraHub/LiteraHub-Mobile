@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:convert';
@@ -99,7 +101,7 @@ class _HistoriReservasiPageState extends State<HistoriReservasiPage> {
                     child: Card(
                       margin: const EdgeInsets.all(8.0),
                       child: Container(
-                        color: Color.fromARGB(255, 223, 180, 120),
+                        color: const Color.fromARGB(255, 223, 180, 120),
                         padding: const EdgeInsets.all(16.0),
                         child:
                           Column(mainAxisSize: MainAxisSize.min, 
@@ -110,8 +112,8 @@ class _HistoriReservasiPageState extends State<HistoriReservasiPage> {
                               style: const TextStyle(fontSize: 18.0),
                             ),
                           ),
-                          SizedBox(height: 8.0),
-                          myReservasi[index].fields.selesai ? SizedBox() : ElevatedButton(
+                          const SizedBox(height: 8.0),
+                          myReservasi[index].fields.selesai ? const SizedBox() : ElevatedButton(
                             onPressed: isButtonActive ? () async {
                               // Aksi ketika tombol ditekan
                               var url =
@@ -134,15 +136,15 @@ class _HistoriReservasiPageState extends State<HistoriReservasiPage> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          MainPageReservasi()),
+                                          const MainPageReservasi()),
                                 );
                               }
                             } : null,
-                            child: Text('Selesai'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.red,
                               foregroundColor: Colors.white,
                             ),
+                            child: const Text('Selesai'),
                           ),
                           const SizedBox(height: 8.0),
                           Text(

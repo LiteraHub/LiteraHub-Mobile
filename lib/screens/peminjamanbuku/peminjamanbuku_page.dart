@@ -191,6 +191,22 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                                       width: 200,
                                       height: 250,
                                       fit: BoxFit.fill,
+                                      errorBuilder: (context, error, stackTrace) {
+                                        return SizedBox (
+                                          width: 200,
+                                          height: 250,
+                                          child : Container(
+                                            decoration: const BoxDecoration(
+                                              borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0)),
+                                              color: Color(0xFFC9C5BA), // Set the desired background color
+                                            ),
+                                            child: const Icon(
+                                              Icons.no_photography_outlined,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        );
+                                      },
                                       ),
                                     )   
                                   ),

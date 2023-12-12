@@ -5,7 +5,7 @@ import 'package:literahub/models/buku.dart';
 class DaftarBukuPage extends StatelessWidget {
   final Buku item;
 
-  DaftarBukuPage(this.item, {Key? key}) : super(key: key);
+  const DaftarBukuPage(this.item, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class DaftarBukuPage extends StatelessWidget {
             },
             child: Container(
               // margin: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 // borderRadius: BorderRadius.circular(20),
                 color: Colors.deepOrange,
                 // boxShadow: [
@@ -39,7 +39,7 @@ class DaftarBukuPage extends StatelessWidget {
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.visibility_off,
                       color: Colors.white,
                       size: 30.0,
