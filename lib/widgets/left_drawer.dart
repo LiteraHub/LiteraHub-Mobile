@@ -6,6 +6,7 @@ import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
+  static const IconData format_list_bulleted = IconData(0xe2b8, fontFamily: 'MaterialIcons', matchTextDirection: true);
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +112,7 @@ class LeftDrawer extends StatelessWidget {
             //   Navigator.push(
             //       context,
             //       MaterialPageRoute(
-            //         builder: (context) => InventoriFormPage(),
+            //         builder: (context) => ThreadPage(),
             //       ));
             // },
           ),

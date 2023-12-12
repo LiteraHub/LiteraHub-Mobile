@@ -7,6 +7,7 @@ import 'package:literahub/screens/daftar_buku/list_daftarbuku.dart';
 import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:literahub/screens/forum/thread_forum.dart';
 
 class ShopItem {
   final String name;
@@ -51,6 +52,9 @@ class ShopCard extends StatelessWidget {
                 content: Text("$message"),
               ));
             }
+          } else if (item.name == "Forum") {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ThreadPage()));
           } else if (item.name == "Reservasi Tempat") {
             Navigator.push(
                 context,

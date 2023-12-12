@@ -9,7 +9,7 @@ class MyHomePage extends StatelessWidget {
     ShopItem("Pinjam Buku", Icons.checklist),
     ShopItem("Daftar Buku", Icons.add_shopping_cart),
     ShopItem("Reservasi Tempat", Icons.chair_alt_sharp),
-    ShopItem("Forum", Icons.add_shopping_cart),
+    ShopItem("Forum", Icons.format_list_bulleted),
     ShopItem("Logout", Icons.logout),
   ];
 
