@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/login.dart';
-import 'package:literahub/screens/daftar_buku/HomeDaftarBuku.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
-import '../screens/daftar_buku/tes2.dart';
-import '../screens/daftar_buku/widgets/list_daftarbuku.dart';
+import '../screens/daftar_buku/pagebook/tes2.dart';
 
 
 class ShopItem {
@@ -48,7 +46,7 @@ class ShopCard extends StatelessWidget {
               );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text("$message"),
+                content: Text(message),
               ));
             }
           } else if (item.name == "Daftar Buku"){

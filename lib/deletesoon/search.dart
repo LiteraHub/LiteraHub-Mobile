@@ -6,7 +6,7 @@ class SearchBook extends SearchDelegate{
   List<Widget>? buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.close),
+        icon: const Icon(Icons.close),
         onPressed: (){
           query = "";
         },
@@ -17,7 +17,7 @@ class SearchBook extends SearchDelegate{
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back_ios),
+      icon: const Icon(Icons.arrow_back_ios),
       onPressed: (){
         Navigator.pop(context);
       },
@@ -26,7 +26,7 @@ class SearchBook extends SearchDelegate{
 
   @override
   Widget buildResults(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text(
         "Search Book",
       ),
@@ -35,7 +35,7 @@ class SearchBook extends SearchDelegate{
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text(
         "Search Book",
       ),

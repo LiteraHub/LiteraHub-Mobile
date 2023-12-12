@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:literahub/screens/daftar_buku/tes1.dart';
-import 'package:literahub/screens/daftar_buku/tes2.dart';
-import 'package:literahub/screens/daftar_buku/widgets/list_daftarbuku.dart';
 import 'package:literahub/widgets/left_drawer.dart';
 // import 'package:literahub/widgets/list_card.dart';
 
 class HomeDaftarBuku extends StatelessWidget {
+  const HomeDaftarBuku({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,8 +24,8 @@ class HomeDaftarBuku extends StatelessWidget {
           Container(
             //temporary height
             // height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.only(top: 15),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.only(top: 15),
+            decoration: const BoxDecoration(
               color: Color(0xFFEDECF2),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(35),
@@ -38,8 +37,8 @@ class HomeDaftarBuku extends StatelessWidget {
 
                 //Search Widget
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
-                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   height: 50,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -47,11 +46,11 @@ class HomeDaftarBuku extends StatelessWidget {
                   ),
                   child: Row(children: [
                     Container(
-                      margin: EdgeInsets.only(left: 5),
+                      margin: const EdgeInsets.only(left: 5),
                       height: 50,
                       width: 300,
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: "Search title/author/year book here...",
                         ),
@@ -63,11 +62,11 @@ class HomeDaftarBuku extends StatelessWidget {
               //Popular book title
               Container(
                 alignment: Alignment.center,
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   vertical: 20, 
                   horizontal: 10
                 ),
-                child: Text(
+                child: const Text(
                   "Through books, we embark on adventures that transcend time and space.",
                   style: TextStyle(
                     fontSize: 25,
@@ -95,11 +94,11 @@ class HomeDaftarBuku extends StatelessWidget {
               //items
               Container(
                 alignment: Alignment.centerLeft,
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   vertical: 20, 
                   horizontal: 19
                 ),
-                child: Text(
+                child: const Text(
                   ""
                 ),
               ),

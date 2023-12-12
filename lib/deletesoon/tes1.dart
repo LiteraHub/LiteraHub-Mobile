@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
 class ItemWidget extends StatelessWidget{
+  const ItemWidget({super.key});
+
   @override
   Widget build (BuildContext context){
     return GridView.count(
       childAspectRatio: 0.68,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       crossAxisCount: 2,
       shrinkWrap: true,
       children: [
         for (int i = 0; i < 8; i++)
           Container(
-            padding: EdgeInsets.only(left: 15, right: 15, top: 10),
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+            padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -23,12 +25,12 @@ class ItemWidget extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color: Color(0xFF4C53A5),
+                        color: const Color(0xFF4C53A5),
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: Text(
+                      child: const Text(
                         "-50%",
                         style: TextStyle(
                           fontSize: 14,
@@ -37,7 +39,7 @@ class ItemWidget extends StatelessWidget{
                         ),
                       ),
                     ),
-                    Icon(
+                    const Icon(
                       Icons.favorite_border,
                       color: Colors.red,
                     )
@@ -46,7 +48,7 @@ class ItemWidget extends StatelessWidget{
                 InkWell(
                   onTap: (){},
                   child: Container(
-                    margin: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     child: Image.asset(
                       "apakek",
                       height: 120,
@@ -55,9 +57,9 @@ class ItemWidget extends StatelessWidget{
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.only(bottom: 8),
                   alignment: Alignment.centerLeft,
-                  child: Text(
+                  child: const Text(
                     "Product title",
                     style: TextStyle(
                       fontSize: 18,
@@ -68,7 +70,7 @@ class ItemWidget extends StatelessWidget{
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  child: Text(
+                  child: const Text(
                     "write comment",
                     style: TextStyle(
                       fontSize: 15,
@@ -76,7 +78,7 @@ class ItemWidget extends StatelessWidget{
                     ),
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -48,9 +48,9 @@ class LeftDrawer extends StatelessWidget {
                   ));
             },
           ),
-          ListTile(
-            leading: const Icon(Icons.shopping_basket),
-            title: const Text('LembarAsa'),
+          const ListTile(
+            leading: Icon(Icons.shopping_basket),
+            title: Text('LembarAsa'),
             // Bagian redirection ke LembarAsa
             // onTap: () {
             //   // Routing ke InventoriFormPage,
@@ -61,9 +61,9 @@ class LeftDrawer extends StatelessWidget {
             //       ));
             // },
           ),
-          ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Pinjam Buku'),
+          const ListTile(
+            leading: Icon(Icons.add_shopping_cart),
+            title: Text('Pinjam Buku'),
             // Bagian redirection ke Pinjam Buku
             // onTap: () {
             //   // Routing ke InventoriFormPage,
@@ -74,9 +74,9 @@ class LeftDrawer extends StatelessWidget {
             //       ));
             // },
           ),
-          ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Daftar Buku'),
+          const ListTile(
+            leading: Icon(Icons.add_shopping_cart),
+            title: Text('Daftar Buku'),
             // Bagian redirection ke Daftar Buku
             // onTap: () {
             //   // Routing ke InventoriFormPage,
@@ -87,9 +87,9 @@ class LeftDrawer extends StatelessWidget {
             //       ));
             // },
           ),
-          ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Reservasi Tempat'),
+          const ListTile(
+            leading: Icon(Icons.add_shopping_cart),
+            title: Text('Reservasi Tempat'),
             // Bagian redirection ke Reservasi Tempat
             // onTap: () {
             //   // Routing ke InventoriFormPage,
@@ -100,9 +100,9 @@ class LeftDrawer extends StatelessWidget {
             //       ));
             // },
           ),
-          ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Forum'),
+          const ListTile(
+            leading: Icon(Icons.add_shopping_cart),
+            title: Text('Forum'),
             // Bagian redirection ke Forum
             // onTap: () {
             //   // Routing ke InventoriFormPage,
@@ -113,9 +113,9 @@ class LeftDrawer extends StatelessWidget {
             //       ));
             // },
           ),
-          ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Logout'),
+          const ListTile(
+            leading: Icon(Icons.add_shopping_cart),
+            title: Text('Logout'),
             // Bagian redirection ke Logout
             // onTap: () {
             //   // Routing ke InventoriFormPage,

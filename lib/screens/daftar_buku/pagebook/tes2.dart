@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:literahub/models/buku.dart';
 import 'package:literahub/screens/daftar_buku/api_services/API_services.dart';
-import 'package:literahub/screens/daftar_buku/bookinfopage.dart';
+import 'package:literahub/screens/daftar_buku/pagebook/detail%20buku/bookinfopage.dart';
 // import 'package:literahub/widgets/list_card.dart';
 
 class ListDaftarBuku2 extends StatefulWidget {
@@ -14,7 +12,7 @@ class ListDaftarBuku2 extends StatefulWidget {
 }
 
 class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
-  FetchBook _bookList = FetchBook();
+  final FetchBook _bookList = FetchBook();
   var query;
 
   
@@ -39,8 +37,8 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
         body: ListView(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 15),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.only(top: 15),
+              decoration: const BoxDecoration(
                 color: Color(0xFFEDECF2),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(35),
@@ -49,10 +47,11 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
               ),
               child: Column(
                 children: [
+
                   //Search Widget
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 15),
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    margin: const EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     height: 50,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -61,12 +60,12 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                     child: Row(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(left: 5),
+                          margin: const EdgeInsets.only(left: 5),
                           height: 50,
                           width: 300,
                           child: TextFormField(
                             onChanged: (value) => updateList(value),
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               hintText: "Search title/author/year book here...",
                             ),
@@ -79,9 +78,9 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                   //Popular book title
                   Container(
                     alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Text(
+                    margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: const Text(
                       "Through books, we embark on adventures that transcend time and space.",
                       style: TextStyle(
                         fontSize: 25,
@@ -90,6 +89,8 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                       ),
                     ),
                   ),
+
+
                   FutureBuilder<List<Buku>>(
                       future: _bookList.getBookList(query: query),
                       builder: (context, AsyncSnapshot snapshot) {
@@ -97,21 +98,22 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                           return const Center(
                               child: CircularProgressIndicator());
                         } else {
-                          if (!snapshot.hasData) {
+                          if (!snapshot.hasData || snapshot.data!.length == 0) {
                             return const Column(
                               children: [
                                 Text(
                                   "Tidak ada data produk.",
                                   style: TextStyle(
-                                      color: Color(0xff59A5D8), fontSize: 20),
+                                      color: Colors.black, fontSize: 20),
                                 ),
-                                SizedBox(height: 8),
+                                SizedBox(height: 1000),
                               ],
                             );
                           } else {
                             return GridView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
                                 gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
                                   childAspectRatio: 0.55,
                                   mainAxisSpacing: 25,
@@ -133,9 +135,9 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                                                 ));
                                           },
                                           child: Container(
-                                              padding: EdgeInsets.only(
+                                              padding: const EdgeInsets.only(
                                                   left: 15, right: 15, top: 10),
-                                              margin: EdgeInsets.symmetric(
+                                              margin: const EdgeInsets.symmetric(
                                                   vertical: 8, horizontal: 10),
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
@@ -150,13 +152,13 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                                                   // crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
                                                     Container(
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         color: Colors.amber,
                                                       ),
                                                       child: AspectRatio(
                                                         aspectRatio: 2/3,
                                                         child: Image.network(
-                                                          '${snapshot.data![index].fields.img}',
+                                                          snapshot.data![index].fields.img,
                                                           // width: 500,
                                                           // height: 300,
                                                           fit: BoxFit.cover,
@@ -164,15 +166,15 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                                                       )
                                                     ),
                                                     Container(
-                                                      padding:EdgeInsets.all(20),
+                                                      padding:const EdgeInsets.all(20),
                                                       child: Align(alignment:Alignment.center,
                                                         child: RichText(
                                                           overflow: TextOverflow.ellipsis,
                                                           maxLines: 2,
                                                           strutStyle:
-                                                              StrutStyle(fontSize:10.0),
+                                                              const StrutStyle(fontSize:10.0),
                                                           text: TextSpan(
-                                                            style: TextStyle(
+                                                            style: const TextStyle(
                                                               color:Colors.black,
                                                               fontSize: 15,
                                                             ),

@@ -4,7 +4,7 @@ import 'package:literahub/models/buku.dart';
 class DaftarBukuPage extends StatelessWidget {
   final Buku item;
 
-  DaftarBukuPage(this.item, {Key? key}) : super(key: key);
+  const DaftarBukuPage(this.item, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class DaftarBukuPage extends StatelessWidget {
         child: Container(
           child: Column(
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Icon(
@@ -44,11 +44,11 @@ class DaftarBukuPage extends StatelessWidget {
               //   ),
               // ),
               Container(
-                padding: EdgeInsets.only(bottom: 8),
+                padding: const EdgeInsets.only(bottom: 8),
                 alignment: Alignment.centerLeft,
                 child: Text(
                   item.fields.title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Color(0xFF4C53A5),
                     fontWeight: FontWeight.bold,
@@ -57,7 +57,7 @@ class DaftarBukuPage extends StatelessWidget {
               ),
               Container(
                 alignment: Alignment.centerLeft,
-                child: Text(
+                child: const Text(
                   "Write comment",
                   style: TextStyle(
                     fontSize: 15,
@@ -65,7 +65,7 @@ class DaftarBukuPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

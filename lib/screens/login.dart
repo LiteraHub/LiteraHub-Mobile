@@ -1,3 +1,4 @@
+import 'package:literahub/screens/daftar_buku/api_services/API_services.dart';
 import 'package:literahub/screens/menu.dart';
 import 'package:literahub/screens/register.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  final FetchBook _user = FetchBook();
 
   @override
   Widget build(BuildContext context) {
@@ -71,12 +74,14 @@ class _LoginPageState extends State<LoginPage> {
                 // Untuk menyambungkan Android emulator dengan Django pada localhost,
                 // gunakan URL http://10.0.2.2/
                 final response =
-                    await request.login("https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/login/", {
+                    await request.login("http://localhost:8000/auth/login/", {
                   'username': username,
                   'password': password,
                 });
 
                 if (request.loggedIn) {
+                  print("print request.headers");
+                  _user.user = response['username'];
                   String message = response['message'];
                   String uname = response['username'];
                   Navigator.pushReplacement(

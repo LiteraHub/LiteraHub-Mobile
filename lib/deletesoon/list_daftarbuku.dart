@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:literahub/models/buku.dart';
-import 'package:literahub/screens/daftar_buku/daftarbukupage.dart';
+import 'package:literahub/deletesoon/daftarbukupage.dart';
 // import 'package:literahub/widgets/list_card.dart';
 
 class ListDaftarBuku extends StatefulWidget {
@@ -24,13 +24,13 @@ class _ListDaftarBukuState extends State<ListDaftarBuku> {
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
     // melakukan konversi data json menjadi object Product
-    List<Buku> list_buku = [];
+    List<Buku> listBuku = [];
     for (var d in data) {
       if (d != null) {
-        list_buku.add(Buku.fromJson(d));
+        listBuku.add(Buku.fromJson(d));
       }
     }
-    return list_buku;
+    return listBuku;
   }
 
   @override
@@ -62,9 +62,9 @@ class _ListDaftarBukuState extends State<ListDaftarBuku> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (_, index) => Container(
                         padding:
-                            EdgeInsets.only(left: 15, right: 15, top: 10),
+                            const EdgeInsets.only(left: 15, right: 15, top: 10),
                         margin:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                            const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
@@ -73,7 +73,7 @@ class _ListDaftarBukuState extends State<ListDaftarBuku> {
                           children: [
                             // DaftarBukuPage(snapshot.data![index]),
                             SizedBox.fromSize(
-                              size: Size.fromHeight(120), // Set the desired height
+                              size: const Size.fromHeight(120), // Set the desired height
                               child: DaftarBukuPage(snapshot.data![index]),
                             ),
                           ],
