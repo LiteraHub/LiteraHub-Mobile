@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
 import 'package:literahub/screens/menu.dart';
+import 'package:literahub/screens/reservasi/reservasi_main.dart';
 import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 
 class LeftDrawer extends StatelessWidget {
@@ -53,14 +55,13 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.shopping_basket),
             title: const Text('LembarAsa'),
             // Bagian redirection ke LembarAsa
-            // onTap: () {
-            //   // Routing ke InventoriFormPage,
-            //   Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => const ProductPage(),
-            //       ));
-            // },
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LembarAsaMain(),
+                  ));
+            },
           ),
           ListTile(
             leading: const Icon(Icons.book),
@@ -89,17 +90,17 @@ class LeftDrawer extends StatelessWidget {
             // },
           ),
           ListTile(
-            leading: Icon(Icons.add_shopping_cart),
-            title: Text('Reservasi Tempat'),
+            leading: const Icon(Icons.chair_alt_sharp),
+            title: const Text('Reservasi Tempat'),
             // Bagian redirection ke Reservasi Tempat
-            // onTap: () {
-            //   // Routing ke InventoriFormPage,
-            //   Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => InventoriFormPage(),
-            //       ));
-            // },
+            onTap: () {
+              // Routing ke InventoriFormPage,
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MainPageReservasi(),
+                  ));
+            },
           ),
           ListTile(
             leading: Icon(Icons.add_shopping_cart),

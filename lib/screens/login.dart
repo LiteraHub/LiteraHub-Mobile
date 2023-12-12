@@ -13,12 +13,12 @@ class LoginApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Login',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const LoginPage(),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      // ),
+      home: LoginPage(),
     );
   }
 }
