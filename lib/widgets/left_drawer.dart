@@ -65,7 +65,7 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.book),
+            leading: const Icon(Icons.add_shopping_cart),
             title: const Text('Pinjam Buku'),
             // Bagian redirection ke Pinjam Buku
             onTap: () {

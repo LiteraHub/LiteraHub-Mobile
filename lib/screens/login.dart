@@ -39,7 +39,6 @@ class _LoginPageState extends State<LoginPage> {
     final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         title: const Text('Login'),
       ),
       body: Container(
@@ -76,11 +75,14 @@ class _LoginPageState extends State<LoginPage> {
                 if (request.loggedIn) {
                   String message = response['message'];
                   String uname = response['username'];
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()));
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()),
+                  );
                   ScaffoldMessenger.of(context)
                     ..hideCurrentSnackBar()
                     ..showSnackBar(SnackBar(
-                  content: Text("$message Selamat datang, $uname.")));
+                        content: Text("$message Selamat datang, $uname.")));
                 } else {
                   showDialog(
                     context: context,
@@ -101,9 +103,6 @@ class _LoginPageState extends State<LoginPage> {
               },
               child: const Text('Login'),
             ),
-            SizedBox(
-              height: 8
-            ),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -112,8 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                         builder: (context) => const RegisterApp()),
                   );
                 },
-                child: const Text('Register')
-            )
+                child: const Text('Register'))
           ],
         ),
       ),

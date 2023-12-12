@@ -69,7 +69,6 @@ class Fields {
 }
 
 enum Model {
-    // ignore: constant_identifier_names
     BUKU_BUKU
 }
 
