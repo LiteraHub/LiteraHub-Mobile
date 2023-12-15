@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:literahub/main.dart';
+import 'package:literahub/screens/daftar_buku/cardDaftarBuku.dart';
 import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
 import 'package:literahub/screens/reservasi/reservasi_main.dart';
-import 'package:literahub/screens/daftar_buku/list_daftarbuku.dart';
 import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -65,7 +65,7 @@ class ShopCard extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ListDaftarBuku(),
+                  builder: (context) => const CardDaftarBuku(),
                 ));
           } else if (item.name == "Pinjam Buku") {
               Navigator.push(context,

@@ -8,8 +8,8 @@ class MyHomePage extends StatelessWidget {
     ShopItem("LembarAsa", Icons.add_shopping_cart),
     ShopItem("Pinjam Buku", Icons.checklist),
     ShopItem("Daftar Buku", Icons.add_shopping_cart),
-    ShopItem("Reservasi Tempat", Icons.chair_alt_sharp),
-    ShopItem("Forum", Icons.format_list_bulleted),
+    ShopItem("Reservasi Tempat", Icons.add_shopping_cart),
+    ShopItem("Forum", Icons.add_shopping_cart),
     ShopItem("Logout", Icons.logout),
   ];
 
@@ -20,12 +20,8 @@ class MyHomePage extends StatelessWidget {
         title: const Text(
           'LiteraHub',
         ),
-        backgroundColor: const Color(0xFFC9C5BA),
-        foregroundColor: Colors.black87,
       ),
       drawer: const LeftDrawer(),
-      backgroundColor: const Color.fromARGB(255, 242, 238, 227),
-
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
         child: Padding(
