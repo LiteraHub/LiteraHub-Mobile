@@ -23,7 +23,6 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
   bool showCurrentUserReviews = false;
 
   Future<void> hapusReview(int pk) async {
-    print(pk);
     final http.Response response = await http.delete(
         Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/daftarbuku/delete_review_by_id/$pk/'),
         headers: <String, String>{
@@ -123,7 +122,6 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                       if (snapshot.data == null) {
                         return const Center(child: CircularProgressIndicator());
                       } else {
-                        print(snapshot.data!.length);
                         if (!snapshot.hasData || snapshot.data!.length == 0) {
                           return const Column(
                             children: [

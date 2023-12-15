@@ -19,8 +19,6 @@ class FetchBook {
     );
 
     // melakukan decode response menjadi bentuk json
-    print("apa");
-    print(query);
     var data = jsonDecode(utf8.decode(response.bodyBytes));
     for (var d in data) {
       if (d != null) {
@@ -29,14 +27,12 @@ class FetchBook {
     }
 
     if (query != null) {
-      print("masuk");
       list_buku = list_buku
           .where((element) =>
               element.fields.title.toLowerCase().contains(query) ||
               element.fields.author.toLowerCase().contains(query) ||
               element.fields.year.toString().contains(query))
           .toList();
-      print(list_buku.length);
     }
 
     return list_buku;

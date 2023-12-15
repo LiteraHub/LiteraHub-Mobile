@@ -29,7 +29,6 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
     try {
       // Fetch the reviews again using _reviewList.getReviewBook
       List<Review> refreshedReviews = await _reviewList.getReviewBook(id: id);
-      print(refreshedReviews);
 
       if (refreshedReviews.length != 0) {
         // Update the state with the refreshed reviews
@@ -62,7 +61,6 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
   }
 
   Future<void> hapusReview(int pk) async {
-    print(pk);
     final http.Response response = await http.delete(
         Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/daftarbuku/delete_review_by_id/$pk/'),
         headers: <String, String>{
