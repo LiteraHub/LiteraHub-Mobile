@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/peminjamanbuku/book_detail.dart';
+import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 import 'package:literahub/screens/peminjamanbuku/services/filter.dart';
 import 'package:literahub/widgets/left_drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -77,16 +78,22 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
-                      foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 42, 33, 0)),
-                    ), 
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.brown,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
+                      ),
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const PeminjamanBukuPage()),
+                      );
                     },
                     child: const Text('Kembali'),
-                    ),
-                    ),
+                    )),
                   ),
                   const SizedBox(height: 10),
                   Container(
@@ -107,12 +114,17 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                         minWidth: 40, // Atur lebar minimum untuk ikon pencarian
                         minHeight: 40, // Atur tinggi minimum untuk ikon pencarian
                       ),
-                      contentPadding: EdgeInsets.fromLTRB(16.0, 9.0, 16.0, 8.0),
+                      contentPadding: EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                       prefixIcon: Icon(Icons.search),
                       border: InputBorder.none,
                       hintText: "Search judul...",
                     ),
                   ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Buku Dipinjam',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 FutureBuilder(
@@ -158,7 +170,7 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                                 margin: const EdgeInsets.symmetric(
                                 vertical: 8, horizontal: 10),
                                 decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 223, 180, 120),
+                                color: Colors.brown,
                                 borderRadius:
                                 BorderRadius.circular(20),
                               ),
@@ -208,8 +220,7 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                                           const StrutStyle( fontSize: 10.0),
                                           text: TextSpan(
                                             style: const TextStyle(
-                                              color:
-                                                  Color.fromARGB(255, 42, 33, 0),
+                                              color:Colors.white,
                                               fontSize: 17,
                                             ),
                                             text: '${snapshot.data![index].fields.title}',
