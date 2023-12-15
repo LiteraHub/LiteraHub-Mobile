@@ -41,7 +41,7 @@ class DetailBuku extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
                     myBuku.fields.isi, 
                     textAlign: TextAlign.justify,

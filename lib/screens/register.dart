@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/login.dart';
@@ -40,6 +42,7 @@ class _RegisterPage extends State<RegisterPage> {
     final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
         title: const Text('Register'),
@@ -87,14 +90,11 @@ class _RegisterPage extends State<RegisterPage> {
                 if (success) {
                   String message = response['message'];
                   String name = response['username'];
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginApp()),
-                  );
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginApp()));
                   ScaffoldMessenger.of(context)
                     ..hideCurrentSnackBar()
                     ..showSnackBar(SnackBar(
-                        content: Text("$message Selamat datang, $name.")));
+                    content: Text("$message Selamat datang, $name.")));
                 } else {
                   showDialog(
                     context: context,
@@ -115,6 +115,22 @@ class _RegisterPage extends State<RegisterPage> {
               },
               child: const Text('Register'),
             ),
+            Align(
+             alignment: Alignment.bottomCenter,
+             child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Kembali'),
+                ),
+                ),
+             ),
           ],
         ),
       ),

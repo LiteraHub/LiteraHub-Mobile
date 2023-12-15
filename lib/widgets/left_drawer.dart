@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
 import 'package:literahub/screens/menu.dart';
+import 'package:literahub/screens/reservasi/reservasi_main.dart';
 import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 
 class LeftDrawer extends StatelessWidget {
@@ -58,12 +59,12 @@ class LeftDrawer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => LembarAsaMain(),
+                    builder: (context) => const LembarAsaMain(),
                   ));
             },
           ),
           ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
+            leading: const Icon(Icons.book),
             title: const Text('Pinjam Buku'),
             // Bagian redirection ke Pinjam Buku
             onTap: () {
@@ -71,11 +72,11 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => PeminjamanBukuPage(),
+                    builder: (context) => const PeminjamanBukuPage(),
                   ));
             },
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(Icons.add_shopping_cart),
             title: Text('Daftar Buku'),
             // Bagian redirection ke Daftar Buku
@@ -89,19 +90,19 @@ class LeftDrawer extends StatelessWidget {
             // },
           ),
           ListTile(
-            leading: Icon(Icons.add_shopping_cart),
-            title: Text('Reservasi Tempat'),
+            leading: const Icon(Icons.chair_alt_sharp),
+            title: const Text('Reservasi Tempat'),
             // Bagian redirection ke Reservasi Tempat
-            // onTap: () {
-            //   // Routing ke InventoriFormPage,
-            //   Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => InventoriFormPage(),
-            //       ));
-            // },
+            onTap: () {
+              // Routing ke InventoriFormPage,
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MainPageReservasi(),
+                  ));
+            },
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(Icons.add_shopping_cart),
             title: Text('Forum'),
             // Bagian redirection ke Forum
@@ -110,11 +111,11 @@ class LeftDrawer extends StatelessWidget {
             //   Navigator.push(
             //       context,
             //       MaterialPageRoute(
-            //         builder: (context) => InventoriFormPage(),
+            //         builder: (context) => ThreadPage(),
             //       ));
             // },
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(Icons.add_shopping_cart),
             title: Text('Logout'),
             // Bagian redirection ke Logout
