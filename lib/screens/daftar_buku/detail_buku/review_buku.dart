@@ -89,9 +89,9 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                     children: [
                       Container(
                           margin:
-                              EdgeInsets.only(bottom: 10, right: 10, top: 10),
+                              const EdgeInsets.only(bottom: 10, right: 10, top: 10),
                           padding:
-                              EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                              const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                             color: Colors.brown.shade50,
@@ -106,7 +106,7 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                                   });
                                 },
                               ),
-                              Text(
+                              const Text(
                                 'Review saya',
                                 style: TextStyle(
                                   fontSize: 12,
@@ -161,7 +161,7 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                                 // snapshotReview.data!.length
                                 itemBuilder: (_, index) => Container(
                                     alignment: Alignment.topLeft,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Colors.white,
                                     ),
                                     // padding: const EdgeInsets.only(
@@ -197,7 +197,7 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                                                   decoration: BoxDecoration(
                                                     color: Colors.brown.shade50,
                                                   ),
-                                                  child: Icon(
+                                                  child: const Icon(
                                                     Icons
                                                         .account_circle_rounded,
                                                     size: 35.0,
@@ -220,7 +220,7 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                                                         ),
                                                         child: Text(
                                                           '${reviewsToShow[index].fields.username}',
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                             fontSize: 16,
                                                             fontWeight:
                                                                 FontWeight.bold,
@@ -228,7 +228,7 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                                                         ),
                                                       ),
                                                       Container(
-                                                        margin: EdgeInsets.only(
+                                                        margin: const EdgeInsets.only(
                                                             top: 3),
                                                         alignment:
                                                             Alignment.topLeft,
@@ -239,14 +239,14 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                                                         ),
                                                         child: Text(
                                                           '${reviewsToShow[index].fields.review}',
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                             fontSize: 15,
                                                           ),
                                                         ),
                                                       ),
                                                     ],
                                                   )),
-                                              Spacer(),
+                                              const Spacer(),
                                               if (request
                                                   .getJsonData()
                                                   .containsValue(
@@ -255,25 +255,21 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                                                           .username))
                                                 InkWell(
                                                   onTap: () async {
-                                                    // Implementasi logika hapus review di sini
-                                                    // Misalnya, panggil fungsi hapusReview(reviewsToShow[index].id)
                                                     await hapusReview(
                                                         reviewsToShow[index]
                                                             .pk);
                                                   },
                                                   child: Container(
-                                                    // padding: EdgeInsets.all(8),
                                                     alignment: Alignment.center,
                                                     decoration: BoxDecoration(
-                                                      // color: Colors.red,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               5),
                                                     ),
-                                                    child: Icon(
+                                                    child: const Icon(
                                                       Icons.delete,
                                                       color:
-                                                          const Color.fromARGB(
+                                                          Color.fromARGB(
                                                               255,
                                                               244,
                                                               101,

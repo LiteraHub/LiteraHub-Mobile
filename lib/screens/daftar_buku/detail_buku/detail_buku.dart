@@ -452,7 +452,7 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                                                                         Alignment
                                                                             .topLeft,
                                                                     decoration:
-                                                                        BoxDecoration(
+                                                                        const BoxDecoration(
                                                                       color: Colors
                                                                           .white,
                                                                     ),
@@ -481,12 +481,12 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                                                                                       decoration: BoxDecoration(
                                                                                         color: Colors.brown.shade50,
                                                                                       ),
-                                                                                      child: Icon(
+                                                                                      child: const Icon(
                                                                                         Icons.account_circle_rounded,
                                                                                         size: 35.0,
                                                                                       )),
                                                                                   Container(
-                                                                                      margin: EdgeInsets.only(left: 7),
+                                                                                      margin: const EdgeInsets.only(left: 7),
                                                                                       child: Column(
                                                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                                                         children: [
@@ -497,28 +497,28 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                                                                                             ),
                                                                                             child: Text(
                                                                                               '${snapshotReview.data![index].fields.username}',
-                                                                                              style: TextStyle(
+                                                                                              style: const TextStyle(
                                                                                                 fontSize: 16,
                                                                                                 fontWeight: FontWeight.bold,
                                                                                               ),
                                                                                             ),
                                                                                           ),
                                                                                           Container(
-                                                                                            margin: EdgeInsets.only(top: 3),
+                                                                                            margin: const EdgeInsets.only(top: 3),
                                                                                             alignment: Alignment.topLeft,
                                                                                             decoration: BoxDecoration(
                                                                                               color: Colors.brown.shade50,
                                                                                             ),
                                                                                             child: Text(
                                                                                               '${snapshotReview.data![index].fields.review}',
-                                                                                              style: TextStyle(
+                                                                                              style: const TextStyle(
                                                                                                 fontSize: 15,
                                                                                               ),
                                                                                             ),
                                                                                           ),
                                                                                         ],
                                                                                       )),
-                                                                                  Spacer(),
+                                                                                  const Spacer(),
                                                                                   if (request.getJsonData().containsValue(snapshotReview.data![index].fields.username))
                                                                                     InkWell(
                                                                                       onTap: () async {
@@ -533,9 +533,9 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                                                                                           // color: Colors.red,
                                                                                           borderRadius: BorderRadius.circular(5),
                                                                                         ),
-                                                                                        child: Icon(
+                                                                                        child: const Icon(
                                                                                           Icons.delete,
-                                                                                          color: const Color.fromARGB(255, 244, 101, 101),
+                                                                                          color: Color.fromARGB(255, 244, 101, 101),
                                                                                           size: 20.0,
                                                                                         ),
                                                                                       ),
@@ -597,7 +597,7 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                                           )),
                                       //Buat tombol add review
                                       Container(
-                                          margin: EdgeInsets.only(
+                                          margin: const EdgeInsets.only(
                                               top: 10, bottom: 30),
                                           alignment: Alignment.bottomCenter,
                                           decoration: const BoxDecoration(

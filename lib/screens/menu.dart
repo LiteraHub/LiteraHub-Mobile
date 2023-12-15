@@ -19,13 +19,16 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'LiteraHub',
+          style: TextStyle(
+            color: Colors.white,
+          ),
         ),
-        backgroundColor: const Color(0xFFC9C5BA),
+        backgroundColor: Colors.brown,
         foregroundColor: Colors.black87,
       ),
       drawer: const LeftDrawer(),
       backgroundColor: const Color.fromARGB(255, 242, 238, 227),
-      
+
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
         child: Padding(

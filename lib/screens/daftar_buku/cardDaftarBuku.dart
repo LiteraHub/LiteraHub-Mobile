@@ -36,7 +36,7 @@ class _CardDaftarBukuState extends State<CardDaftarBuku> {
             Container(
               padding: const EdgeInsets.only(top: 15),
               decoration: const BoxDecoration(
-                color: Color(0xFFEDECF2),
+                color: Color.fromARGB(255, 242, 238, 227),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(35),
                   topRight: Radius.circular(35),
@@ -82,7 +82,7 @@ class _CardDaftarBukuState extends State<CardDaftarBuku> {
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF4C53A5),
+                        color: Colors.brown,
                       ),
                     ),
                   ),
@@ -138,7 +138,8 @@ class _CardDaftarBukuState extends State<CardDaftarBuku> {
                                                       vertical: 8,
                                                       horizontal: 10),
                                               decoration: BoxDecoration(
-                                                color: Colors.white,
+                                                color: const Color.fromARGB(
+                                                    255, 223, 180, 120),
                                                 borderRadius:
                                                     BorderRadius.circular(20),
                                               ),

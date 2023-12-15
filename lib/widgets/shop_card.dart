@@ -25,7 +25,7 @@ class ShopCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
     return Material(
-      color: const Color(0xFFC9C5BA),
+      color: Colors.brown,
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () async {

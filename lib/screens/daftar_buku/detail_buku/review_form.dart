@@ -74,8 +74,6 @@ class _ReviewFormPageState extends State<ReviewFormPage> {
                     ),
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        // Kirim ke Django dan tunggu respons
-                        // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
                         final response = await request.postJson(
                             "https://literahub-e08-tk.pbp.cs.ui.ac.id/daftarbuku/add_review_flutter/",
                             jsonEncode(<String, String>{
@@ -96,6 +94,7 @@ class _ReviewFormPageState extends State<ReviewFormPage> {
                           ));
                         }
                         //Memasukkan hasil inputan ke dalam model item
+                        // ignore: use_build_context_synchronously
                         showDialog(
                           context: context,
                           builder: (context) {
