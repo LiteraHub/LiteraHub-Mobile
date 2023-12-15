@@ -102,7 +102,7 @@ class _ListDaftarBuku2State extends State<ListDaftarBuku2> {
                             return const Column(
                               children: [
                                 Text(
-                                  "Tidak ada data produk.",
+                                  "Tidak ada buku.",
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 20),
                                 ),

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:http/http.dart' as http;
 import 'package:literahub/models/buku.dart';
@@ -10,7 +9,6 @@ import '../../../models/review.dart';
 class FetchBook {
   List<Buku> list_buku = [];
   List<Review> list_review = [];
-  List<String> list_username = [];
   String user = "";
 
   Future<List<Buku>> getBookList({String? query}) async {
@@ -92,19 +90,6 @@ class FetchBook {
     }
     return list_review;
   }
-
-  // Future<String> fetchUser({required CookieRequest request}) async {
-  //   final response = await request.postJson(
-  //       'http://localhost:8000/daftarbuku/user_detail_view/',
-  //       jsonEncode(<String, String>{
-  //         'pk': '2',
-  //       }));
-
-  //   // melakukan decode response menjadi bentuk json
-  //   var data = response['user'];
-  //   print(data);
-  //   return data;
-  // }
 
   Future<http.Response> removeReview({int? pk}) async {
     final http.Response response = await http.delete(Uri.parse(

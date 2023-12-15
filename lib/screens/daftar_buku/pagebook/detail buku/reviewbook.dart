@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:literahub/models/buku.dart';
 import 'package:literahub/models/review.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
