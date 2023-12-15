@@ -1,7 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:literahub/main.dart';
 import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
-import 'package:literahub/screens/login.dart';
 import 'package:literahub/screens/reservasi/reservasi_main.dart';
 import 'package:literahub/screens/daftar_buku/list_daftarbuku.dart';
 import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
@@ -24,7 +25,7 @@ class ShopCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
     return Material(
-      color: Colors.indigo,
+      color: const Color(0xFFC9C5BA),
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () async {
@@ -48,14 +49,17 @@ class ShopCard extends StatelessWidget {
               );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text("$message"),
+                content: Text(message),
               ));
             }
+          // } else if (item.name == "Forum") {
+          //     Navigator.push(context,
+          //         MaterialPageRoute(builder: (context) => ThreadPage()));
           } else if (item.name == "Reservasi Tempat") {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MainPageReservasi(),
+                  builder: (context) => const MainPageReservasi(),
                 ));
           } else if (item.name == "Daftar Buku") {
             Navigator.push(
@@ -65,11 +69,11 @@ class ShopCard extends StatelessWidget {
                 ));
           } else if (item.name == "Pinjam Buku") {
               Navigator.push(context,
-                MaterialPageRoute(builder: (context) => PeminjamanBukuPage()));
+                MaterialPageRoute(builder: (context) => const PeminjamanBukuPage()));
           } else if (item.name == "LembarAsa") {
             Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => LembarAsaMain()));
+                MaterialPageRoute(builder: (context) => const LembarAsaMain()));
           }
         },
         child: Container(

@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -27,13 +29,13 @@ class _ListDaftarBukuState extends State<ListDaftarBuku> {
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
     // melakukan konversi data json menjadi object Product
-    List<Buku> list_buku = [];
+    List<Buku> listBuku = [];
     for (var d in data) {
       if (d != null) {
-        list_buku.add(Buku.fromJson(d));
+        listBuku.add(Buku.fromJson(d));
       }
     }
-    return list_buku;
+    return listBuku;
   }
 
   @override
@@ -71,7 +73,7 @@ class _ListDaftarBukuState extends State<ListDaftarBuku> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.brown.shade50,
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30),
                           ),
@@ -79,7 +81,7 @@ class _ListDaftarBukuState extends State<ListDaftarBuku> {
                         height: height * 0.75,
                         width: width,
                         child: GridView.builder(
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 5,
                             childAspectRatio: 1.1,
                             mainAxisSpacing: 25,

@@ -59,7 +59,7 @@ class LeftDrawer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => LembarAsaMain(),
+                    builder: (context) => const LembarAsaMain(),
                   ));
             },
           ),
@@ -72,11 +72,11 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => PeminjamanBukuPage(),
+                    builder: (context) => const PeminjamanBukuPage(),
                   ));
             },
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(Icons.add_shopping_cart),
             title: Text('Daftar Buku'),
             // Bagian redirection ke Daftar Buku
@@ -98,11 +98,11 @@ class LeftDrawer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MainPageReservasi(),
+                    builder: (context) => const MainPageReservasi(),
                   ));
             },
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(Icons.add_shopping_cart),
             title: Text('Forum'),
             // Bagian redirection ke Forum
@@ -111,11 +111,11 @@ class LeftDrawer extends StatelessWidget {
             //   Navigator.push(
             //       context,
             //       MaterialPageRoute(
-            //         builder: (context) => InventoriFormPage(),
+            //         builder: (context) => ThreadPage(),
             //       ));
             // },
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(Icons.add_shopping_cart),
             title: Text('Logout'),
             // Bagian redirection ke Logout

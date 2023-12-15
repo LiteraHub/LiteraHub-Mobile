@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -31,7 +33,7 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
   List<String> _bukuOptions = [];
   List<int> _tempatBacaOptions = [];
   final List<int> _durasiOptions = [1, 2, 3, 4, 5];
-  Map<String, int> _judulToPkMap = {};
+  final Map<String, int> _judulToPkMap = {};
 
   Future<List<TempatBaca>> _fetchTempatBaca() async {
     var url = Uri.parse(
@@ -45,13 +47,13 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
     // melakukan konversi data json menjadi object TempatBaca
-    List<TempatBaca> list_tempat = [];
+    List<TempatBaca> listTempat = [];
     for (var d in data) {
       if (d != null) {
-        list_tempat.add(TempatBaca.fromJson(d));
+        listTempat.add(TempatBaca.fromJson(d));
       }
     }
-    return list_tempat;
+    return listTempat;
   }
 
   Future<List<Buku>> _fetchBuku() async {
@@ -66,15 +68,15 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
     // melakukan konversi data json menjadi object Buku
-    List<Buku> list_buku = [];
+    List<Buku> listBuku = [];
     for (var d in data) {
       if (d != null) {
         Buku buku = Buku.fromJson(d);
-        list_buku.add(buku);
+        listBuku.add(buku);
         _judulToPkMap[buku.fields.title] = buku.pk;
       }
     }
-    return list_buku;
+    return listBuku;
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -84,10 +86,11 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
       firstDate: DateTime.now(),
       lastDate: DateTime(2025),
     );
-    if (picked != null && picked != _tanggal)
+    if (picked != null && picked != _tanggal) {
       setState(() {
         _tanggal = picked;
       });
+    }
   }
 
   Future<void> _selectTime(BuildContext context) async {
@@ -95,10 +98,11 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
       context: context,
       initialTime: _jam,
     );
-    if (picked != null && picked != _jam)
+    if (picked != null && picked != _jam) {
       setState(() {
         _jam = picked;
       });
+    }
   }
 
   // Fungsi untuk memformat DateTime menjadi string
@@ -113,15 +117,6 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
     return DateFormat('HH:mm').format(dt);
   }
 
-  void _resetForm() {
-    setState(() {
-      _buku = "";
-      _tanggal = DateTime.now();
-      _jam = TimeOfDay.now();
-      _durasiBaca = 0;
-      _tempatBaca = "";
-    });
-  }
 
   @override
   void initState() {
@@ -296,7 +291,7 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
                   child: ListTile(
                     title: Text(
                         'Tanggal: ${DateFormat('dd/MM/yyyy').format(_tanggal)}'),
-                    trailing: Icon(Icons.calendar_today),
+                    trailing: const Icon(Icons.calendar_today),
                     onTap: () => _selectDate(context),
                   ),
                 ),
@@ -305,7 +300,7 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: ListTile(
                       title: Text('Jam: ${_jam.format(context)}'),
-                      trailing: Icon(Icons.access_time),
+                      trailing: const Icon(Icons.access_time),
                       onTap: () => _selectTime(context),
                     )),
 
@@ -361,7 +356,7 @@ class _ReservasiFormPageState extends State<ReservasiFormPage> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MainPageReservasi()),
+                                  builder: (context) => const MainPageReservasi()),
                             );
                           } else {
                             ScaffoldMessenger.of(context)
