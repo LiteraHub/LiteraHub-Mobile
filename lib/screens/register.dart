@@ -125,7 +125,7 @@ class _RegisterPage extends State<RegisterPage> {
                   foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginApp()));
+                  Navigator.pop(context);
                 },
                 child: const Text('Kembali'),
                 ),
