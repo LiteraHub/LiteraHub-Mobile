@@ -86,6 +86,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
         foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
       ),
+      backgroundColor: const Color.fromARGB(255, 242,238,227),
       drawer: const LeftDrawer(),
       body: Form(
         key: _formKey,
@@ -197,8 +198,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                         if (respons['status'] == 'success') {
                           if (!context.mounted) return;
                           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                            content: Text("Item baru berhasil disimpan!"),
-                            ));
+                            content: Text("Item baru berhasil disimpan!")));
                             if (!context.mounted) return;
                             Navigator.pushReplacement(
                             context,
@@ -206,11 +206,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                             );
                           } else {
                             if (!context.mounted) return;
-                            ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                              content:
-                              Text("Terdapat kesalahan, silakan coba lagi."),
-                            ));
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Terdapat kesalahan, silakan coba lagi.")));
                           }
                         }
                       }, 

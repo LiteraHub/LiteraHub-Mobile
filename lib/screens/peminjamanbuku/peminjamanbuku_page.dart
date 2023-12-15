@@ -39,6 +39,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
         foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
       ),
+      backgroundColor: const Color.fromARGB(255, 242,238,227),
       drawer: const LeftDrawer(),
       body: SingleChildScrollView(
         child: Padding(
@@ -65,6 +66,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ),
               const SizedBox(height: 10),
@@ -142,13 +144,18 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                       return const Center(
                           child: CircularProgressIndicator());
                     } else {
-                      if (!snapshot.hasData) {
+                      if (!snapshot.hasData || snapshot.data!.length == 0) {
                         return const Column(
                           children: [
+                            SizedBox(height: 75),
                             Text(
-                              "Tidak ada data produk.",
+                              "Tidak ada buku yang tersedia. 😭😭",
                               style: TextStyle(
-                                  color: Color.fromARGB(255, 42, 33, 0), fontSize: 20),
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 42, 33, 0), 
+                                fontSize: 19
+                                ),
+                              textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 8),
                           ],
@@ -175,7 +182,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
                               padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
                                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                                 decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: const Color.fromARGB(255, 223, 180, 120),
                                 borderRadius:
                                 BorderRadius.circular(20),
                               ),

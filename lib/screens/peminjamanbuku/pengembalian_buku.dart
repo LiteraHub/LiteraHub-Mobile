@@ -43,12 +43,13 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
           foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         ),
         drawer: const LeftDrawer(),
+        backgroundColor: const Color.fromARGB(255, 242,238,227),
         body: ListView(
           children: [
             Container(
               padding: const EdgeInsets.only(top: 15),
               decoration: const BoxDecoration(
-                color: Color(0xFFEDECF2),
+                color: Color.fromARGB(255, 242,238,227),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(35),
                   topRight: Radius.circular(35),
@@ -67,6 +68,7 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 42, 33, 0)
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -120,15 +122,20 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                       return const Center(
                           child: CircularProgressIndicator());
                     } else {
-                      if (!snapshot.hasData) {
+                      if (!snapshot.hasData || snapshot.data!.length == 0) {
                         return const Column(
+                          
                           children: [
-                            Text(
-                              "Tidak ada data produk.",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 42, 33, 0), fontSize: 20),
-                            ),
-                            SizedBox(height: 8),
+                          SizedBox(height: 70),
+                          Text(
+                            "Belum ada buku yang dipinjam. 😭😭",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize: 19),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(height: 50),
                           ],
                         );
                       } else {
@@ -151,7 +158,7 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                                 margin: const EdgeInsets.symmetric(
                                 vertical: 8, horizontal: 10),
                                 decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: const Color.fromARGB(255, 223, 180, 120),
                                 borderRadius:
                                 BorderRadius.circular(20),
                               ),
