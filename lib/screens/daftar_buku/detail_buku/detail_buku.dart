@@ -142,7 +142,7 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                         );
                       } else {
                         return ListView.builder(
-                            // physics: NeverScrollableScrollPhysics(),
+                            physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: snapshot.data!.length,
                             itemBuilder: (_, index) => Container(
