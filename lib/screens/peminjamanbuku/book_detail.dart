@@ -48,6 +48,7 @@ class _BookDetailPageState extends State<BookDetailPage>{
         foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
       ),
+      backgroundColor: const Color.fromARGB(255, 242,238,227),
       body: FutureBuilder(
         future: fetchProduct(request), 
         builder: (BuildContext context, AsyncSnapshot<List<Buku>> snapshot) {  
