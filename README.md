@@ -1,9 +1,5 @@
 ## Tugas Proyek Akhir Semester - PBP E08
 
-[![Build status](https://build.appcenter.ms/v0.1/apps/644f8b00-be2d-4141-88fc-d5146e181d5e/branches/main/badge)](https://appcenter.ms)
-
-## [__LiteraHub__](install.appcenter.ms/orgs/literahub/apps/literahub/distribution_groups/public)
-
 **Anggota kelompok:**
 
 1. Jeslyn Theodora - 2206082026

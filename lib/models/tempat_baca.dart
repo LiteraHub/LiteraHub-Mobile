@@ -2,8 +2,6 @@
 //
 //     final tempatBaca = tempatBacaFromJson(jsonString);
 
-// ignore_for_file: constant_identifier_names
-
 import 'dart:convert';
 
 List<TempatBaca> tempatBacaFromJson(String str) => List<TempatBaca>.from(json.decode(str).map((x) => TempatBaca.fromJson(x)));

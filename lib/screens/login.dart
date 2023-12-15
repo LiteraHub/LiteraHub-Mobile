@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
-
 import 'package:literahub/screens/menu.dart';
 import 'package:literahub/screens/register.dart';
 import 'package:flutter/material.dart';
@@ -103,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
               },
               child: const Text('Login'),
             ),
-            const SizedBox(
+            SizedBox(
               height: 8
             ),
             ElevatedButton(

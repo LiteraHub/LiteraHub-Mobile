@@ -1,8 +1,7 @@
-// ignore_for_file: library_private_types_in_public_api, no_logic_in_create_state
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:literahub/widgets/left_drawer.dart';
 import 'package:literahub/models/buku.dart';
 
 class BookInfoPage extends StatefulWidget {
@@ -27,21 +26,21 @@ class _BookInfoPageState extends State<BookInfoPage> {
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
     // melakukan konversi data json menjadi object Product
-    List<Buku> listProduct = [];
+    List<Buku> list_product = [];
     for (var d in data) {
       if (d != null) {
-        listProduct.add(Buku.fromJson(d));
+        list_product.add(Buku.fromJson(d));
       }
     }
-    return listProduct;
+    return list_product;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Center(
-            child: Text(
+          title: Center(
+            child: const Text(
               'LiteraHub',
               style: TextStyle(
               fontSize: 18.0,
