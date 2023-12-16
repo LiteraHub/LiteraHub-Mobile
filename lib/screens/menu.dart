@@ -22,9 +22,10 @@ class MyHomePage extends StatelessWidget {
           'LiteraHub',
           style: TextStyle(
             fontWeight: FontWeight.bold
+            color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFFC9C5BA),
+        backgroundColor: Colors.brown,
         foregroundColor: Colors.black87,
       ),
       drawer: const LeftDrawer(),
