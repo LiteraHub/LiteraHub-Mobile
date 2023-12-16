@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/reservasi/list_reservasi.dart';
 import 'package:literahub/screens/reservasi/reservasi_form.dart';
+import 'package:literahub/widgets/left_drawer.dart';
 
 class MainPageReservasi extends StatelessWidget {
   const MainPageReservasi({Key? key}) : super(key: key);
@@ -19,6 +20,7 @@ class MainPageReservasi extends StatelessWidget {
         backgroundColor: const Color(0xFFC9C5BA),
       ),
       backgroundColor: const Color.fromARGB(255, 242,238,227),
+      drawer: const LeftDrawer(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
