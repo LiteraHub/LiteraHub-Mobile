@@ -24,75 +24,111 @@ class ShopCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-    return Material(
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
       color: const Color(0xFFC9C5BA),
       child: InkWell(
-        // Area responsive terhadap sentuhan
         onTap: () async {
-          // Memunculkan SnackBar ketika diklik
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!")));
+              content: Text("Kamu telah menekan tombol ${item.name}!"),
+            ));
           if (item.name == "Logout") {
             final response = await request.logout(
-                "https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/logout/");
+              "https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/logout/");
             String message = response["message"];
             if (response['status']) {
               String uname = response["username"];
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text("$message Sampai jumpa, $uname."),
-              ));
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("$message Sampai jumpa, $uname."),
+                ),
+              );
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const MyApp()),
               );
             } else {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text(message),
-              ));
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(message),
+                ),
+              );
             }
-          // } else if (item.name == "Forum") {
-          //     Navigator.push(context,
-          //         MaterialPageRoute(builder: (context) => ThreadPage()));
+          } else if (item.name == "Forum") {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => ThreadPage()
+            //   )
+            // );
           } else if (item.name == "Reservasi Tempat") {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MainPageReservasi(),
-                ));
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MainPageReservasi(),
+              ),
+            );
           } else if (item.name == "Daftar Buku") {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ListDaftarBuku(),
-                ));
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ListDaftarBuku(),
+              ),
+            );
           } else if (item.name == "Pinjam Buku") {
-              Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const PeminjamanBukuPage()));
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const PeminjamanBukuPage(),
+              ),
+            );
           } else if (item.name == "LembarAsa") {
             Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const LembarAsaMain()));
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LembarAsaMain(),
+              ),
+            );
           }
         },
         child: Container(
-          // Container untuk menyimpan Icon dan Text
           padding: const EdgeInsets.all(8),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
+                Container(
+                  width: 100.0,
+                  height: 100.0,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color.fromARGB(255, 242, 238, 227),
+                    boxShadow: [
+                      BoxShadow(
+                        color:  Color.fromARGB(255, 242, 238, 227),
+                        blurRadius: 2.5,
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    item.icon,
+                    color: const Color(0xFFC9C5BA),
+                    size: 50.0,
+                  ),
                 ),
-                const Padding(padding: EdgeInsets.all(3)),
+                const Padding(padding: EdgeInsets.all(10)),
                 Text(
                   item.name,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(
+                    color: Color.fromARGB(255, 242, 238, 227),
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold
+                  ),
                 ),
               ],
             ),

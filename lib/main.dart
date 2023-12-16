@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/login.dart';
+import 'package:literahub/screens/menu.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 
@@ -20,8 +21,7 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
                 title: 'Flutter App',
                 theme: ThemeData(
-                    colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-                    useMaterial3: true,
+                    colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFC9C5BA)),
                 ),
                 home: const LoginApp()
             ),
