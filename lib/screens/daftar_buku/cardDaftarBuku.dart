@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:literahub/models/buku.dart';
 import 'package:literahub/screens/daftar_buku/api_services/API_services.dart';
 import 'package:literahub/screens/daftar_buku/detail_buku/detail_buku.dart';
+import 'package:literahub/widgets/left_drawer.dart';
 
 class CardDaftarBuku extends StatefulWidget {
   const CardDaftarBuku({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class CardDaftarBuku extends StatefulWidget {
 
 class _CardDaftarBukuState extends State<CardDaftarBuku> {
   final FetchBook _bookList = FetchBook();
+  // ignore: prefer_typing_uninitialized_variables
   var query;
 
   void updateList(String value) {
@@ -31,6 +33,7 @@ class _CardDaftarBukuState extends State<CardDaftarBuku> {
         appBar: AppBar(
           title: const Text('Daftar Buku'),
         ),
+        drawer: const LeftDrawer(),
         body: ListView(
           children: [
             Container(

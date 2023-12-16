@@ -21,7 +21,7 @@ class MyHomePage extends StatelessWidget {
         title: const Text(
           'LiteraHub',
           style: TextStyle(
-            fontWeight: FontWeight.bold
+            fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
         ),
@@ -29,7 +29,7 @@ class MyHomePage extends StatelessWidget {
         foregroundColor: Colors.black87,
       ),
       drawer: const LeftDrawer(),
-      // backgroundColor: const Color.fromARGB(255, 242, 238, 227),
+      backgroundColor: const Color.fromARGB(255, 255, 254, 249),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/main.dart';
-import 'package:literahub/screens/daftar_buku/list_daftarbuku.dart';
+import 'package:literahub/screens/daftar_buku/cardDaftarBuku.dart';
 import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
 import 'package:literahub/screens/menu.dart';
 import 'package:literahub/screens/reservasi/reservasi_main.dart';
@@ -88,7 +88,7 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ListDaftarBuku(),
+                  builder: (context) => const CardDaftarBuku(),
                 ),
               );
             },
