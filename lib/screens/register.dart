@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/login.dart';
@@ -35,10 +37,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Expanded(
               flex: 7,
               child: Container(
-                padding: EdgeInsets.fromLTRB(25.0, 20.0, 25.0, 10.0),
+                padding: const EdgeInsets.fromLTRB(25.0, 20.0, 25.0, 10.0),
                 decoration: BoxDecoration(
                     color: Colors.brown.shade50,
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(40.0),
                       topRight: Radius.circular(40.0),
                     )),
@@ -46,7 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     // const SizedBox(height: 20.0),
-                    Text(
+                    const Text(
                       'Get Started',
                       style: TextStyle(
                         fontSize: 30.0,
@@ -65,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             color: Colors.black,
                           ),
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.black,
                             ),
                             borderRadius: BorderRadius.circular(10),
@@ -89,7 +91,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             color: Colors.black,
                           ),
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.black,
                             ),
                             borderRadius: BorderRadius.circular(10),
@@ -113,7 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             color: Colors.black,
                           ),
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.black,
                             ),
                             borderRadius: BorderRadius.circular(10),
@@ -192,7 +194,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           },
                           child: Container(
                               padding: EdgeInsets.all(2),
-                              child: Text(
+                              child: const Text(
                                 'Sign in',
                                 style: TextStyle(
                                   color: Colors.brown,
