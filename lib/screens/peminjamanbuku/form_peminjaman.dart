@@ -78,14 +78,13 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
     final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text(
-            'Form Peminjaman Buku',
-          ),
+        title: const Text(
+          'Pengembalian Buku',
         ),
         foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
       ),
+      backgroundColor: const Color.fromARGB(255, 242,238,227),
       drawer: const LeftDrawer(),
       body: Form(
         key: _formKey,
@@ -150,34 +149,44 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                       return DropdownButton<String>(
                         value: selectedValue,
                         onChanged: (String? value) {
-                          // This is called when the user selects an item.
                           setState(() {
                             selectedValue = value!;
                             _judulBuku = value;
                           });
                         },
                         isExpanded: true,
-                        items: snapshot.data!
-                            .map<DropdownMenuItem<String>>((String value) {
+                        isDense: true,
+                        items: snapshot.data!.map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
                           );
                         }).toList(),
+                        dropdownColor: Colors.white,
+                        itemHeight: 60,
+                        underline: Container( // Add an underline (divider) below the dropdown
+                        height: 1,
+                        color: Colors.grey,
+                      ),  
                       );
                     }
                   },
                 ),
               ),
+              const SizedBox(height: 10),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
-                      foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 42, 33, 0)),
-                    ), 
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.brown,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
+                  ),
                     onPressed: () async {  
                       if(_formKey.currentState!.validate()){
                         if(_judulBuku == ""){
@@ -197,8 +206,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                         if (respons['status'] == 'success') {
                           if (!context.mounted) return;
                           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                            content: Text("Item baru berhasil disimpan!"),
-                            ));
+                            content: Text("Item baru berhasil disimpan!")));
                             if (!context.mounted) return;
                             Navigator.pushReplacement(
                             context,
@@ -206,11 +214,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                             );
                           } else {
                             if (!context.mounted) return;
-                            ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                              content:
-                              Text("Terdapat kesalahan, silakan coba lagi."),
-                            ));
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Terdapat kesalahan, silakan coba lagi.")));
                           }
                         }
                       }, 
@@ -225,12 +229,19 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C5BA)),
-                    foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 42, 33, 0)),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.brown,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
                   ), 
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const PeminjamanBukuPage()),
+                    );
                   },
                   child: const Text('Kembali'),
                   ),
