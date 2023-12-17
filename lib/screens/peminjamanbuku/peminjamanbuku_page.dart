@@ -70,7 +70,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const ReturnBookPage()),
                 );

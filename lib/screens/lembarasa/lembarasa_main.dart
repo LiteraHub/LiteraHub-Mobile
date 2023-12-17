@@ -60,6 +60,7 @@ class LembarAsaMain extends StatelessWidget {
                 const Center(
                   child: Text(
                     'Karya unikmu, dunia digital kami',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.w600,
@@ -70,6 +71,7 @@ class LembarAsaMain extends StatelessWidget {
                 const Center(
                   child: Text(
                     'Unggah bukumu dan biarkan semua orang terinspirasi',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.w600,
@@ -153,6 +155,7 @@ class LembarAsaMain extends StatelessWidget {
                 const SizedBox(height: 40.0),
                 const Text(
                   'Otak yang cerdas berfikir sejalan',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w600,
@@ -161,6 +164,7 @@ class LembarAsaMain extends StatelessWidget {
                 ),
                 const Text(
                   'Jelajahi LembarAsa sekarang',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w600,

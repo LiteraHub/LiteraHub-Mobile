@@ -46,7 +46,7 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.home_outlined, color: Colors.black54, size: 30),
             title: const Text('Halaman Utama', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => MyHomePage(),
@@ -59,7 +59,7 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.mode_edit_outline_rounded, color: Colors.black54, size: 30),
             title: const Text('LembarAsa', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const LembarAsaMain(),
@@ -72,7 +72,7 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.bookmark_add_rounded, color: Colors.black54, size: 30),
             title: const Text('Pinjam Buku', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const PeminjamanBukuPage(),
@@ -85,7 +85,7 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.menu_book_rounded, color: Colors.black54, size: 30),
             title: const Text('Daftar Buku', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const CardDaftarBuku(),
@@ -98,7 +98,7 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.chair_alt_rounded, color: Colors.black54, size: 30),
             title: const Text('Reservasi Tempat', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const MainPageReservasi(),
@@ -116,7 +116,7 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.logout_rounded, color: Colors.black54, size: 30),
             title: const Text('Logout', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const MyApp(),

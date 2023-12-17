@@ -31,6 +31,8 @@ class MyHomePage extends StatelessWidget {
       drawer: const LeftDrawer(),
       backgroundColor: const Color.fromARGB(255, 255, 254, 249),
       body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
