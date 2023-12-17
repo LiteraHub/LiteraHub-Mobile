@@ -238,10 +238,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                     padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
                   ), 
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const PeminjamanBukuPage()),
-                    );
+                    Navigator.pop(context);
                   },
                   child: const Text('Kembali'),
                   ),
