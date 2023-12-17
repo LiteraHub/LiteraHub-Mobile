@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/register.dart';
 import 'package:literahub/widgets/customScaffold.dart';
@@ -56,7 +58,7 @@ class WelcomeScreen extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.only(right: screenWidth * 0.45, bottom: 4),
-            child: Text(
+            child: const Text(
               "LiteraHub",
               style: TextStyle(
                 color: Colors.white,
@@ -72,7 +74,7 @@ class WelcomeScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SignUpScreen()),
+                  MaterialPageRoute(builder: (context) => const SignUpScreen()),
                 );
               },
               child: Container(

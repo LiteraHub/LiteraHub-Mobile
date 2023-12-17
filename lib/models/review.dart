@@ -20,7 +20,7 @@ class Review {
   });
 
   Fields getFields() {
-    return this.fields;
+    return fields;
   }
 
   factory Review.fromJson(Map<String, dynamic> json) => Review(
@@ -52,7 +52,7 @@ class Fields {
   });
 
   String getReview() {
-    return this.review;
+    return review;
   }
 
   factory Fields.fromJson(Map<String, dynamic> json) => Fields(

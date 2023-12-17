@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -6,7 +8,9 @@ import 'package:literahub/models/buku.dart';
 import '../../../models/review.dart';
 
 class FetchBook {
+  // ignore: non_constant_identifier_names
   List<Buku> list_buku = [];
+  // ignore: non_constant_identifier_names
   List<Review> list_review = [];
   String user = "";
 
