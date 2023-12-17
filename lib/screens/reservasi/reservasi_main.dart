@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/reservasi/list_reservasi.dart';
 import 'package:literahub/screens/reservasi/reservasi_form.dart';
+import 'package:literahub/widgets/left_drawer.dart';
 
 class MainPageReservasi extends StatelessWidget {
-  MainPageReservasi({Key? key}) : super(key: key);
+  const MainPageReservasi({Key? key}) : super(key: key);
 
 
   @override
@@ -19,45 +20,46 @@ class MainPageReservasi extends StatelessWidget {
         backgroundColor: const Color(0xFFC9C5BA),
       ),
       backgroundColor: const Color.fromARGB(255, 242,238,227),
+      drawer: const LeftDrawer(),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
+              const Text(
                 'Kamu Ingin Membaca Bersama di LiteraHub?',
                 style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 20.0),
-              Text(
+              const SizedBox(height: 20.0),
+              const Text(
                 'Ayo segera reservasi tempat bacamu!',
                 style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 40.0),
+              const SizedBox(height: 40.0),
               ElevatedButton(
                 onPressed: () {
                   // Navigasi ke halaman form reservasi
                   Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ReservasiFormPage(),
+                    builder: (context) => const ReservasiFormPage(),
                   )
                 );
                 },
-                child: Text('Reservasi Disini'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
                 ),
+                child: const Text('Reservasi Disini'),
               ),
-              SizedBox(height: 20.0), // Spasi antara dua tombol
+              const SizedBox(height: 20.0), // Spasi antara dua tombol
 
               ElevatedButton(
                 onPressed: () {
@@ -65,19 +67,19 @@ class MainPageReservasi extends StatelessWidget {
                   Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HistoriReservasiPage(),
+                    builder: (context) => const HistoriReservasiPage(),
                   )
                 );
                 },
-                child: Text('Lihat Reservasi'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
                 ),
+                child: const Text('Lihat Reservasi'),
               ),
             ],
           ),

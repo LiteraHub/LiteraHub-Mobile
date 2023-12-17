@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:literahub/main.dart';
+import 'package:literahub/screens/daftar_buku/cardDaftarBuku.dart';
 import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
 import 'package:literahub/screens/menu.dart';
 import 'package:literahub/screens/reservasi/reservasi_main.dart';
@@ -12,121 +14,115 @@ class LeftDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.indigo,
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    'LiteraHub menu',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+          Container(
+            color: const Color(0xFFC9C5BA),
+            padding: const EdgeInsets.all(20),
+            child: const Column(
+              children: [
+                Text(
+                  'LiteraHub Menu',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
                   ),
-                  Padding(padding: EdgeInsets.all(10)),
-                  Text(
-                    "Baca buku dengan mudah melalui LiteraHub!",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal, // Weight biasa
-                    ),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  "Baca buku dengan mudah melalui LiteraHub!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.normal,
                   ),
-                ],
-              )),
+                ),
+              ],
+            ),
+          ),
           ListTile(
-            leading: const Icon(Icons.home_outlined),
-            title: const Text('Halaman Utama'),
-            // Bagian redirection ke MyHomePage
+            contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            leading: const Icon(Icons.home_outlined, color: Colors.black54, size: 30),
+            title: const Text('Halaman Utama', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
             onTap: () {
               Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MyHomePage(),
-                  ));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyHomePage(),
+                ),
+              );
             },
           ),
           ListTile(
-            leading: const Icon(Icons.shopping_basket),
-            title: const Text('LembarAsa'),
-            // Bagian redirection ke LembarAsa
+            contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            leading: const Icon(Icons.mode_edit_outline_rounded, color: Colors.black54, size: 30),
+            title: const Text('LembarAsa', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LembarAsaMain(),
-                  ));
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Pinjam Buku'),
-            // Bagian redirection ke Pinjam Buku
-            onTap: () {
-              // Routing ke InventoriFormPage,
               Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PeminjamanBukuPage(),
-                  ));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LembarAsaMain(),
+                ),
+              );
             },
           ),
           ListTile(
-            leading: Icon(Icons.add_shopping_cart),
-            title: Text('Daftar Buku'),
-            // Bagian redirection ke Daftar Buku
-            // onTap: () {
-            //   // Routing ke InventoriFormPage,
-            //   Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => InventoriFormPage(),
-            //       ));
-            // },
-          ),
-          ListTile(
-            leading: const Icon(Icons.chair_alt_sharp),
-            title: const Text('Reservasi Tempat'),
-            // Bagian redirection ke Reservasi Tempat
+            contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            leading: const Icon(Icons.bookmark_add_rounded, color: Colors.black54, size: 30),
+            title: const Text('Pinjam Buku', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
             onTap: () {
-              // Routing ke InventoriFormPage,
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MainPageReservasi(),
-                  ));
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PeminjamanBukuPage(),
+                ),
+              );
             },
           ),
           ListTile(
-            leading: Icon(Icons.add_shopping_cart),
-            title: Text('Forum'),
-            // Bagian redirection ke Forum
-            // onTap: () {
-            //   // Routing ke InventoriFormPage,
-            //   Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => InventoriFormPage(),
-            //       ));
-            // },
+            contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            leading: const Icon(Icons.menu_book_rounded, color: Colors.black54, size: 30),
+            title: const Text('Daftar Buku', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CardDaftarBuku(),
+                ),
+              );
+            },
           ),
           ListTile(
-            leading: Icon(Icons.add_shopping_cart),
-            title: Text('Logout'),
-            // Bagian redirection ke Logout
-            // onTap: () {
-            //   // Routing ke InventoriFormPage,
-            //   Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => InventoriFormPage(),
-            //       ));
-            // },
+            contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            leading: const Icon(Icons.chair_alt_rounded, color: Colors.black54, size: 30),
+            title: const Text('Reservasi Tempat', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MainPageReservasi(),
+                ),
+              );
+            },
+          ),
+          const ListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            leading: Icon(Icons.format_list_bulleted_rounded, color: Colors.black54, size: 30),
+            title: Text('Forum', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
+          ),
+          ListTile(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            leading: const Icon(Icons.logout_rounded, color: Colors.black54, size: 30),
+            title: const Text('Logout', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MyApp(),
+                ),
+              );
+            },
           ),
         ],
       ),
