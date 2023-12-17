@@ -94,7 +94,7 @@ class _PostFormState extends State<PostForm> {
                                         if (_formKey.currentState!.validate()) {
                                           // Kirim ke Django dan tunggu respons
                                           final response = await request.postJson(
-                                              "https://literahub-e08-tk.pbp.cs.ui.ac.id/add_post_flutter/",
+                                              "http://127.0.0.1:8000/forum/add_post_flutter/",
                                               jsonEncode(<String, String>{
                                                 'body': _body,
                                                 'user': ,

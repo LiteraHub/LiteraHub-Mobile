@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:literahub/models/thread.dart';
 import 'package:literahub/widgets/left_drawer.dart';
+import 'package:literahub/screens/forum/thread_form.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +16,7 @@ class ThreadPage extends StatefulWidget {
 class _ThreadPageState extends State<ThreadPage> {
   Future<List<Thread>> fetchThread() async {
     var url = Uri.parse(
-        'https://literahub-e08-tk.pbp.cs.ui.ac.id//forum/json_thread/');
+        'http://127.0.0.1:8000/forum/json_thread/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},
@@ -23,7 +25,7 @@ class _ThreadPageState extends State<ThreadPage> {
     // melakukan decode response menjadi bentuk json
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
-    // melakukan konversi data json menjadi object Product
+    // melakukan konversi data json menjadi object Thread
     List<Thread> list_thread = [];
     for (var d in data) {
       if (d != null) {
@@ -77,8 +79,8 @@ class _ThreadPageState extends State<ThreadPage> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                const SizedBox(height: 10),
-                                Text("${snapshot.data![index].fields.buku}"),
+                                //const SizedBox(height: 10),
+                                //Text("${snapshot.data![index].fields.buku.img}"),
                                 const SizedBox(height: 10),
                                 Text("${snapshot.data![index].fields.date}"),
                                 const SizedBox(height: 10),
@@ -87,6 +89,22 @@ class _ThreadPageState extends State<ThreadPage> {
                           ));
                 }
               }
-            }));
+            }),
+      floatingActionButton: FloatingActionButton.extended(
+        label: const Text('Add Thread'),
+        backgroundColor: Color(0x1B1D39),
+        foregroundColor: Colors.white,
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return ThreadForm();
+            },
+          );
+        },
+      ),
+
+
+    );
   }
 }

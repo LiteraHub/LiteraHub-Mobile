@@ -9,7 +9,7 @@ class PostPage extends StatefulWidget {
 class _PostPageState extends State<PostPage> {
   Future<List<Post>> fetchProduct() async {
     var url = Uri.parse(
-        'https://literahub-e08-tk.pbp.cs.ui.ac.id/forum/json_posts/<int:id>/');
+        'http://127.0.0.1:8000/forum/json_posts/$id/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},

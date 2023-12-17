@@ -31,7 +31,7 @@ class ShopCard extends StatelessWidget {
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
           if (item.name == "Logout") {
             final response =
-                await request.logout("https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/logout/");
+                await request.logout("http://127.0.0.1:8000/auth/logout/");
             String message = response["message"];
             if (response['status']) {
               String uname = response["username"];
@@ -48,7 +48,7 @@ class ShopCard extends StatelessWidget {
               ));
             }
           } else if (item.name == "Forum") {
-              Navigator.push(context,
+              Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => ThreadPage()));
           }
         },

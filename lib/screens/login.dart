@@ -3,6 +3,8 @@ import 'package:literahub/screens/register.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:literahub/providers/user_provider.dart';
+import 'package:http/http.dart';
 
 void main() {
   runApp(const LoginApp());
@@ -37,6 +39,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
+    final userProvider = context.watch<UserProvider>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
@@ -71,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                 // Untuk menyambungkan Android emulator dengan Django pada localhost,
                 // gunakan URL http://10.0.2.2/
                 final response =
-                    await request.login("https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/login/", {
+                    await request.login("http://127.0.0.1:8000/auth/login/", {
                   'username': username,
                   'password': password,
                 });
@@ -79,6 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                 if (request.loggedIn) {
                   String message = response['message'];
                   String uname = response['username'];
+                  userProvider.setUserName(uname);
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => MyHomePage()),

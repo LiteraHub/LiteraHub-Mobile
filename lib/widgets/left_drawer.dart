@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/menu.dart';
+import 'package:literahub/screens/forum/thread_forum.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -105,14 +106,13 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.format_list_bulleted),
             title: const Text('Forum'),
             // Bagian redirection ke Forum
-            // onTap: () {
-            //   // Routing ke InventoriFormPage,
-            //   Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => ThreadPage(),
-            //       ));
-            // },
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ThreadPage(),
+                  ));
+            },
           ),
           ListTile(
             leading: const Icon(Icons.format_list_bulleted),

@@ -1,12 +1,10 @@
-// To parse this JSON data, do
-//
-//     final buku = bukuFromJson(jsonString);
-
 import 'dart:convert';
 
-List<Buku> bukuFromJson(String str) => List<Buku>.from(json.decode(str).map((x) => Buku.fromJson(x)));
+List<Buku> bukuFromJson(String str) =>
+    List<Buku>.from(json.decode(str).map((x) => Buku.fromJson(x)));
 
-String bukuToJson(List<Buku> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String bukuToJson(List<Buku> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Buku {
   Model model;
@@ -68,13 +66,9 @@ class Fields {
   };
 }
 
-enum Model {
-  BUKU_BUKU
-}
+enum Model { BUKU_BUKU }
 
-final modelValues = EnumValues({
-  "buku.buku": Model.BUKU_BUKU
-});
+final modelValues = EnumValues({"buku.buku": Model.BUKU_BUKU});
 
 class EnumValues<T> {
   Map<String, T> map;
