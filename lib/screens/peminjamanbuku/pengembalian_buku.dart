@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/screens/peminjamanbuku/book_detail.dart';
-import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 import 'package:literahub/screens/peminjamanbuku/services/filter.dart';
 import 'package:literahub/widgets/left_drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -87,10 +86,7 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                         padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
                       ),
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const PeminjamanBukuPage()),
-                      );
+                      Navigator.pop(context);
                     },
                     child: const Text('Kembali'),
                     )),
