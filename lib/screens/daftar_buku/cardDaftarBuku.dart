@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:literahub/models/buku.dart';
 import 'package:literahub/screens/daftar_buku/api_services/API_services.dart';
@@ -8,6 +10,7 @@ class CardDaftarBuku extends StatefulWidget {
   const CardDaftarBuku({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CardDaftarBukuState createState() => _CardDaftarBukuState();
 }
 
@@ -120,86 +123,84 @@ class _CardDaftarBukuState extends State<CardDaftarBuku> {
                                 // physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount: snapshot.data!.length,
-                                itemBuilder: (_, index) => Container(
-                                      child: InkWell(
-                                          onTap: () {
-                                            // Memunculkan SnackBar ketika diklik
-                                            // Navigate ke route yang sesuai (tergantung jenis tombol)
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      DetailBukuPage(snapshot
-                                                          .data![index].pk),
-                                                ));
-                                          },
-                                          child: Container(
-                                              padding: const EdgeInsets.only(
-                                                  left: 15, right: 15, top: 10),
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 8,
-                                                      horizontal: 10),
-                                              decoration: BoxDecoration(
-                                                color: const Color.fromARGB(
-                                                    255, 223, 180, 120),
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                              ),
-                                              child: Column(
-                                                  // crossAxisAlignment:
-                                                  //     CrossAxisAlignment
-                                                  //         .stretch,
-                                                  // mainAxisAlignment: MainAxisAlignment.start,
-                                                  // crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                        decoration:
-                                                            const BoxDecoration(
-                                                          color: Colors.amber,
-                                                        ),
-                                                        child: AspectRatio(
-                                                          aspectRatio: 2 / 3,
-                                                          child: Image.network(
-                                                            snapshot
-                                                                .data![index]
-                                                                .fields
-                                                                .img,
-                                                            // width: 500,
-                                                            // height: 300,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        )),
-                                                    Container(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              20),
-                                                      child: Align(
-                                                        alignment:
-                                                            Alignment.center,
-                                                        child: RichText(
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          maxLines: 2,
-                                                          strutStyle:
-                                                              const StrutStyle(
-                                                                  fontSize:
-                                                                      10.0),
-                                                          text: TextSpan(
-                                                            style:
-                                                                const TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 15,
-                                                            ),
-                                                            text:
-                                                                '${snapshot.data![index].fields.title}',
-                                                          ),
-                                                        ),
-                                                      ),
+                                itemBuilder: (_, index) => InkWell(
+                                    onTap: () {
+                                      // Memunculkan SnackBar ketika diklik
+                                      // Navigate ke route yang sesuai (tergantung jenis tombol)
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                DetailBukuPage(snapshot
+                                                    .data![index].pk),
+                                          ));
+                                    },
+                                    child: Container(
+                                        padding: const EdgeInsets.only(
+                                            left: 15, right: 15, top: 10),
+                                        margin:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 8,
+                                                horizontal: 10),
+                                        decoration: BoxDecoration(
+                                          color: const Color.fromARGB(
+                                              255, 223, 180, 120),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        child: Column(
+                                            // crossAxisAlignment:
+                                            //     CrossAxisAlignment
+                                            //         .stretch,
+                                            // mainAxisAlignment: MainAxisAlignment.start,
+                                            // crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                    color: Colors.amber,
+                                                  ),
+                                                  child: AspectRatio(
+                                                    aspectRatio: 2 / 3,
+                                                    child: Image.network(
+                                                      snapshot
+                                                          .data![index]
+                                                          .fields
+                                                          .img,
+                                                      // width: 500,
+                                                      // height: 300,
+                                                      fit: BoxFit.cover,
                                                     ),
-                                                  ]))),
-                                    ));
+                                                  )),
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.all(
+                                                        20),
+                                                child: Align(
+                                                  alignment:
+                                                      Alignment.center,
+                                                  child: RichText(
+                                                    overflow: TextOverflow
+                                                        .ellipsis,
+                                                    maxLines: 2,
+                                                    strutStyle:
+                                                        const StrutStyle(
+                                                            fontSize:
+                                                                10.0),
+                                                    text: TextSpan(
+                                                      style:
+                                                          const TextStyle(
+                                                        color:
+                                                            Colors.black,
+                                                        fontSize: 15,
+                                                      ),
+                                                      text:
+                                                          '${snapshot.data![index].fields.title}',
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ]))));
                           }
                         }
                       })
