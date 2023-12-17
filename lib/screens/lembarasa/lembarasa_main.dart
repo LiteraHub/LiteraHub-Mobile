@@ -57,20 +57,24 @@ class LembarAsaMain extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 40.0),
-                const Text(
-                  'Karya unikmu, dunia digital kami',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black54,
+                const Center(
+                  child: Text(
+                    'Karya unikmu, dunia digital kami',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black54,
+                    ),
                   ),
                 ),
-                const Text(
-                  'Unggah bukumu dan biarkan semua orang terinspirasi',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black54,
+                const Center(
+                  child: Text(
+                    'Unggah bukumu dan biarkan semua orang terinspirasi',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black54,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 50.0),

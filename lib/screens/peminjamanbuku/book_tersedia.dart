@@ -19,14 +19,13 @@ class _BukuTersediaPageState extends State<BukuTersediaPage>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text(
-            'Detail Buku',
-          ),
+        title: const Text(
+          'Pengembalian Buku',
         ),
         foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
       ),
+      backgroundColor: const Color.fromARGB(255, 242,238,227),
       body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,6 +47,7 @@ class _BukuTersediaPageState extends State<BukuTersediaPage>{
                   width: 200,
                   height: 250,
                   child : Container(
+                    alignment: Alignment.center,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0)),
                       color: Color(0xFFC9C5BA), // Set the desired background color
@@ -62,14 +62,42 @@ class _BukuTersediaPageState extends State<BukuTersediaPage>{
             ),
           ),
         ),
+        const SizedBox(height: 20),
+        Text("Title : ${objek.fields.title}", 
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Color.fromARGB(255, 42, 33, 0),
+          fontSize: 15,
+        ),
+        ),
         const SizedBox(height: 10),
-        Text("Title : ${objek.fields.title}", textAlign: TextAlign.center),
+        Text("Isbn : ${objek.fields.isbn}",
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Color.fromARGB(255, 42, 33, 0),
+          fontSize: 15,
+        ), 
+        textAlign: TextAlign.center
+        ),
         const SizedBox(height: 10),
-        Text("Isbn : ${objek.fields.isbn}", textAlign: TextAlign.center),
+        Text("Author : ${objek.fields.author}", 
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Color.fromARGB(255, 42, 33, 0),
+          fontSize: 15,
+        ), 
+        textAlign: TextAlign.center
+        ),
         const SizedBox(height: 10),
-        Text("Author : ${objek.fields.author}", textAlign: TextAlign.center),
-        const SizedBox(height: 10),
-        Text("Year : ${objek.fields.year}", textAlign: TextAlign.center),
+        Text("Year : ${objek.fields.year}", 
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Color.fromARGB(255, 42, 33, 0),
+          fontSize: 15,
+        ),        
+        textAlign: TextAlign.center
+        ),
         const SizedBox(height: 10),
       ],
     ),
