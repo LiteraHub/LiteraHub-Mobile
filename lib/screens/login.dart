@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, library_private_types_in_public_api
+
 import 'package:literahub/screens/menu.dart';
 import 'package:literahub/screens/register.dart';
 import 'package:flutter/material.dart';
@@ -53,18 +55,17 @@ class _LoginPageState extends State<LoginPage> {
           Expanded(
               flex: 7,
               child: Container(
-                  padding: EdgeInsets.fromLTRB(25.0, 50.0, 25.0, 20.0),
+                  padding: const EdgeInsets.fromLTRB(25.0, 50.0, 25.0, 20.0),
                   decoration: BoxDecoration(
                       color: Colors.brown.shade50,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(40.0),
                         topRight: Radius.circular(40.0),
                       )),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        // const SizedBox(height: 20.0),
-                        Text(
+                        const Text(
                           'Get Started',
                           style: TextStyle(
                             fontSize: 30.0,
@@ -83,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                                 color: Colors.black,
                               ),
                               border: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.black,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
@@ -107,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                                 color: Colors.black,
                               ),
                               border: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.black,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
@@ -125,10 +126,6 @@ class _LoginPageState extends State<LoginPage> {
                             String username = _usernameController.text;
                             String password = _passwordController.text;
 
-                            // Cek kredensial
-                            // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
-                            // Untuk menyambungkan Android emulator dengan Django pada localhost,
-                            // gunakan URL http://10.0.2.2/
                             final response = await request
                                 .login("https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/login/", {
                               'username': username,
@@ -183,12 +180,12 @@ class _LoginPageState extends State<LoginPage> {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SignUpScreen()),
+                                      builder: (context) => const SignUpScreen()),
                                 );
                               },
                               child: Container(
-                                  padding: EdgeInsets.all(2),
-                                  child: Text(
+                                  padding: const EdgeInsets.all(2),
+                                  child: const Text(
                                     'Sign up',
                                     style: TextStyle(
                                       color: Colors.brown,

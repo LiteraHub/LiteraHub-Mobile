@@ -189,11 +189,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => LoginPage()),
+                                  builder: (context) => const LoginPage()),
                             );
                           },
                           child: Container(
-                              padding: EdgeInsets.all(2),
+                              padding: const EdgeInsets.all(2),
                               child: const Text(
                                 'Sign in',
                                 style: TextStyle(

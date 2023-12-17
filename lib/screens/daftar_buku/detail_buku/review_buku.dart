@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:literahub/models/review.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -12,6 +14,7 @@ class ReviewAllBooksPage extends StatefulWidget {
   const ReviewAllBooksPage(this.id, {Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api, no_logic_in_create_state
   _ReviewAllBooksPageState createState() => _ReviewAllBooksPageState(id);
 }
 
@@ -143,7 +146,7 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                                     .containsValue(review.fields.username))
                                 .toList();
                           }
-                          if (reviewsToShow.length == 0 || !snapshot.hasData) {
+                          if (reviewsToShow.isEmpty || !snapshot.hasData) {
                             return const Column(
                               children: [
                                 Text(
@@ -204,7 +207,7 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                                                   )),
                                               Container(
                                                   margin:
-                                                      EdgeInsets.only(left: 7),
+                                                      const EdgeInsets.only(left: 7),
                                                   child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment
@@ -219,7 +222,7 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                                                               .brown.shade50,
                                                         ),
                                                         child: Text(
-                                                          '${reviewsToShow[index].fields.username}',
+                                                          reviewsToShow[index].fields.username,
                                                           style: const TextStyle(
                                                             fontSize: 16,
                                                             fontWeight:
@@ -238,7 +241,7 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                                                               .brown.shade50,
                                                         ),
                                                         child: Text(
-                                                          '${reviewsToShow[index].fields.review}',
+                                                          reviewsToShow[index].fields.review,
                                                           style: const TextStyle(
                                                             fontSize: 15,
                                                           ),

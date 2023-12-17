@@ -1,3 +1,5 @@
+// ignore_for_file: no_logic_in_create_state
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -81,12 +83,15 @@ class _ReviewFormPageState extends State<ReviewFormPage> {
                               'book_id': id.toString(),
                             }));
                         if (response['status'] == 'success') {
+                          // ignore: use_build_context_synchronously
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
                             content: Text("Review Anda berhasil disimpan!"),
                           ));
+                          // ignore: use_build_context_synchronously
                           Navigator.pop(context);
                         } else {
+                          // ignore: use_build_context_synchronously
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
                             content:
