@@ -3,6 +3,7 @@ import 'package:literahub/models/buku.dart';
 import 'package:literahub/models/review.dart';
 import 'package:literahub/screens/daftar_buku/detail_buku/review_buku.dart';
 import 'package:literahub/screens/daftar_buku/detail_buku/review_form.dart';
+import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
@@ -169,9 +170,23 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                                     aspectRatio: 7 / 6,
                                     child: Image.network(
                                       '${snapshot.data![index].fields.img}',
-                                      // width: 500,
-                                      // height: 300,
                                       fit: BoxFit.contain,
+                                      errorBuilder: (context, error, StackTrace){
+                                        return Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.brown.shade50,
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                          ),
+                                          child: AspectRatio(
+                                            aspectRatio: 7 / 6,
+                                            child: const Icon(
+                                              Icons.no_photography_outlined,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        );
+                                      },
                                     ),
                                   )),
                               const SizedBox(height: 10),
@@ -298,10 +313,15 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                                           color: Colors.brown.shade50,
                                         ),
                                         child: InkWell(
-                                          onTap: () {},
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => const PeminjamanBukuPage(),
+                                              ),
+                                            );
+                                          },
                                           child: Container(
-                                              // alignment: Alignment.center,
-                                              // width: MediaQuery.of(context).size.width / 3,
                                               margin:
                                                   const EdgeInsets.only(
                                                       top: 20),
@@ -332,10 +352,20 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                                                     alignment: Alignment
                                                         .center,
                                                     child:
-                                                        Image.network(
-                                                      '${snapshot.data![index].fields.img}',
-                                                      height: 33,
-                                                      width: 33,
+                                                      Image.network(
+                                                        '${snapshot.data![index].fields.img}',
+                                                        height: 33,
+                                                        width: 33,
+                                                        errorBuilder: (context,error,StackTrace) {
+                                                          return Container(
+                                                            alignment:Alignment.center,
+                                                            child:Icon( 
+                                                              Icons.no_photography_outlined,
+                                                              color: Colors.white,
+                                                              size: 30.0,
+                                                              ),
+                                                          );
+                                                      },
                                                     ),
                                                   ),
                                                   Container(
