@@ -21,7 +21,7 @@ class _ThreadFormState extends State<ThreadForm> {
   String _date = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
 
   Future<List<String>> listTitle() async {
-    var url = Uri.parse('http://127.0.0.1:8000/forum/json_buku/');
+    var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/forum/json_buku/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},
@@ -46,7 +46,7 @@ class _ThreadFormState extends State<ThreadForm> {
     final userProvider = context.watch<UserProvider>();
 
     return AlertDialog(
-      contentPadding: EdgeInsets.all(16.0),
+      contentPadding: const EdgeInsets.all(16.0),
       backgroundColor: const Color(0xFFCBC6A3),
       title: const Text('Tambah Thread'),
       content: SizedBox(
@@ -78,16 +78,16 @@ class _ThreadFormState extends State<ThreadForm> {
                 return null;
               },
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             FutureBuilder<List<String>>(
               future: listTitle(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 } else if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return Text('No data available');
+                  return const Text('No data available');
                 } else {
                   return DropdownButtonFormField<String>(
                     value: null,
@@ -123,7 +123,7 @@ class _ThreadFormState extends State<ThreadForm> {
           onPressed: () {
             Navigator.pop(context); // Close the dialog
           },
-          child: Text('Cancel'),
+          child: const Text('Cancel'),
         ),
         ElevatedButton(
           onPressed: () async {
@@ -131,18 +131,18 @@ class _ThreadFormState extends State<ThreadForm> {
                 // Use userProvider to get user information
 
                 final response = await request.postJson(
-                  "http://127.0.0.1:8000/forum/add_thread_flutter/",
+                  "https://literahub-e08-tk.pbp.cs.ui.ac.id/forum/add_thread_flutter/",
                   jsonEncode(<String, dynamic>{
                     'name': _name,
                     'buku': _buku,
                     'date': _date,
-                    'user': userProvider.username ?? '',
+                    'user': userProvider.username,
                   }),
                 );
                 Navigator.pop(context); // Close the dialog
               }
           },
-          child: Text('Save'),
+          child: const Text('Save'),
         ),
       ],
     );

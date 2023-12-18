@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:literahub/providers/user_provider.dart';
 import 'package:literahub/welcomeScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';

@@ -13,7 +13,7 @@ class ThreadPage extends StatefulWidget {
 
 class _ThreadPageState extends State<ThreadPage> {
   Future<List<Thread>> fetchThread() async {
-    var url = Uri.parse('http://127.0.0.1:8000/forum/json_thread/');
+    var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/forum/json_thread/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},
@@ -45,7 +45,7 @@ class _ThreadPageState extends State<ThreadPage> {
         ),
       );
     }
-    var url = Uri.parse('http://127.0.0.1:8000/forum/buku_id/$bukuId/');
+    var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/forum/buku_id/$bukuId/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},
@@ -68,8 +68,7 @@ class _ThreadPageState extends State<ThreadPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "${thread.fields.name}",
+            Text(thread.fields.name,
               style: const TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
@@ -123,11 +122,11 @@ class _ThreadPageState extends State<ThreadPage> {
         future: fetchThread(),
         builder: (context, AsyncSnapshot<List<Thread>> threadSnapshot) {
           if (threadSnapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (threadSnapshot.hasError) {
             return Center(child: Text("Error: ${threadSnapshot.error}"));
           } else if (!threadSnapshot.hasData || threadSnapshot.data!.isEmpty) {
-            return Column(
+            return const Column(
               children: [
                 Text(
                   "Tidak ada data thread.",
@@ -143,7 +142,7 @@ class _ThreadPageState extends State<ThreadPage> {
                 future: fetchBuku(threadSnapshot.data![index].fields.buku),
                 builder: (context, AsyncSnapshot<modBuku.Buku?> bukuSnapshot) {
                   if (bukuSnapshot.connectionState == ConnectionState.waiting) {
-                    return CircularProgressIndicator();
+                    return const CircularProgressIndicator();
                   } else if (bukuSnapshot.hasError) {
                     return Text("Error: ${bukuSnapshot.error}");
                   } else {
@@ -158,13 +157,13 @@ class _ThreadPageState extends State<ThreadPage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('+ Thread'),
-        backgroundColor: Color(0x1B1D39),
+        backgroundColor: const Color(0x001b1d39),
         foregroundColor: Colors.white,
         onPressed: () {
           showDialog(
             context: context,
             builder: (BuildContext context) {
-              return ThreadForm();
+              return const ThreadForm();
             },
           );
         },
