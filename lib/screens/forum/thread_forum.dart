@@ -157,7 +157,7 @@ class _ThreadPageState extends State<ThreadPage> {
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
-        label: const Text('Add Thread'),
+        label: const Text('+ Thread'),
         backgroundColor: Color(0x1B1D39),
         foregroundColor: Colors.white,
         onPressed: () {
