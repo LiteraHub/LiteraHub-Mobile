@@ -80,6 +80,9 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
       appBar: AppBar(
         title: const Text(
           'Pengembalian Buku',
+          style: TextStyle(
+          fontWeight: FontWeight.bold,
+          ),
         ),
         foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
@@ -238,10 +241,7 @@ class _PeminjamanFormState extends State<PeminjamanForm> {
                     padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
                   ), 
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const PeminjamanBukuPage()),
-                    );
+                    Navigator.pop(context);
                   },
                   child: const Text('Kembali'),
                   ),

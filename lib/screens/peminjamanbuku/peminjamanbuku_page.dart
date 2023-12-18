@@ -27,7 +27,11 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Peminjaman Buku'),
+        title: const Text('Peminjaman Buku',
+          style: TextStyle(
+          fontWeight: FontWeight.bold,
+          ),
+        ),
         foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
       ),
@@ -70,7 +74,7 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const ReturnBookPage()),
                 );

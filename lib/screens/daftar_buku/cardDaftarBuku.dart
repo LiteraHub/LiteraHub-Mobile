@@ -34,7 +34,13 @@ class _CardDaftarBukuState extends State<CardDaftarBuku> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Daftar Buku'),
+          title: const Text('Daftar Buku',
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),        
+          ),
+          foregroundColor: const Color.fromARGB(255, 42, 33, 0),
+          backgroundColor: const Color(0xFFC9C5BA),
         ),
         drawer: const LeftDrawer(),
         body: ListView(
@@ -143,17 +149,11 @@ class _CardDaftarBukuState extends State<CardDaftarBuku> {
                                                 vertical: 8,
                                                 horizontal: 10),
                                         decoration: BoxDecoration(
-                                          color: const Color.fromARGB(
-                                              255, 223, 180, 120),
+                                          color: Colors.brown,
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
                                         child: Column(
-                                            // crossAxisAlignment:
-                                            //     CrossAxisAlignment
-                                            //         .stretch,
-                                            // mainAxisAlignment: MainAxisAlignment.start,
-                                            // crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                               Container(
                                                   decoration:
@@ -191,7 +191,7 @@ class _CardDaftarBukuState extends State<CardDaftarBuku> {
                                                       style:
                                                           const TextStyle(
                                                         color:
-                                                            Colors.black,
+                                                            Colors.white,
                                                         fontSize: 15,
                                                       ),
                                                       text:

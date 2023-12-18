@@ -5,7 +5,6 @@ class BukuTersediaPage extends StatefulWidget {
   final Buku objekPinjam;
   const BukuTersediaPage(this.objekPinjam, {Key? key}) : super(key: key);
 
-  
   @override
   // ignore: no_logic_in_create_state
   State<BukuTersediaPage> createState() => _BukuTersediaPageState(objekPinjam);
@@ -21,6 +20,9 @@ class _BukuTersediaPageState extends State<BukuTersediaPage>{
       appBar: AppBar(
         title: const Text(
           'Pengembalian Buku',
+          style: TextStyle(
+          fontWeight: FontWeight.bold,
+          ),
         ),
         foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
