@@ -34,28 +34,28 @@ class Post {
 
 class Fields {
   int user;
-  String body;
-  String date;
   int thread;
+  DateTime date;
+  String body;
 
   Fields({
     required this.user,
-    required this.body,
-    required this.date,
     required this.thread,
+    required this.date,
+    required this.body,
   });
 
   factory Fields.fromJson(Map<String, dynamic> json) => Fields(
     user: json["user"],
-    body: json["body"],
-    date: json["date"],
     thread: json["thread"],
+    date: DateTime.parse(json["date"]),
+    body: json["body"],
   );
 
   Map<String, dynamic> toJson() => {
     "user": user,
-    "body": body,
-    "date": date,
     "thread": thread,
+    "date": date.toIso8601String(),
+    "body": body,
   };
 }

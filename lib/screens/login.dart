@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously, library_private_types_in_public_api
 
+import 'package:literahub/providers/user_provider.dart';
 import 'package:literahub/screens/menu.dart';
 import 'package:literahub/screens/register.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-
+    final userProvider = context.watch<UserProvider>();
     return CustomScaffold(
         showBackArrow: true,
         backArrowColor: Colors.white,
@@ -135,6 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                             if (request.loggedIn) {
                               String message = response['message'];
                               String uname = response['username'];
+                              userProvider.setUserName(uname);
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
