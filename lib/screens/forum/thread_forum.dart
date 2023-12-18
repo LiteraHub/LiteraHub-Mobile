@@ -31,7 +31,7 @@ class _ThreadPageState extends State<ThreadPage> {
   }
 
   Future<modBuku.Buku?> fetchBuku(int? bukuId) async {
-    if (bukuId == null) { //default fuku
+    if (bukuId == null) { //default buku
       return modBuku.Buku(
         model: modBuku.Model.BUKU_BUKU,
         pk: 0,

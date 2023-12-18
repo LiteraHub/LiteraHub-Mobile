@@ -1,10 +1,12 @@
+// To parse this JSON data, do
+//
+//     final post = postFromJson(jsonString);
+
 import 'dart:convert';
 
-List<Post> postFromJson(String str) =>
-    List<Post>.from(json.decode(str).map((x) => Post.fromJson(x)));
+List<Post> postFromJson(String str) => List<Post>.from(json.decode(str).map((x) => Post.fromJson(x)));
 
-String postToJson(List<Post> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String postToJson(List<Post> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Post {
   String model;
@@ -30,30 +32,30 @@ class Post {
   };
 }
 
-class Post {
+class Fields {
   int user;
-  dynamic thread;
-  String body;
+  int thread;
   DateTime date;
+  String body;
 
   Fields({
     required this.user,
     required this.thread,
-    required this.body,
     required this.date,
+    required this.body,
   });
 
   factory Fields.fromJson(Map<String, dynamic> json) => Fields(
     user: json["user"],
     thread: json["thread"],
-    body: json["body"],
     date: DateTime.parse(json["date"]),
+    body: json["body"],
   );
 
   Map<String, dynamic> toJson() => {
     "user": user,
     "thread": thread,
-    "body": body,
     "date": date.toIso8601String(),
+    "body": body,
   };
 }
