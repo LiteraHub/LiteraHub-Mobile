@@ -2,15 +2,19 @@
 
 [![Build status](https://build.appcenter.ms/v0.1/apps/644f8b00-be2d-4141-88fc-d5146e181d5e/branches/main/badge)](https://appcenter.ms)
 
-## [__LiteraHub__](install.appcenter.ms/orgs/literahub/apps/literahub/distribution_groups/public)
+## __LiteraHub 📖__
+
+File APK dapat diunduh pada [link ini](https://install.appcenter.ms/orgs/literahub/apps/literahub/distribution_groups/public)
+
+
 
 **Anggota kelompok:**
 
 1. Jeslyn Theodora - 2206082026
 
-2. Puti Raissa - 2206830391
+2. Mohammad Fauzan Aditya - 2206827831
 3. Muhammad Rafli Mahesa - 2206828140
-4. Mohammad Fauzan Aditya - 2206827831
+4. Puti Raissa - 2206830391
 5. Rena Martha Ulima - 2206818783
 
 **Cerita aplikasi yang diajukan serta manfaatnya**
@@ -46,14 +50,11 @@ _Role_ atau peran pengguna beserta deskripsinya (karena bisa saja lebih dari sat
 
 - Pengguna tidak login
 
-  Pengguna yang hanya mengunjungi aplikasi LiteraHub tanpa melakukan registrasi akun. Pengguna ini memiliki akses:
-
-  - Dapat mengakses daftar buku
-  - Dapat melihat rekomendasi buku
+  Pengguna yang baru mengakses aplikasi LiteraHub Mobile dan belum melakukan login. Untuk dapat mengakses semua fitur, pengguna diwajibkan membuat akun dengan langkah-langkah registrasi.
 
 - Pengguna login
 
-  Pengguna yang telah melakukan registrasi dan memiliki akun LiteraHub. Pengguna ini memiliki akses:
+  Pengguna yang telah melakukan registrasi dan mengakses aplikasi LiteraHub dengan akunnya. Pengguna ini memiliki akses:
 
   - Dapat mengakses daftar buku
   - Dapat melihat rekomendasi buku
@@ -63,6 +64,7 @@ _Role_ atau peran pengguna beserta deskripsinya (karena bisa saja lebih dari sat
   - Dapat _checkout_/pinjam buku
   - Dapat mengisi dan menghapus review buku
 
+<br>
 Alur pengintegrasian dengan web service untuk terhubung dengan aplikasi web yang sudah dibuat saat Proyek Tengah Semester
 
 ### Modul LembarAsa:
