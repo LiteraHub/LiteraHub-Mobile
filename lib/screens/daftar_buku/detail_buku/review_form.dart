@@ -27,15 +27,15 @@ class _ReviewFormPageState extends State<ReviewFormPage> {
     final request = context.watch<CookieRequest>();
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Center(
-            child: Text(
-              'Form Tambah Review',
-            ),
-          ),
-          backgroundColor: Colors.indigo,
-          foregroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text('Form Tambah Review',
+          style: TextStyle(
+          fontWeight: FontWeight.bold,
+          ), 
         ),
+        foregroundColor: const Color.fromARGB(255, 42, 33, 0),
+        backgroundColor: const Color(0xFFC9C5BA),
+      ),
         body: Form(
           key: _formKey,
           child: SingleChildScrollView(
@@ -71,9 +71,14 @@ class _ReviewFormPageState extends State<ReviewFormPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.indigo),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.brown,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
+                    padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
+                  ), 
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         final response = await request.postJson(
