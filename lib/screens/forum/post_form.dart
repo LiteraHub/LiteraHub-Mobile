@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:literahub/models/thread.dart';
 import 'package:literahub/widgets/left_drawer.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class PostForm extends StatefulWidget {
   const PostForm({super.key});
@@ -13,8 +15,8 @@ class PostForm extends StatefulWidget {
 class _PostFormState extends State<PostForm> {
   final _formKey = GlobalKey<FormState>();
   String _body = "";
-  int _thread = 0;
-  string _date = ""
+  int thread = 0;
+  String _date = "";
   String _user = "";
   @override
   Widget build(BuildContext context) {

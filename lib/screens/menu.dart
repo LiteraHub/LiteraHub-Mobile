@@ -6,7 +6,7 @@ class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
   final List<ShopItem> items = [
     ShopItem("LembarAsa", Icons.add_shopping_cart),
-    ShopItem("Pinjam Buku", Icons.checklist),
+    ShopItem("Pinjam Buku", Icons.check_box),
     ShopItem("Daftar Buku", Icons.add_shopping_cart),
     ShopItem("Reservasi Tempat", Icons.chair_alt_sharp),
     ShopItem("Forum", Icons.format_list_bulleted),

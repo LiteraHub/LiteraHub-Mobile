@@ -1,12 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:literahub/models/thread.dart';
-import 'package:literahub/screens/forum/thread_forum.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:literahub/providers/user_provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:literahub/models/buku.dart' as modBuku;
 
 class ThreadForm extends StatefulWidget {
   const ThreadForm({super.key});
@@ -18,18 +17,27 @@ class ThreadForm extends StatefulWidget {
 class _ThreadFormState extends State<ThreadForm> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
-  dynamic _buku;
+  String _buku = "";
   String _date = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
 
-  Future<Map<String, dynamic>> getBukuByTitle(String title) async {
-    final response =
-    await http.get(Uri.parse('http://127.0.0.1:8000/forum/buku_title/$title/'));
+  Future<List<String>> listTitle() async {
+    var url = Uri.parse('http://127.0.0.1:8000/forum/json_buku/');
+    var response = await http.get(
+      url,
+      headers: {"Content-Type": "application/json"},
+    );
 
-    if (response.statusCode == 200) {
-      return jsonDecode(response.body);
-    } else {
-      throw Exception('Failed to load book');
+    // melakukan decode response menjadi bentuk json
+    var data = jsonDecode(utf8.decode(response.bodyBytes));
+
+    // ambil title
+    List<String> title_list = [];
+    for (var d in data) {
+      if (d != null) {
+        title_list.add(modBuku.Buku.fromJson(d).fields.title);
+      }
     }
+    return title_list;
   }
 
   @override
@@ -38,51 +46,77 @@ class _ThreadFormState extends State<ThreadForm> {
     final userProvider = context.watch<UserProvider>();
 
     return AlertDialog(
-      title: const Text('Add Thread'),
-      content: SingleChildScrollView(
+      contentPadding: EdgeInsets.all(16.0),
+      backgroundColor: const Color(0xFFCBC6A3),
+      title: const Text('Tambah Thread'),
+      content: SizedBox(
+        height: 200.0,
+        width: 1000.0,
+        child: SingleChildScrollView(
         child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: "Thread Title",
-                  labelText: "Thread Title",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextFormField(
+              decoration: InputDecoration(
+                hintText: "Judul Thread",
+                labelText: "Judul Thread",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5.0),
                 ),
-                onChanged: (String? value) {
-                  setState(() {
-                    _name = value!;
-                  });
-                },
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return "Please enter a title for the thread.";
-                  }
-                  return null;
-                },
               ),
-              SizedBox(height: 16.0),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: "Related Book",
-                  labelText: "Related Book (not mandatory)",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                ),
-                onChanged: (String? value) {
-                  setState(() {
-                    _buku = value!;
-                  });
-                },
-              ),
-            ],
-          ),
+              onChanged: (String? value) {
+                setState(() {
+                  _name = value!;
+                });
+              },
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return "Masukkan judul untuk thread.";
+                }
+                return null;
+              },
+            ),
+            SizedBox(height: 16.0),
+            FutureBuilder<List<String>>(
+              future: listTitle(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return Text('No data available');
+                } else {
+                  return DropdownButtonFormField<String>(
+                    value: null,
+                    items: snapshot.data!.map((buku) {
+                      return DropdownMenuItem<String>(
+                        value: buku,
+                        child: Text(buku),
+                      );
+                    }).toList(),
+                    onChanged: (String? value) {
+                      setState(() {
+                        _buku = value ?? "-";
+                      });
+                    },
+                    decoration: InputDecoration(
+                      hintText: "Buku Diskusi?",
+                      labelText: "Buku Diskusi?",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
+          ],
         ),
+      ),
+    ),
       ),
       actions: [
         ElevatedButton(
@@ -93,20 +127,20 @@ class _ThreadFormState extends State<ThreadForm> {
         ),
         ElevatedButton(
           onPressed: () async {
-            if (_formKey.currentState!.validate()) {
-              // Use userProvider to get user information
-              final response =
-                  await request.postJson(
-                "http://127.0.0.1:8000/forum/add_thread_flutter/",
-                jsonEncode(<String, String>{
-                  'name': _name,
-                  'buku': _buku,
-                  'date': _date,
-                  'user': userProvider.username ?? '',
-                }),
-              );
-              Navigator.pop(context); // Close the dialog
-            }
+              if (_formKey.currentState!.validate()) {
+                // Use userProvider to get user information
+
+                final response = await request.postJson(
+                  "http://127.0.0.1:8000/forum/add_thread_flutter/",
+                  jsonEncode(<String, dynamic>{
+                    'name': _name,
+                    'buku': _buku,
+                    'date': _date,
+                    'user': userProvider.username ?? '',
+                  }),
+                );
+                Navigator.pop(context); // Close the dialog
+              }
           },
           child: Text('Save'),
         ),
