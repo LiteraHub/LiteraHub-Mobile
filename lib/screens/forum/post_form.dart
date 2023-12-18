@@ -137,6 +137,7 @@ class _PostFormState extends State<PostForm> {
                 ]
             ),
           ),
-        ));
+        )
+    );
   }
 }

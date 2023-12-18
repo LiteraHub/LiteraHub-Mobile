@@ -77,9 +77,12 @@ class _PostPageState extends State<PostPage> {
                             Text("${snapshot.data![index].fields.date}"),
                           ],
                         ),
-                      ));
+                      )
+                  );
                 }
               }
-            }));
+            }
+            )
+    );
   }
 }

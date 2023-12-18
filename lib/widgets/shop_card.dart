@@ -6,6 +6,7 @@ import 'package:literahub/screens/daftar_buku/cardDaftarBuku.dart';
 import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
 import 'package:literahub/screens/reservasi/reservasi_main.dart';
 import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
+import 'package:literahub/screens/forum/thread_forum.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
@@ -37,15 +38,8 @@ class ShopCard extends StatelessWidget {
               content: Text("Kamu telah menekan tombol ${item.name}!"),
             ));
           if (item.name == "Logout") {
-<<<<<<< HEAD
             final response = await request.logout(
               "https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/logout/");
-=======
-            final response =
-                await request.logout("http://127.0.0.1:8000/auth/logout/");
-          //  final response = await request.logout(
-               // "https://literahub-e08-tk.pbp.cs.ui.ac.id/auth/logout/");
->>>>>>> b41a541a8c080ed8237032d0bd8bb6ffa04e4a47
             String message = response["message"];
             if (response['status']) {
               String uname = response["username"];
@@ -66,17 +60,8 @@ class ShopCard extends StatelessWidget {
               );
             }
           } else if (item.name == "Forum") {
-<<<<<<< HEAD
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => ThreadPage()
-            //   )
-            // );
-=======
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => ThreadPage()));
->>>>>>> b41a541a8c080ed8237032d0bd8bb6ffa04e4a47
           } else if (item.name == "Reservasi Tempat") {
             Navigator.push(
               context,

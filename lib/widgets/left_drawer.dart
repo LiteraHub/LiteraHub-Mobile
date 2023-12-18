@@ -56,15 +56,9 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-<<<<<<< HEAD
             contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             leading: const Icon(Icons.mode_edit_outline_rounded, color: Colors.black54, size: 30),
             title: const Text('LembarAsa', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
-=======
-            leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Pinjam Buku'),
-            // Bagian redirection ke Pinjam Buku
->>>>>>> b41a541a8c080ed8237032d0bd8bb6ffa04e4a47
             onTap: () {
               Navigator.push(
                 context,
@@ -75,7 +69,6 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-<<<<<<< HEAD
             contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             leading: const Icon(Icons.bookmark_add_rounded, color: Colors.black54, size: 30),
             title: const Text('Pinjam Buku', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
@@ -86,17 +79,6 @@ class LeftDrawer extends StatelessWidget {
                   builder: (context) => const PeminjamanBukuPage(),
                 ),
               );
-=======
-            leading: Icon(Icons.add_shopping_cart),
-            title: Text('Forum'),
-            // Bagian redirection ke Forum
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ThreadPage(),
-                  ));
->>>>>>> b41a541a8c080ed8237032d0bd8bb6ffa04e4a47
             },
           ),
           ListTile(
