@@ -1,78 +1,15 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:literahub/models/buku.dart';
-import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
 import 'package:literahub/widgets/left_drawer.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
-// ignore: depend_on_referenced_packages
-import 'package:http/http.dart' as http;
 
 class PeminjamanForm extends StatefulWidget {
-  const PeminjamanForm({super.key});
+  const PeminjamanForm({Key? key}) : super(key: key);
 
   @override
   State<PeminjamanForm> createState() => _PeminjamanFormState();
 }
 
-class _PeminjamanFormState extends State<PeminjamanForm> {
-  final _formKey = GlobalKey<FormState>();
-  String _namaPeminjam = "";
-  String _judulBuku = "";
-  String _selectedDate = "";
-  String? _kepilih;
-  String? selectedValue;
-  late Future<List<String>> listProduct;
-
-  @override
-  void initState() {
-    super.initState();
-    // Memanggil fungsi fetchProduct di initState
-    listProduct = fetchProduct();
-  }
-
-  Future<List<String>> fetchProduct() async {
-    var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/peminjamanbuku/get-buku-item/');
-    var response = await http.get(
-      url,
-      headers: {"Content-Type": "application/json"},
-    );
-
-    // melakukan decode response menjadi bentuk json
-    var data = jsonDecode(utf8.decode(response.bodyBytes));
-
-    // melakukan konversi data json menjadi object Product
-    List<String> productList = [];
-    for (var d in data) {
-      if (d != null) {
-        Buku buku = Buku.fromJson(d);
-        productList.add(buku.fields.title);
-      }
-    }
-
-    // Pastikan nilai awal selectedValue adalah unik
-    selectedValue = productList.isNotEmpty ? productList[0] : null;
-
-    return productList;
-  }
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2025),
-    );
-    if (picked != null) {
-      setState(() {
-        _kepilih = DateFormat('dd/MM/yyyy').format(picked);
-        _selectedDate = DateFormat('yyyy-MM-dd').format(picked);
-      });
-    }
-  }
-
+class _PeminjamanFormState extends State<PeminjamanForm>{
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();

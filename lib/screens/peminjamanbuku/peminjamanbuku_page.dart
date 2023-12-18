@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:literahub/screens/peminjamanbuku/book_tersedia.dart';
-import 'package:literahub/screens/peminjamanbuku/pengembalian_buku.dart';
-import 'package:literahub/screens/peminjamanbuku/services/filter.dart';
 import 'package:literahub/widgets/left_drawer.dart';
-import 'package:literahub/screens/peminjamanbuku/form_peminjaman.dart';
 
 class PeminjamanBukuPage extends StatefulWidget {
   const PeminjamanBukuPage({Key? key}) : super(key: key);
@@ -32,8 +28,8 @@ class _PeminjamanBukuPageState extends State<PeminjamanBukuPage> {
           fontWeight: FontWeight.bold,
           ),
         ),
-        foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
+        foregroundColor: Colors.black,
       ),
       backgroundColor: const Color.fromARGB(255, 242, 238, 227),
       drawer: const LeftDrawer(),

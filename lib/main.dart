@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:literahub/welcomeScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'providers/user_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,11 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      create: (_) {
-        CookieRequest request = CookieRequest();
-        return request;
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()), //for saving user
+        Provider(
+          create: (_) {
+            CookieRequest request = CookieRequest();
+            return request;
+          },
+        ),
+      ],
       child: MaterialApp(
         title: 'Flutter App',
         theme: ThemeData(

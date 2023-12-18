@@ -5,6 +5,8 @@ import 'package:literahub/screens/register.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:literahub/providers/user_provider.dart';
+import 'package:http/http.dart';
 
 import '../widgets/customScaffold.dart';
 
@@ -41,6 +43,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
+    final userProvider = context.watch<UserProvider>();
 
     return CustomScaffold(
         showBackArrow: true,
@@ -135,6 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                             if (request.loggedIn) {
                               String message = response['message'];
                               String uname = response['username'];
+                              userProvider.setUserName(uname);
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(

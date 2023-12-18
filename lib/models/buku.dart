@@ -1,12 +1,10 @@
-// To parse this JSON data, do
-//
-//     final buku = bukuFromJson(jsonString);
-
 import 'dart:convert';
 
-List<Buku> bukuFromJson(String str) => List<Buku>.from(json.decode(str).map((x) => Buku.fromJson(x)));
+List<Buku> bukuFromJson(String str) =>
+    List<Buku>.from(json.decode(str).map((x) => Buku.fromJson(x)));
 
-String bukuToJson(List<Buku> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String bukuToJson(List<Buku> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Buku {
     Model model;
@@ -30,6 +28,26 @@ class Buku {
         "pk": pk,
         "fields": fields.toJson(),
     };
+
+    @override
+    bool operator ==(Object other) {
+        return identical(this, other) ||
+            (other is Buku &&
+                other.fields.isbn == fields.isbn &&
+                other.fields.title == fields.title &&
+                other.fields.author == fields.author &&
+                other.fields.year == fields.year &&
+                other.fields.img == fields.img);
+    }
+
+    @override
+    int get hashCode {
+        return fields.isbn.hashCode ^
+        fields.title.hashCode ^
+        fields.author.hashCode ^
+        fields.year.hashCode ^
+        fields.img.hashCode;
+    }
 }
 
 class Fields {
@@ -69,7 +87,6 @@ class Fields {
 }
 
 enum Model {
-    // ignore: constant_identifier_names
     BUKU_BUKU
 }
 
