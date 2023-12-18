@@ -163,6 +163,10 @@ class _LoginPageState extends State<LoginPage> {
                               );
                             }
                           },
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.black, 
+                            backgroundColor: Colors.transparent,
+                          ),
                           child: const Text('Login'),
                         ),
                         const SizedBox(height: 20.0),
