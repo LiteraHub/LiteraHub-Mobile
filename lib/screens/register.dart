@@ -172,6 +172,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           );
                         }
                       },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.black, 
+                        backgroundColor: Colors.transparent,
+                      ),
                       child: const Text('Register'),
                     ),
                     const SizedBox(height: 10.0),
