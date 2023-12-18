@@ -107,15 +107,15 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
 
     return Scaffold(
         appBar: AppBar(
-            title: const Center(
-          child: Text(
-            'LiteraHub',
+          title: const Text(
+            'Detail Buku',
             style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.bold,
             ),
           ),
-        )),
+          foregroundColor: const Color.fromARGB(255, 42, 33, 0),
+          backgroundColor: const Color(0xFFC9C5BA),
+        ),
         body: ListView(children: [
           Container(
               //Temporary height
