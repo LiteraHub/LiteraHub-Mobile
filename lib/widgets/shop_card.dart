@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:literahub/main.dart';
 import 'package:literahub/screens/daftar_buku/cardDaftarBuku.dart';
+import 'package:literahub/screens/forum/thread_forum.dart';
 import 'package:literahub/screens/lembarasa/lembarasa_main.dart';
 import 'package:literahub/screens/reservasi/reservasi_main.dart';
 import 'package:literahub/screens/peminjamanbuku/peminjamanbuku_page.dart';
@@ -59,12 +60,12 @@ class ShopCard extends StatelessWidget {
               );
             }
           } else if (item.name == "Forum") {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => ThreadPage()
-            //   )
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ThreadPage()
+              )
+            );
           } else if (item.name == "Reservasi Tempat") {
             Navigator.push(
               context,
