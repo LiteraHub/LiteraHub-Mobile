@@ -38,6 +38,9 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
         appBar: AppBar(
           title: const Text(
             'Halaman Pengembalian',
+            style: TextStyle(
+            fontWeight: FontWeight.bold,
+            ),
           ),
           backgroundColor: const Color(0xFFC9C5BA),
           foregroundColor: const Color.fromARGB(255, 42, 33, 0),

@@ -39,6 +39,7 @@ class Filter{
   }
 
   Future<List<PeminjamanBuku>> getFilteredPeminjaman({CookieRequest? request, String? search}) async {
+    filtered_peminjaman.clear();
     final response = await request?.get("https://literahub-e08-tk.pbp.cs.ui.ac.id/peminjamanbuku/get-pinjem/");
     for (var d in response) {
         if (d != null) {

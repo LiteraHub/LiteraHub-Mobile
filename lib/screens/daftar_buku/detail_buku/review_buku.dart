@@ -67,15 +67,14 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
 
     return Scaffold(
         appBar: AppBar(
-            title: const Center(
-          child: Text(
-            'Review Buku',
+          title: const Text('Review Buku',
             style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.bold,
             ),
           ),
-        )),
+          foregroundColor: const Color.fromARGB(255, 42, 33, 0),
+          backgroundColor: const Color(0xFFC9C5BA),
+        ),
         body: ListView(children: [
           Container(
               decoration: const BoxDecoration(
@@ -167,19 +166,10 @@ class _ReviewAllBooksPageState extends State<ReviewAllBooksPage> {
                                     decoration: const BoxDecoration(
                                       color: Colors.white,
                                     ),
-                                    // padding: const EdgeInsets.only(
-                                    //     left: 5, right: 5, top: 5),
-                                    // margin: const EdgeInsets.symmetric(
-                                    //     vertical: 8, horizontal: 8),
                                     child: Column(children: [
                                       //Reiview buku per satu orang
                                       Container(
                                           alignment: Alignment.topLeft,
-                                          // padding: const EdgeInsets.symmetric(
-                                          //     vertical:
-                                          //         10,
-                                          //     horizontal:
-                                          //         10),
                                           padding: const EdgeInsets.symmetric(
                                               vertical: 10, horizontal: 10),
                                           margin:
