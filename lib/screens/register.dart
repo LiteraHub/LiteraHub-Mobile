@@ -57,7 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 17.0),
+                    const SizedBox(height: 15.0),
                     TextField(
                       controller: _usernameController,
                       decoration: InputDecoration(
@@ -79,7 +79,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             borderRadius: BorderRadius.circular(10),
                           )),
                     ),
-                    const SizedBox(height: 17.0),
+                    const SizedBox(height: 15.0),
                     TextField(
                       obscureText: true,
                       obscuringCharacter: '*',
@@ -103,7 +103,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             borderRadius: BorderRadius.circular(10),
                           )),
                     ),
-                    const SizedBox(height: 17.0),
+                    const SizedBox(height: 15.0),
                     TextField(
                       obscureText: true,
                       obscuringCharacter: '*',
@@ -127,7 +127,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             borderRadius: BorderRadius.circular(10),
                           )),
                     ),
-                    const SizedBox(height: 20.0),
+                    const SizedBox(height: 10.0),
                     ElevatedButton(
                       onPressed: () async {
                         String username = _usernameController.text;
@@ -178,7 +178,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       child: const Text('Register'),
                     ),
-                    const SizedBox(height: 10.0),
+                    const SizedBox(height: 7.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

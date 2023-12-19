@@ -164,12 +164,24 @@ class _CardDaftarBukuState extends State<CardDaftarBuku> {
                                                     aspectRatio: 2 / 3,
                                                     child: Image.network(
                                                       snapshot
-                                                          .data![index]
-                                                          .fields
-                                                          .img,
-                                                      // width: 500,
-                                                      // height: 300,
+                                                          .data![index].fields.img,
                                                       fit: BoxFit.cover,
+                                                      errorBuilder: (context, error,StackTrace) {
+                                                        return Container(
+                                                          decoration:
+                                                              const BoxDecoration(
+                                                            color: Colors.amber,
+                                                          ),
+                                                          child: AspectRatio(
+                                                            aspectRatio: 2 / 3,
+                                                            child: const Icon(
+                                                              Icons
+                                                                  .no_photography_outlined,
+                                                              color: Colors.white,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
                                                     ),
                                                   )),
                                               Container(
