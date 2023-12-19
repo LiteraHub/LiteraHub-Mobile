@@ -99,35 +99,39 @@ class _ThreadPageState extends State<ThreadPage> {
                 ),
                 const SizedBox(height: 10),
                 // If no book cover, display only the container
-            Container(
-              width: 100,
-              height: 150,
-              child: (() {
-                try {
-                  return Image.network(
-                    buku?.fields.img ?? 'images/default_image.jpg',
-                    loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                      if (loadingProgress == null) {
-                        return child;
-                      } else {
-                        return Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1)
-                                : null,
-                          ),
-                        );
-                      }
-                    },
-                  );
-                } catch (e) {
-                  // Log the error if needed
-                  print('Error loading image: $e');
-                  // Return a fallback image
-                  return Image.asset('images/default_image.jpg');
-                }
-              })()
-            ),
+              Container(
+                width: 100,
+                height: 150,
+                child: (() {
+                  try {
+                    return Image.network(
+                      buku?.fields.img ?? 'images/default_image.jpg',
+                      loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) {
+                          return child;
+                        } else {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1)
+                                  : null,
+                            ),
+                          );
+                        }
+                      },
+                    );
+                  } catch (e) {
+                    // Log the error if needed
+                    print('Error loading image: $e');
+                    // Return a fallback image
+                    return Container(
+                      width: 100,
+                      height: 150,
+                      color: Color(0xA6CBECEB),
+                    );
+                  }
+                })()
+              ),
                 const SizedBox(height: 10),
                 Text("${thread.fields.date}"),
                 const SizedBox(height: 10),

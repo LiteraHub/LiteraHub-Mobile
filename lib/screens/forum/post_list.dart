@@ -37,9 +37,16 @@ class _PostPageState extends State<PostPage> {
     return listPost;
   }
 
+  Future<String> fetchUsername(int userId) async {
+    var url = Uri.parse('http://127.0.0.1:8000/usernames/$userId/');
+    var response = await http.get(url);
+    var data = jsonDecode(utf8.decode(response.bodyBytes));
+    return data['username'];
+  }
+
   @override
   Widget build(BuildContext context) {
-    final userProvider = context.watch<UserProvider>();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.thread.fields.name),
@@ -65,29 +72,40 @@ class _PostPageState extends State<PostPage> {
             } else {
               return ListView.builder(
                 itemCount: snapshot.data!.length,
-                itemBuilder: (_, index) => Container(
-                  margin: const EdgeInsets.symmetric(
-                      horizontal: 16, vertical: 12),
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height:10),
-                      Text("${snapshot.data![index].fields.user}"), //how do I make this show the username
-                      Text(
-                        "${snapshot.data![index].fields.body}",
-                        style: const TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
+                itemBuilder: (_, index) => FutureBuilder<String>(
+                  future: fetchUsername(snapshot.data![index].fields.user),
+                  builder: (context, usernameSnapshot) {
+                    if (usernameSnapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator(); // or any loading indicator
+                    } else if (usernameSnapshot.hasError) {
+                      return Text('Error fetching username');
+                    } else {
+                      return Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 10),
+                            Text(usernameSnapshot.data ?? 'Unknown User'),
+                            Text(
+                              "${snapshot.data![index].fields.body}",
+                              style: const TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text("${snapshot.data![index].fields.date}"),
+                          ],
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text("${snapshot.data![index].fields.date}"),
-                    ],
-                  ),
+                      );
+                    }
+                  },
                 ),
               );
+
             }
           }
         },

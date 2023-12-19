@@ -55,70 +55,73 @@ class _ThreadFormState extends State<ThreadForm> {
         height: 200.0,
         width: 1000.0,
         child: SingleChildScrollView(
-        child: Form(
-        key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: "Judul Thread",
-                labelText: "Judul Thread",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-              ),
-              onChanged: (String? value) {
-                setState(() {
-                  _name = value!;
-                });
-              },
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return "Masukkan judul untuk thread.";
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 16.0),
-            FutureBuilder<List<String>>(
-              future: listTitle(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator();
-                } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return const Text('No data available');
-                } else {
-                  return DropdownButtonFormField<String>(
-                    value: null,
-                    items: snapshot.data!.map((buku) {
-                      return DropdownMenuItem<String>(
-                        value: buku,
-                        child: Text(buku),
-                      );
-                    }).toList(),
-                    onChanged: (String? value) {
-                      setState(() {
-                        _buku = value ?? "-";
-                      });
-                    },
-                    decoration: InputDecoration(
-                      hintText: "Buku Diskusi?",
-                      labelText: "Buku Diskusi?",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(
+                    hintText: "Judul Thread",
+                    labelText: "Judul Thread",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
                     ),
-                  );
-                }
-              },
+                  ),
+                  onChanged: (String? value) {
+                    setState(() {
+                      _name = value!;
+                    });
+                  },
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Masukkan judul untuk thread.";
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 16.0),
+                FutureBuilder<List<String>>(
+                  future: listTitle(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                      return const Text('No data available');
+                    } else {
+                      return Container(
+                        height: 50.0, // Set a fixed height or adjust as needed
+                        child: DropdownButtonFormField<String>(
+                          value: null,
+                          items: snapshot.data!.map((buku) {
+                            return DropdownMenuItem<String>(
+                              value: buku,
+                              child: Text(buku),
+                            );
+                          }).toList(),
+                          onChanged: (String? value) {
+                            setState(() {
+                              _buku = value ?? "-";
+                            });
+                          },
+                          decoration: InputDecoration(
+                            hintText: "Buku Diskusi?",
+                            labelText: "Buku Diskusi?",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
-    ),
       ),
       actions: [
         ElevatedButton(

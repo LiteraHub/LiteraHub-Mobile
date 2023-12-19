@@ -9,6 +9,7 @@ import 'package:literahub/models/thread.dart';
 class PostForm extends StatefulWidget {
   final Thread thread;
   final Key? key;
+
   PostForm({required this.thread, this.key}) : super(key: key);
 
   @override
@@ -30,7 +31,8 @@ class _PostFormState extends State<PostForm> {
 
     return AlertDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-      title: Text("+ Post"),
+      backgroundColor: const Color(0xFFCBC6A3),
+      title: Text("Buat Post"),
       content: SizedBox(
         height: 300,
         width: 600,
@@ -80,7 +82,7 @@ class _PostFormState extends State<PostForm> {
             if (_formKey.currentState!.validate()) {
               // Use userProvider to get user information
               final response = await request.postJson(
-                "http://127.0.0.1:8000/forum/add_post_flutter/$_thread/",
+                "http://127.0.0.1:8000/forum/add_post_flutter/",
                 jsonEncode(<String, dynamic>{
                   'body': _body,
                   'thread': _thread,
