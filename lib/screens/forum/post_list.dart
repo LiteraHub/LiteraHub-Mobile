@@ -18,7 +18,7 @@ class PostPage extends StatefulWidget {
   _PostPageState createState() => _PostPageState();
 }
 
-class _PostPageState extends State<PostPage> {
+class _PostPageState extends State<PostPage> { //get posts filtered by thread
   Future<List<Post>> fetchPosts() async {
     var url = Uri.parse('http://127.0.0.1:8000/forum/json_posts/${widget.thread.pk}/');
     var response = await http.get(
@@ -37,7 +37,7 @@ class _PostPageState extends State<PostPage> {
     return listPost;
   }
 
-  Future<String> fetchUsername(int userId) async {
+  Future<String> fetchUsername(int userId) async { //get usernames
     var url = Uri.parse('http://127.0.0.1:8000/usernames/$userId/');
     var response = await http.get(url);
     var data = jsonDecode(utf8.decode(response.bodyBytes));
@@ -88,7 +88,7 @@ class _PostPageState extends State<PostPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const SizedBox(height: 10),
-                            Text(usernameSnapshot.data ?? 'Unknown User'),
+                            Text(usernameSnapshot.data ?? 'User tidak diketahui'),
                             Text(
                               "${snapshot.data![index].fields.body}",
                               style: const TextStyle(
@@ -105,12 +105,11 @@ class _PostPageState extends State<PostPage> {
                   },
                 ),
               );
-
             }
           }
         },
       ),
-        floatingActionButton: FloatingActionButton.extended(
+        floatingActionButton: FloatingActionButton.extended( //add post button
           label: const Text('+ Post'),
           backgroundColor: const Color(0x1B1D39),
           foregroundColor: Colors.white,

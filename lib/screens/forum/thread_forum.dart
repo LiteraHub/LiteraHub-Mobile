@@ -15,7 +15,7 @@ class ThreadPage extends StatefulWidget {
 }
 
 class _ThreadPageState extends State<ThreadPage> {
-  Future<List<Thread>> fetchThread() async {
+  Future<List<Thread>> fetchThread() async { //Getting threads
     var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/forum/json_thread/');
     var response = await http.get(
       url,
@@ -33,7 +33,7 @@ class _ThreadPageState extends State<ThreadPage> {
     return listThread;
   }
 
-  Future<modBuku.Buku?> fetchBuku(int? bukuId) async {
+  Future<modBuku.Buku?> fetchBuku(int? bukuId) async { //Getting books based on ids in thread
     modBuku.Buku defaultBuku = modBuku.Buku(
       model: modBuku.Model.BUKU_BUKU,
       pk: 0,
@@ -59,11 +59,10 @@ class _ThreadPageState extends State<ThreadPage> {
     if (response.statusCode == 200) {
       var data = jsonDecode(utf8.decode(response.bodyBytes));
 
-      // Check if data is a list, take the first element
       if (data is List && data.isNotEmpty) {
         return modBuku.Buku.fromJson(data[0]);
       } else {
-        // Handle the case where the response is not as expected
+        // if error, use the default
         return defaultBuku;
       }
     } else {
@@ -98,7 +97,6 @@ class _ThreadPageState extends State<ThreadPage> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                // If no book cover, display only the container
               Container(
                 width: 100,
                 height: 150,
@@ -168,7 +166,7 @@ class _ThreadPageState extends State<ThreadPage> {
               ],
             );
           } else {
-            return ListView.builder(
+            return ListView.builder( //getting the book
               itemCount: threadSnapshot.data!.length,
               itemBuilder: (_, index) => FutureBuilder<modBuku.Buku?>(
                 future: fetchBuku(threadSnapshot.data![index].fields.buku),
@@ -187,7 +185,7 @@ class _ThreadPageState extends State<ThreadPage> {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton.extended(
+      floatingActionButton: FloatingActionButton.extended( //add thread button
         label: const Text('+ Thread'),
         backgroundColor: const Color(0x1B1D39),
         foregroundColor: Colors.white,

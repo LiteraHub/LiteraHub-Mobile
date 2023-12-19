@@ -70,33 +70,20 @@ class _PostFormState extends State<PostForm> {
           ),
         ),
       ),
-      actions: [ // TODO:Add post belum bisa
-       /* ElevatedButton(
+      actions: [
+        ElevatedButton(
           onPressed: () {
             Navigator.pop(context); // Close the dialog
           },
           child: const Text('Cancel'),
         ),
-        ElevatedButton(
+        ElevatedButton( //TODO:Add post
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
-              try {
-                // Show a loading indicator while waiting for the response
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Row(
-                      children: [
-                        CircularProgressIndicator(),
-                        SizedBox(width: 16.0),
-                        Text("Saving..."),
-                      ],
-                    ),
-                  ),
-                );
-
-                // Use userProvider to get user information
+              /*try {
+                 // Use userProvider to get user information
                 final response = await request.postJson(
-                  "http://127.0.0.1:8000/forum/add_post_flutter/",
+                  "http://localhost:8000/forum/add_post_flutter/",
                   jsonEncode(<String, dynamic>{
                     'body': _body,
                     'thread': _thread,
@@ -121,11 +108,11 @@ class _PostFormState extends State<PostForm> {
               } finally {
                 // Hide the loading indicator
                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
-              }
+              }*/
             }
           },
           child: const Text('Save'),
-        ),*/
+        ),
       ],
     );
   }
