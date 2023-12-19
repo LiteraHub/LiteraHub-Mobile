@@ -1,6 +1,7 @@
 // ignore_for_file: library_prefixes, unused_local_variable, non_constant_identifier_names, use_build_context_synchronously
 
 import 'dart:convert';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -92,29 +93,32 @@ class _ThreadFormState extends State<ThreadForm> {
                       return const Text('No data available');
                     } else {
                       return Container(
-                        height: 50.0, // Set a fixed height or adjust as needed
-                        child: DropdownButtonFormField<String>(
-                          value: null,
-                          items: snapshot.data!.map((buku) {
-                            return DropdownMenuItem<String>(
-                              value: buku,
-                              child: Text(buku),
-                            );
-                          }).toList(),
-                          onChanged: (String? value) {
-                            setState(() {
-                              _buku = value ?? "-";
-                            });
-                          },
-                          decoration: InputDecoration(
-                            hintText: "Buku Diskusi?",
-                            labelText: "Buku Diskusi?",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.0),
+                          constraints: const BoxConstraints(
+                            maxWidth: 980,
+                          ),
+                          height: 50.0, // Set a fixed height or adjust as needed
+                          child: DropdownButtonFormField<String>(
+                            value: null,
+                            items: snapshot.data!.map((buku) {
+                              return DropdownMenuItem<String>(
+                                value: buku,
+                                child: AutoSizeText(buku),
+                              );
+                            }).toList(),
+                            onChanged: (String? value) {
+                              setState(() {
+                                _buku = value ?? "-";
+                              });
+                            },
+                            decoration: InputDecoration(
+                              hintText: "Buku Diskusi?",
+                              labelText: "Buku Diskusi?",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
                             ),
                           ),
-                        ),
-                      );
+                        );
                     }
                   },
                 ),
