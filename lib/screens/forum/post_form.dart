@@ -70,8 +70,8 @@ class _PostFormState extends State<PostForm> {
           ),
         ),
       ),
-      actions: [
-        ElevatedButton(
+      actions: [ // TODO:Add post belum bisa
+       /* ElevatedButton(
           onPressed: () {
             Navigator.pop(context); // Close the dialog
           },
@@ -80,23 +80,52 @@ class _PostFormState extends State<PostForm> {
         ElevatedButton(
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
-              // Use userProvider to get user information
-              final response = await request.postJson(
-                "http://127.0.0.1:8000/forum/add_post_flutter/",
-                jsonEncode(<String, dynamic>{
-                  'body': _body,
-                  'thread': _thread,
-                  'date': _date,
-                  'user': userProvider.username,
-                }),
-              );
+              try {
+                // Show a loading indicator while waiting for the response
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Row(
+                      children: [
+                        CircularProgressIndicator(),
+                        SizedBox(width: 16.0),
+                        Text("Saving..."),
+                      ],
+                    ),
+                  ),
+                );
 
-              print('Server Response: ${response.body}');
-              Navigator.pop(context); // Close the dialog
+                // Use userProvider to get user information
+                final response = await request.postJson(
+                  "http://127.0.0.1:8000/forum/add_post_flutter/",
+                  jsonEncode(<String, dynamic>{
+                    'body': _body,
+                    'thread': _thread,
+                    'date': _date,
+                    'user': userProvider.username,
+                  }),
+                );
+
+                // Check the status code of the response
+                if (response.statusCode == 200) {
+                  print('Server Response: ${response.body}');
+                  Navigator.pop(context); // Close the dialog
+                } else {
+                  // Handle error cases
+                  print('Error: ${response.body}');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Failed to save. Please try again."),
+                    ),
+                  );
+                }
+              } finally {
+                // Hide the loading indicator
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              }
             }
           },
           child: const Text('Save'),
-        ),
+        ),*/
       ],
     );
   }
