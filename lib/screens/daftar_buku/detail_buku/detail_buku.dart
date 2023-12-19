@@ -178,9 +178,9 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                           ),
-                                          child: AspectRatio(
+                                          child: const AspectRatio(
                                             aspectRatio: 7 / 6,
-                                            child: const Icon(
+                                            child: Icon(
                                               Icons.no_photography_outlined,
                                               color: Colors.white,
                                             ),
