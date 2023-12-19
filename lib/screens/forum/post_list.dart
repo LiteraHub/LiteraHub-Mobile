@@ -42,7 +42,7 @@ class _PostPageState extends State<PostPage> {
     final userProvider = context.watch<UserProvider>();
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.thread.fields.name}'),
+        title: Text(widget.thread.fields.name),
       ),
       drawer: const LeftDrawer(),
       body: FutureBuilder(

@@ -108,9 +108,9 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            leading: Icon(Icons.format_list_bulleted_rounded, color: Colors.black54, size: 30),
-            title: Text('Forum', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            leading: const Icon(Icons.format_list_bulleted_rounded, color: Colors.black54, size: 30),
+            title: const Text('Forum', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 18)),
             onTap: () {
               Navigator.push(
                 context,
