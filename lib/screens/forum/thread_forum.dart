@@ -1,16 +1,17 @@
-// ignore_for_file: library_prefixes, use_key_in_widget_constructors, library_private_types_in_public_api, sized_box_for_whitespace
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:literahub/models/thread.dart';
 import 'package:literahub/models/buku.dart' as modBuku;
+import 'package:literahub/screens/forum/post_list.dart';
 import 'package:literahub/widgets/left_drawer.dart';
 import 'package:literahub/screens/forum/thread_form.dart';
 
 class ThreadPage extends StatefulWidget {
+  const ThreadPage({Key? key}) : super(key: key);
+
   @override
-  _ThreadPageState createState() => _ThreadPageState();
+  State<ThreadPage> createState() => _ThreadPageState();
 }
 
 class _ThreadPageState extends State<ThreadPage> {
@@ -33,21 +34,23 @@ class _ThreadPageState extends State<ThreadPage> {
   }
 
   Future<modBuku.Buku?> fetchBuku(int? bukuId) async {
-    if (bukuId == null) { //default buku
-      return modBuku.Buku(
-        model: modBuku.Model.BUKU_BUKU,
-        pk: 0,
-        fields: modBuku.Fields(
-          isbn: 'default_isbn',
-          title: 'Default Title',
-          author: 'Default Author',
-          year: 2000,
-          img: 'default_image.jpg',
-          isReady: false,
-        ),
-      );
+    modBuku.Buku defaultBuku = modBuku.Buku(
+      model: modBuku.Model.BUKU_BUKU,
+      pk: 0,
+      fields: modBuku.Fields(
+      isbn: 'default_isbn',
+      title: 'Default Title',
+      author: 'Default Author',
+      year: 2000,
+      img: 'images/default_image.jpg',
+      isReady: false)
+    );
+    if (bukuId == null) {
+      // default buku
+      return defaultBuku;
     }
-    var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/forum/buku_id/$bukuId/');
+
+    var url = Uri.parse('http://127.0.0.1:8000/forum/buku_id/$bukuId/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},
@@ -55,61 +58,83 @@ class _ThreadPageState extends State<ThreadPage> {
 
     if (response.statusCode == 200) {
       var data = jsonDecode(utf8.decode(response.bodyBytes));
-      return modBuku.Buku.fromJson(data);
+
+      // Check if data is a list, take the first element
+      if (data is List && data.isNotEmpty) {
+        return modBuku.Buku.fromJson(data[0]);
+      } else {
+        // Handle the case where the response is not as expected
+        return defaultBuku;
+      }
     } else {
       return null;
     }
   }
 
   Widget buildBookCard(Thread thread, modBuku.Buku? buku) {
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      elevation: 4,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              thread.fields.name,
-              style: const TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
+    return InkWell(
+        onTap: () {
+          // To post page if a card for a thread is pressed
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PostPage(thread: thread),
             ),
-            const SizedBox(height: 10),
-            // If no book cover, display only the container
+          );
+        },
+        child: Card(
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          elevation: 4,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  thread.fields.name,
+                  style: const TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                // If no book cover, display only the container
             Container(
               width: 100,
               height: 150,
-              child: buku != null
-                  ? Image.network(
-                buku.fields.img,
-                loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                  if (loadingProgress == null) {
-                    return child;
-                  } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1)
-                            : null,
-                      ),
-                    );
-                  }
-                },
-              )
-                  : Container(
-                color: Colors.grey, // placeholder if pictures don't work
-              ),
+              child: (() {
+                try {
+                  return Image.network(
+                    buku?.fields.img ?? 'images/default_image.jpg',
+                    loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      } else {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1)
+                                : null,
+                          ),
+                        );
+                      }
+                    },
+                  );
+                } catch (e) {
+                  // Log the error if needed
+                  print('Error loading image: $e');
+                  // Return a fallback image
+                  return Image.asset('images/default_image.jpg');
+                }
+              })()
             ),
-            const SizedBox(height: 10),
-            Text("${thread.fields.date}"),
-            const SizedBox(height: 10),
-          ],
-        ),
-      ),
-    );
+                const SizedBox(height: 10),
+                Text("${thread.fields.date}"),
+                const SizedBox(height: 10),
+                ]),
+            ),
+          ),
+        );
   }
 
   @override
@@ -160,7 +185,7 @@ class _ThreadPageState extends State<ThreadPage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('+ Thread'),
-        backgroundColor: const Color(0x001b1d39),
+        backgroundColor: const Color(0x1B1D39),
         foregroundColor: Colors.white,
         onPressed: () {
           showDialog(

@@ -7,7 +7,6 @@
 **Anggota kelompok:**
 
 1. Jeslyn Theodora - 2206082026
-
 2. Puti Raissa - 2206830391
 3. Muhammad Rafli Mahesa - 2206828140
 4. Mohammad Fauzan Aditya - 2206827831
