@@ -63,7 +63,7 @@ class ShopCard extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ThreadPage()
+                builder: (context) => const ThreadPage()
               )
             );
           } else if (item.name == "Reservasi Tempat") {

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:literahub/models/buku.dart';
 import 'package:literahub/models/review.dart';
@@ -171,6 +173,7 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                                     child: Image.network(
                                       '${snapshot.data![index].fields.img}',
                                       fit: BoxFit.contain,
+                                      // ignore: avoid_types_as_parameter_names
                                       errorBuilder: (context, error, StackTrace){
                                         return Container(
                                           decoration: BoxDecoration(
@@ -356,10 +359,11 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                                                         '${snapshot.data![index].fields.img}',
                                                         height: 33,
                                                         width: 33,
+                                                        // ignore: avoid_types_as_parameter_names
                                                         errorBuilder: (context,error,StackTrace) {
                                                           return Container(
                                                             alignment:Alignment.center,
-                                                            child:Icon( 
+                                                            child:const Icon( 
                                                               Icons.no_photography_outlined,
                                                               color: Colors.white,
                                                               size: 30.0,
