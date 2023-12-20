@@ -50,7 +50,7 @@ class _PostPageState extends State<PostPage> { //get posts filtered by thread
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.thread.fields.name,
-          style: TextStyle(
+          style: const TextStyle(
           fontWeight: FontWeight.bold,
           ),
         ),

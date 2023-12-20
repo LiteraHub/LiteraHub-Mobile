@@ -6,7 +6,6 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import '../../providers/user_provider.dart';
 import 'package:literahub/models/thread.dart';
-import 'package:http/http.dart' as http;
 
 class PostForm extends StatefulWidget {
   final Thread thread;
