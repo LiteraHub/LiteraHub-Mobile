@@ -1,5 +1,4 @@
 // ignore_for_file: library_prefixes, unused_local_variable, non_constant_identifier_names, use_build_context_synchronously
-
 import 'dart:convert';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:http/http.dart' as http;
