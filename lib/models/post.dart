@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-List<Post> postFromJson(String str) => List<Post>.from(json.decode(str).map((x) => Post.fromJson(x)));
+Post postFromJson(String str) => Post.fromJson(json.decode(str));
 
-String postToJson(List<Post> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String postToJson(Post data) => json.encode(data.toJson());
 
 class Post {
   String model;
@@ -58,4 +58,25 @@ class Fields {
     "date": date.toIso8601String(),
     "body": body,
   };
+}
+
+enum Model {
+  // ignore: constant_identifier_names
+  FORUM_POST
+}
+
+final modelValues = EnumValues({
+  "forum.post": Model.FORUM_POST
+});
+
+class EnumValues<T> {
+  Map<String, T> map;
+  late Map<T, String> reverseMap;
+
+  EnumValues(this.map);
+
+  Map<T, String> get reverse {
+    reverseMap = map.map((k, v) => MapEntry(v, k));
+    return reverseMap;
+  }
 }

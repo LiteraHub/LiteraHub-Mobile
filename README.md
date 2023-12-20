@@ -11,7 +11,6 @@ File APK dapat diunduh pada [link ini](https://install.appcenter.ms/orgs/literah
 **Anggota kelompok:**
 
 1. Jeslyn Theodora - 2206082026
-
 2. Mohammad Fauzan Aditya - 2206827831
 3. Muhammad Rafli Mahesa - 2206828140
 4. Puti Raissa - 2206830391
