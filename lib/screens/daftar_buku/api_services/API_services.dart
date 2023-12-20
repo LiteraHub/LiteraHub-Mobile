@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, non_constant_identifier_names
 
 import 'dart:convert';
 
@@ -19,15 +19,15 @@ class FetchBook {
 
     // melakukan decode response menjadi bentuk json
     var data = jsonDecode(utf8.decode(response.bodyBytes));
-    List<Buku> list_buku = [];
+    List<Buku> listBuku = [];
     for (var d in data) {
       if (d != null) {
-        list_buku.add(Buku.fromJson(d));
+        listBuku.add(Buku.fromJson(d));
       }
     }
 
     if (query != null) {
-      list_buku = list_buku
+      listBuku = listBuku
           .where((element) =>
               element.fields.title.toLowerCase().contains(query) ||
               element.fields.author.toLowerCase().contains(query) ||
@@ -35,7 +35,7 @@ class FetchBook {
           .toList();
     }
 
-    return list_buku;
+    return listBuku;
   }
 
   Future<List<Buku>> getBookInfo({int? id}) async {
@@ -49,14 +49,14 @@ class FetchBook {
     // melakukan decode response menjadi bentuk json
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
-    List<Buku> list_buku = [];
+    List<Buku> listBuku = [];
     // melakukan konversi data json menjadi object Product
     for (var d in data) {
       if (d != null) {
-        list_buku.add(Buku.fromJson(d));
+        listBuku.add(Buku.fromJson(d));
       }
     }
-    return list_buku;
+    return listBuku;
   }
 
   Future<List<Review>> getReviewBook({int? id}) async {
