@@ -49,8 +49,15 @@ class _PostPageState extends State<PostPage> { //get posts filtered by thread
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.thread.fields.name),
+        title: Text(widget.thread.fields.name,
+          style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          ),
+        ),
+        foregroundColor: const Color.fromARGB(255, 42, 33, 0),
+        backgroundColor: const Color(0xFFC9C5BA),
       ),
+        backgroundColor: const Color.fromARGB(255, 242, 238, 227),
       drawer: const LeftDrawer(),
       body: FutureBuilder(
         future: fetchPosts(),
