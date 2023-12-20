@@ -85,7 +85,6 @@ class _PostFormState extends State<PostForm> {
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
               /*try {
-                 // Use userProvider to get user information
                 final response = await request.postJson(
                   "http://localhost:8000/forum/add_post_flutter/",
                   jsonEncode(<String, dynamic>{
