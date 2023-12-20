@@ -5,8 +5,6 @@ import 'package:literahub/models/post.dart';
 import 'package:literahub/models/thread.dart';
 import 'package:literahub/screens/forum/post_form.dart';
 import 'package:literahub/widgets/left_drawer.dart';
-import 'package:provider/provider.dart';
-import '../../providers/user_provider.dart';
 
 class PostPage extends StatefulWidget {
   final Thread thread;
@@ -20,7 +18,7 @@ class PostPage extends StatefulWidget {
 
 class _PostPageState extends State<PostPage> { //get posts filtered by thread
   Future<List<Post>> fetchPosts() async {
-    var url = Uri.parse('http://127.0.0.1:8000/forum/json_posts/${widget.thread.pk}/');
+    var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/forum/json_posts/${widget.thread.pk}/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},
@@ -38,7 +36,7 @@ class _PostPageState extends State<PostPage> { //get posts filtered by thread
   }
 
   Future<String> fetchUsername(int userId) async { //get usernames
-    var url = Uri.parse('http://127.0.0.1:8000/usernames/$userId/');
+    var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/usernames/$userId/');
     var response = await http.get(url);
     var data = jsonDecode(utf8.decode(response.bodyBytes));
     return data['username'];
@@ -49,8 +47,15 @@ class _PostPageState extends State<PostPage> { //get posts filtered by thread
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.thread.fields.name),
+        title: Text(widget.thread.fields.name,
+          style: TextStyle(
+          fontWeight: FontWeight.bold,
+          ),
+        ),
+        foregroundColor: const Color.fromARGB(255, 42, 33, 0),
+        backgroundColor: const Color(0xFFC9C5BA),
       ),
+        backgroundColor: const Color.fromARGB(255, 242, 238, 227),
       drawer: const LeftDrawer(),
       body: FutureBuilder(
         future: fetchPosts(),

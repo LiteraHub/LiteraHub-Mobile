@@ -5,6 +5,7 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import '../../providers/user_provider.dart';
 import 'package:literahub/models/thread.dart';
+import 'package:http/http.dart' as http;
 
 class PostForm extends StatefulWidget {
   final Thread thread;
@@ -81,7 +82,6 @@ class _PostFormState extends State<PostForm> {
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
               /*try {
-                 // Use userProvider to get user information
                 final response = await request.postJson(
                   "http://localhost:8000/forum/add_post_flutter/",
                   jsonEncode(<String, dynamic>{

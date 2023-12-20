@@ -50,7 +50,7 @@ class _ThreadPageState extends State<ThreadPage> {
       return defaultBuku;
     }
 
-    var url = Uri.parse('http://127.0.0.1:8000/forum/buku_id/$bukuId/');
+    var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/forum/buku_id/$bukuId/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},
@@ -82,6 +82,7 @@ class _ThreadPageState extends State<ThreadPage> {
           );
         },
         child: Card(
+          color: const Color.fromARGB(255, 232, 209, 122),
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           elevation: 4,
           child: Padding(
@@ -143,10 +144,15 @@ class _ThreadPageState extends State<ThreadPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('FORUM'),
+        title: const Text('FORUM',
+          style: TextStyle(
+          fontWeight: FontWeight.bold,
+          ),
+        ),
+        foregroundColor: const Color.fromARGB(255, 42, 33, 0),
         backgroundColor: const Color(0xFFC9C5BA),
-        foregroundColor: Colors.black,
       ),
+      backgroundColor: const Color.fromARGB(255, 242, 238, 227),
       drawer: const LeftDrawer(),
       body: FutureBuilder<List<Thread>>(
         future: fetchThread(),
