@@ -60,6 +60,7 @@ class FetchBook {
   }
 
   Future<List<Review>> getReviewBook({int? id}) async {
+    list_review.clear();
     var url = Uri.parse(
         'https://literahub-e08-tk.pbp.cs.ui.ac.id/daftarbuku/get_review_json_by_id/$id/');
     var response = await http.get(
