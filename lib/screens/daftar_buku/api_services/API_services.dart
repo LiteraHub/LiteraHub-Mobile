@@ -8,14 +8,9 @@ import 'package:literahub/models/buku.dart';
 import '../../../models/review.dart';
 
 class FetchBook {
-  // ignore: non_constant_identifier_names
-  List<Buku> list_buku = [];
-  // ignore: non_constant_identifier_names
   List<Review> list_review = [];
-  String user = "";
 
   Future<List<Buku>> getBookList({String? query}) async {
-    list_buku.clear();
     var url = Uri.parse("https://literahub-e08-tk.pbp.cs.ui.ac.id/daftarbuku/show_json/");
     var response = await http.get(
       url,
@@ -24,6 +19,7 @@ class FetchBook {
 
     // melakukan decode response menjadi bentuk json
     var data = jsonDecode(utf8.decode(response.bodyBytes));
+    List<Buku> list_buku = [];
     for (var d in data) {
       if (d != null) {
         list_buku.add(Buku.fromJson(d));
@@ -43,7 +39,6 @@ class FetchBook {
   }
 
   Future<List<Buku>> getBookInfo({int? id}) async {
-    list_buku.clear();
     var url =
         Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/daftarbuku/show_json_by_id/$id/');
     var response = await http.get(
@@ -54,6 +49,7 @@ class FetchBook {
     // melakukan decode response menjadi bentuk json
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
+    List<Buku> list_buku = [];
     // melakukan konversi data json menjadi object Product
     for (var d in data) {
       if (d != null) {
@@ -64,7 +60,6 @@ class FetchBook {
   }
 
   Future<List<Review>> getReviewBook({int? id}) async {
-    list_review.clear();
     var url = Uri.parse(
         'https://literahub-e08-tk.pbp.cs.ui.ac.id/daftarbuku/get_review_json_by_id/$id/');
     var response = await http.get(
