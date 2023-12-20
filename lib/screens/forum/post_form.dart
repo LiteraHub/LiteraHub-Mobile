@@ -1,4 +1,5 @@
-import 'dart:convert';
+// ignore_for_file: unused_local_variable, overridden_fields, annotate_overrides, prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -18,8 +19,11 @@ class PostForm extends StatefulWidget {
 
 class _PostFormState extends State<PostForm> {
   final _formKey = GlobalKey<FormState>();
+  // ignore: unused_field
   String _body = "";
+  // ignore: unused_field
   int _thread = 0;
+  // ignore: unused_field, prefer_final_fields
   String _date = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
 
   @override
@@ -30,9 +34,9 @@ class _PostFormState extends State<PostForm> {
     _thread = widget.thread.pk;
 
     return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       backgroundColor: const Color(0xFFCBC6A3),
-      title: Text("Buat Post"),
+      title: const Text("Buat Post"),
       content: SizedBox(
         height: 300,
         width: 600,
@@ -77,7 +81,7 @@ class _PostFormState extends State<PostForm> {
           },
           child: const Text('Cancel'),
         ),
-        ElevatedButton( //TODO:Add post
+        ElevatedButton( 
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
               /*try {

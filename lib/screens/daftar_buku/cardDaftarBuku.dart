@@ -166,15 +166,16 @@ class _CardDaftarBukuState extends State<CardDaftarBuku> {
                                                       snapshot
                                                           .data![index].fields.img,
                                                       fit: BoxFit.cover,
+                                                      // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
                                                       errorBuilder: (context, error,StackTrace) {
                                                         return Container(
                                                           decoration:
                                                               const BoxDecoration(
                                                             color: Colors.amber,
                                                           ),
-                                                          child: AspectRatio(
+                                                          child: const AspectRatio(
                                                             aspectRatio: 2 / 3,
-                                                            child: const Icon(
+                                                            child: Icon(
                                                               Icons
                                                                   .no_photography_outlined,
                                                               color: Colors.white,

@@ -1,3 +1,5 @@
+// ignore_for_file: overridden_fields, annotate_overrides, library_private_types_in_public_api
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -5,14 +7,12 @@ import 'package:literahub/models/post.dart';
 import 'package:literahub/models/thread.dart';
 import 'package:literahub/screens/forum/post_form.dart';
 import 'package:literahub/widgets/left_drawer.dart';
-import 'package:provider/provider.dart';
-import '../../providers/user_provider.dart';
 
 class PostPage extends StatefulWidget {
   final Thread thread;
   final Key? key;
 
-  PostPage({required this.thread, this.key}) : super(key: key);
+  const PostPage({required this.thread, this.key}) : super(key: key);
 
   @override
   _PostPageState createState() => _PostPageState();
@@ -76,9 +76,9 @@ class _PostPageState extends State<PostPage> { //get posts filtered by thread
                   future: fetchUsername(snapshot.data![index].fields.user),
                   builder: (context, usernameSnapshot) {
                     if (usernameSnapshot.connectionState == ConnectionState.waiting) {
-                      return CircularProgressIndicator(); // or any loading indicator
+                      return const CircularProgressIndicator(); // or any loading indicator
                     } else if (usernameSnapshot.hasError) {
-                      return Text('Error fetching username');
+                      return const Text('Error fetching username');
                     } else {
                       return Container(
                         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -111,7 +111,7 @@ class _PostPageState extends State<PostPage> { //get posts filtered by thread
       ),
         floatingActionButton: FloatingActionButton.extended( //add post button
           label: const Text('+ Post'),
-          backgroundColor: const Color(0x1B1D39),
+          backgroundColor: const Color(0x001b1d39),
           foregroundColor: Colors.white,
           onPressed: () {
             showDialog(
