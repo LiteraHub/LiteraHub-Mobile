@@ -51,7 +51,7 @@ class _ThreadPageState extends State<ThreadPage> {
       return defaultBuku;
     }
 
-    var url = Uri.parse('http://127.0.0.1:8000/forum/buku_id/$bukuId/');
+    var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/forum/buku_id/$bukuId/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},
