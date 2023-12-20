@@ -139,7 +139,7 @@ class _ReturnBookPageState extends State<ReturnBookPage> {
                           children: [
                           SizedBox(height: 70),
                           Text(
-                            "Belum ada buku yang dipinjam. 😭😭",
+                            "Belum ada buku yang dipinjam.",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
