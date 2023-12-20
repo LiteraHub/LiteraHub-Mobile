@@ -20,7 +20,7 @@ class PostPage extends StatefulWidget {
 
 class _PostPageState extends State<PostPage> { //get posts filtered by thread
   Future<List<Post>> fetchPosts() async {
-    var url = Uri.parse('http://127.0.0.1:8000/forum/json_posts/${widget.thread.pk}/');
+    var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/forum/json_posts/${widget.thread.pk}/');
     var response = await http.get(
       url,
       headers: {"Content-Type": "application/json"},
@@ -38,7 +38,7 @@ class _PostPageState extends State<PostPage> { //get posts filtered by thread
   }
 
   Future<String> fetchUsername(int userId) async { //get usernames
-    var url = Uri.parse('http://127.0.0.1:8000/usernames/$userId/');
+    var url = Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/usernames/$userId/');
     var response = await http.get(url);
     var data = jsonDecode(utf8.decode(response.bodyBytes));
     return data['username'];
