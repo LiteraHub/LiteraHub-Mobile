@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, non_constant_identifier_names
 
 import 'dart:convert';
 
@@ -8,14 +8,9 @@ import 'package:literahub/models/buku.dart';
 import '../../../models/review.dart';
 
 class FetchBook {
-  // ignore: non_constant_identifier_names
-  List<Buku> list_buku = [];
-  // ignore: non_constant_identifier_names
   List<Review> list_review = [];
-  String user = "";
 
   Future<List<Buku>> getBookList({String? query}) async {
-    list_buku.clear();
     var url = Uri.parse("https://literahub-e08-tk.pbp.cs.ui.ac.id/daftarbuku/show_json/");
     var response = await http.get(
       url,
@@ -24,14 +19,15 @@ class FetchBook {
 
     // melakukan decode response menjadi bentuk json
     var data = jsonDecode(utf8.decode(response.bodyBytes));
+    List<Buku> listBuku = [];
     for (var d in data) {
       if (d != null) {
-        list_buku.add(Buku.fromJson(d));
+        listBuku.add(Buku.fromJson(d));
       }
     }
 
     if (query != null) {
-      list_buku = list_buku
+      listBuku = listBuku
           .where((element) =>
               element.fields.title.toLowerCase().contains(query) ||
               element.fields.author.toLowerCase().contains(query) ||
@@ -39,11 +35,10 @@ class FetchBook {
           .toList();
     }
 
-    return list_buku;
+    return listBuku;
   }
 
   Future<List<Buku>> getBookInfo({int? id}) async {
-    list_buku.clear();
     var url =
         Uri.parse('https://literahub-e08-tk.pbp.cs.ui.ac.id/daftarbuku/show_json_by_id/$id/');
     var response = await http.get(
@@ -54,17 +49,17 @@ class FetchBook {
     // melakukan decode response menjadi bentuk json
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
+    List<Buku> listBuku = [];
     // melakukan konversi data json menjadi object Product
     for (var d in data) {
       if (d != null) {
-        list_buku.add(Buku.fromJson(d));
+        listBuku.add(Buku.fromJson(d));
       }
     }
-    return list_buku;
+    return listBuku;
   }
 
   Future<List<Review>> getReviewBook({int? id}) async {
-    list_review.clear();
     var url = Uri.parse(
         'https://literahub-e08-tk.pbp.cs.ui.ac.id/daftarbuku/get_review_json_by_id/$id/');
     var response = await http.get(
