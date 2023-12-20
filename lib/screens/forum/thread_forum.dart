@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:literahub/models/thread.dart';
+// ignore: library_prefixes
 import 'package:literahub/models/buku.dart' as modBuku;
 import 'package:literahub/screens/forum/post_list.dart';
 import 'package:literahub/widgets/left_drawer.dart';
@@ -98,7 +99,7 @@ class _ThreadPageState extends State<ThreadPage> {
                   ),
                 ),
                 const SizedBox(height: 10),
-              Container(
+              SizedBox(
                 width: 100,
                 height: 150,
                 child: (() {
@@ -121,12 +122,11 @@ class _ThreadPageState extends State<ThreadPage> {
                     );
                   } catch (e) {
                     // Log the error if needed
-                    print('Error loading image: $e');
                     // Return a fallback image
                     return Container(
                       width: 100,
                       height: 150,
-                      color: Color(0xA6CBECEB),
+                      color: const Color(0xA6CBECEB),
                     );
                   }
                 })()
@@ -193,7 +193,7 @@ class _ThreadPageState extends State<ThreadPage> {
       ),
       floatingActionButton: FloatingActionButton.extended( //add thread button
         label: const Text('+ Thread'),
-        backgroundColor: const Color(0x1B1D39),
+        backgroundColor: const Color(0x001b1d39),
         foregroundColor: Colors.white,
         onPressed: () {
           showDialog(
